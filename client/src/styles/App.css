@@ -1,0 +1,160 @@
+#dark {
+  background-color: #373737;
+}
+
+#dark h1 {
+  color: #f3ebf6;
+}
+
+#dark h2 {
+  color: #f3ebf6;
+}
+
+#dark h3 {
+  color: white;
+}
+
+#dark h4 {
+  color: white;
+}
+
+#dark h5 {
+  color: white;
+}
+
+#dark p {
+  color: white;
+}
+
+#dark .mt-1 {
+  color: #f3ebf6;
+}
+
+#dark .username {
+  color: #f3ebf6;
+}
+
+#dark .text-center {
+  color: #f3ebf6;
+}
+
+#dark .grid {
+  color: #f3ebf6;
+}
+
+#dark a {
+  color: #f3ebf6;
+}
+
+#dark .icon {
+  color: black;
+}
+
+#dark input {
+  color: black;
+}
+
+#dark .things {
+  background-color: #373737;
+}
+
+#dark .text-xl {
+  color: #373737;
+}
+
+#dark .all-photo-button {
+  background-color: #a2a2a2;
+}
+
+#dark .footer {
+  background-color: #373737;
+}
+
+#dark .place-card {
+  background-color: #d9d9d9;
+}
+
+#dark input {
+  background-color: #a2a2a2;
+}
+
+#dark textarea {
+  background-color: #a2a2a2;
+}
+
+#dark .form {
+  background-color: #a2a2a2;
+}
+
+#dark .upload {
+  color: white;
+}
+
+#dark #search::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #title::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #address::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #checkIn::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #checkOut::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #maxGuests::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #price::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #photoLink::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #email::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #password::placeholder {
+  color: #4c4c4c;
+}
+
+#dark .checkbox {
+  color: white;
+}
+#dark .checkbox.Mui-checked {
+  color: pink;
+}
+
+#app {
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#chat_container {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding-bottom: 20px;
+}
+
+#dark .search-icon {
+  background-color: #a2a2a2;
+  border: none;
+}
