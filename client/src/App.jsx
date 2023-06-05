@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import IndexPage from './pages/IndexPage';
+import DetailPage from './pages/DetailPage';
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -34,7 +35,7 @@ function App() {
             <MapProvider>
               <Routes>
                 <Route path="/" element={<Layout />}>
-                  <Route index element={<IndexPage />} />
+                  <Route index element={<DetailPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/account" element={<ProfilePage />} />
