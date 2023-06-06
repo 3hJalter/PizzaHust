@@ -16,6 +16,15 @@ import './styles/App.css';
 import { MapProvider } from './providers/MapProvider.jsx';
 import AdminPage from './pages/Admin/AdminPage.jsx';
 import AdminLayout from './pages/Admin/components/AdminLayout.jsx';
+import AdminOrders from './pages/Admin/Pages/AdminOrders.jsx';
+import AdminCombos from './pages/Admin/Pages/AdminCombos.jsx';
+import AdminPizzas from './pages/Admin/Pages/AdminPizzas.jsx';
+import AdminPizzaToppings from './pages/Admin/Pages/AdminPizzaToppings.jsx';
+import AdminSideDishes from './pages/Admin/Pages/AdminSideDishes.jsx';
+import AdminVouchers from './pages/Admin/Pages/AdminVouchers.jsx';
+import AdminUsers from './pages/Admin/Pages/AdminUsers.jsx';
+import AdminPizzaTypes from './pages/Admin/Pages/AdminPizzaTypes.jsx';
+import AdminSideDishTypes from './pages/Admin/Pages/AdminSideDishTypes.jsx';
 
 const token = getItemFromLocalStorage('token');
 
@@ -45,6 +54,15 @@ function App() {
               </Route>
               <Route path='/admin' element={<AdminLayout/>}>
                 <Route index element={<AdminPage />} />
+                <Route path='/admin/orders' element={<AdminOrders />} />
+                <Route path='/admin/combos' element={<AdminCombos />} />
+                <Route path='/admin/pizzas' element={<AdminPizzas />} />
+                <Route path='/admin/pizzaTypes' element={<AdminPizzaTypes />}/>
+                <Route path='/admin/pizzaToppings' element={<AdminPizzaToppings />} />
+                <Route path='/admin/sideDishes' element={<AdminSideDishes/>}/>
+                <Route path='/admin/sideDishTypes' element={<AdminSideDishTypes/>}/>
+                <Route path='/admin/vouchers' element={<AdminVouchers />}/>
+                <Route path='/admin/users' element={<AdminUsers/>}/>
               </Route>
             </Routes>
             <Footer />

@@ -2,7 +2,29 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const userFromToken = require('../utils/userFromToken');
 const jwt = require('jsonwebtoken');
-const SideDishType = require("../models/SideDishType");
+
+
+exports.getUsers = async (req, res) => {
+  try {
+    const userData = userFromToken(req);
+    if (userData.role !== 'Customer') {
+      const users = await User.find();
+      res.status(200).json({
+        users,
+      });
+    }
+    else {
+      res.status(404).json({
+        message: 'Cannot find users because of no confirm role'
+      })
+    }
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal server Error',
+      error: err,
+    });
+  }
+};
 
 exports.register = async (req, res) => {
   try {
@@ -28,7 +50,7 @@ exports.register = async (req, res) => {
       name: userData.name,
       birth: userData.birth,
       email: userData.email,
-      address:  userData.address,
+      address: userData.address,
       phone: userData.phone,
       description: userData.description,
       password: await bcrypt.hash(userData.password, 10),
@@ -60,7 +82,7 @@ exports.login = async (req, res) => {
           process.env.JWT_SECRET,
           {
             expiresIn: process.env.JWT_EXPIRY,
-          }
+          },
         );
         user.password = undefined;
         res.status(200).json({
@@ -130,7 +152,7 @@ exports.updateProfile = async (req, res) => {
       error: err,
     });
   }
-}
+};
 
 exports.logout = async (req, res) => {
   res.cookie('token', '').json({
