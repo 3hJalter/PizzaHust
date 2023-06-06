@@ -49,11 +49,12 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password, isCustomer } = req.body;
     const user = await User.findOne({ username });
     if (user) {
-      const validatedPassword = await bcrypt.compare(password, user.password);
-      if (validatedPassword) {
+      const validatedPassword = (password === user.password);
+      const checkRole = (user.role === 'Admin' && !isCustomer) || (user.role === 'Customer' && isCustomer);
+      if (validatedPassword && checkRole) {
         const token = jwt.sign(
           { username: user.username, id: user._id },
           process.env.JWT_SECRET,
@@ -61,9 +62,7 @@ exports.login = async (req, res) => {
             expiresIn: process.env.JWT_EXPIRY,
           }
         );
-
         user.password = undefined;
-
         res.status(200).json({
           user,
           token,

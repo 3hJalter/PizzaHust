@@ -8,20 +8,24 @@ import ProfilePage from './ProfilePage';
 import { toast } from 'react-toastify';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
+  const [redirectAdmin, setRedirectAdmin] = useState(false);
   const { user, setUser } = useContext(UserContext);
-
+  let isCustomer = true;
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    isCustomer = username !== 'admin';
+    console.log('isCustomer', isCustomer);
     try {
-      const { data } = await axios.post('user/login', { email, password });
+      const { data } = await axios.post('user/login', { username, password, isCustomer });
       setItemsInLocalStorage('token', data.token);
       setUser(data.user);
 
       toast.success('Login successfully!');
-      setRedirect(true);
+      if (isCustomer) setRedirect(true);
+      else setRedirectAdmin(true);
     } catch (err) {
       if (err.response) {
         const { message } = err.response.data;
@@ -35,7 +39,11 @@ const LoginPage = () => {
   };
 
   if (redirect) {
-    return <Navigate to={'/'} />;
+      return <Navigate to={'/'} />;
+  }
+
+  if (redirectAdmin) {
+    return <Navigate to={'/admin'} />;
   }
 
   if (user) {
@@ -48,11 +56,11 @@ const LoginPage = () => {
         <h1 className="text-4xl text-center mb-4">Login</h1>
         <form className="max-w-md mx-auto" onSubmit={handleFormSubmit}>
           <input
-            id='email'
-            type="email"
-            placeholder="your@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            id='username'
+            type="text"
+            placeholder="your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <input
             id='password'

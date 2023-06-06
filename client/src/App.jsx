@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import IndexPage from './pages/IndexPage';
 import ProfilePage from './pages/ProfilePage';
@@ -12,9 +12,12 @@ import { UserProvider } from './providers/UserProvider';
 import Footer from './components/Footer';
 import NotFound from './pages/ErrorPage/NotFound';
 import React, { createContext } from 'react';
-const token = getItemFromLocalStorage('token');
 import './styles/App.css';
 import { MapProvider } from './providers/MapProvider.jsx';
+import AdminPage from './pages/Admin/AdminPage.jsx';
+import AdminLayout from './pages/Admin/components/AdminLayout.jsx';
+
+const token = getItemFromLocalStorage('token');
 
 axios.defaults.baseURL = 'http://localhost:8001';
 axios.defaults.withCredentials = true;
@@ -29,21 +32,24 @@ function App() {
   };
   return (
     <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
-      <div className="App" id={theme}>
+      <div className='App' id={theme}>
         <UserProvider>
-            <MapProvider>
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<IndexPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<RegisterPage />} />
-                  <Route path="/account" element={<ProfilePage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Route>
-              </Routes>
-              <Footer />
-              <ToastContainer autoClose={2000} transition={Slide} />
-            </MapProvider>
+          <MapProvider>
+            <Routes>
+              <Route path='/' element={<Layout /> }>
+                <Route index element={<IndexPage />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/register' element={<RegisterPage />} />
+                <Route path='/account' element={<ProfilePage />} />
+                <Route path='*' element={<NotFound />} />
+              </Route>
+              <Route path='/admin' element={<AdminLayout/>}>
+                <Route index element={<AdminPage />} />
+              </Route>
+            </Routes>
+            <Footer />
+            <ToastContainer autoClose={2000} transition={Slide} />
+          </MapProvider>
         </UserProvider>
       </div>
     </ThemeContext.Provider>

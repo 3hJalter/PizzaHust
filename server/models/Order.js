@@ -1,29 +1,76 @@
 const mongoose = require('mongoose');
 
+// Must Re-write orderController.js.
+
 const orderSchema = new mongoose.Schema({
-  comboListId: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'combos',
-    required: true,
+  comboList: [{
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'combos',
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
   }],
-  pizzaListId: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'pizzas',
-    required: true,
+  pizzaList: [{
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'pizzas',
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
   }],
-  pizzaToppingListId: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'pizzaToppings',
-    required: true,
+  pizzaToppingList: [{
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'pizzaToppings',
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
   }],
-  sideDishListId: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'sideDishes',
-    required: true,
+  sideDishList: [{
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'sideDishes',
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
   }],
-  voucherId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'vouchers',
+  voucher: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'vouchers',
+    },
+    name: {
+      type: String,
+    },
   },
   price: {
     type: Number,
