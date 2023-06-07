@@ -25,6 +25,7 @@ import AdminVouchers from './pages/Admin/Pages/AdminVouchers.jsx';
 import AdminUsers from './pages/Admin/Pages/AdminUsers.jsx';
 import AdminPizzaTypes from './pages/Admin/Pages/AdminPizzaTypes.jsx';
 import AdminSideDishTypes from './pages/Admin/Pages/AdminSideDishTypes.jsx';
+import AdminComboPage from './pages/Admin/Pages/AdminComboPage.jsx';
 
 const token = getItemFromLocalStorage('token');
 
@@ -56,6 +57,7 @@ function App() {
                 <Route index element={<AdminPage />} />
                 <Route path='/admin/orders' element={<AdminOrders />} />
                 <Route path='/admin/combos' element={<AdminCombos />} />
+                <Route path='/admin/combos/:id' element={<AdminComboPage/>}/>
                 <Route path='/admin/pizzas' element={<AdminPizzas />} />
                 <Route path='/admin/pizzaTypes' element={<AdminPizzaTypes />}/>
                 <Route path='/admin/pizzaToppings' element={<AdminPizzaToppings />} />

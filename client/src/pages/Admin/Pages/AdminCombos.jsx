@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {useState, useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { getItemFromLocalStorage } from '../../../utils/index.js';
-import { data } from 'autoprefixer';
+import { Link } from 'react-router-dom';
 
 export default function AdminCombos() {
   const token = getItemFromLocalStorage('token');
@@ -15,28 +15,35 @@ export default function AdminCombos() {
     });
     console.log(data.combos);
     setCombo(data.combos);
-  }
+  };
 
   useEffect(() => {
-    getComboData().then(() => {});
+    getComboData().then(() => {
+    });
     console.log('Load index page');
   }, []);
 
   return (
     <div>
-      <h2>Admin Combos</h2>
-      {combo.map((comboItem) => (
-        <div key={comboItem._id}>
-          <h3>{comboItem.name}</h3>
-          <p>{comboItem.description}</p>
-          <p>Price: {comboItem.price}</p>
-          <p>Discount: {comboItem.discount}%</p>
-          <ul>
-            <li>Pizzas: {comboItem.pizzaListId.join(', ')}</li>
-            <li>Side Dishes: {comboItem.sideDishListId.join(', ')}</li>
-          </ul>
-        </div>
-      ))}
+      <div className='mt-8 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
+        {combo.length > 0 && combo.map((comboItem) => (
+          <>
+            <Link to={`/admin/combos/${comboItem._id}`} key={comboItem._id}>
+              <div className="flex items-center space-x-4 cursor-pointer hover:scale-105 transition transform duration-200 ease-out">
+                Need to set image
+              </div>
+              <div>
+                <h2 className='font-bold'>{comboItem.name}</h2>
+                <h3 className='text-sm text-gray-500 '>{comboItem.price}</h3>
+              </div>
+              <div>
+                <span className='font-semibold'>${comboItem.discount} </span>
+                discount
+              </div>
+            </Link>
+          </>
+        ))}
+      </div>
     </div>
   );
 }

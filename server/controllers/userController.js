@@ -78,7 +78,7 @@ exports.login = async (req, res) => {
       const checkRole = (user.role === 'Admin' && !isCustomer) || (user.role === 'Customer' && isCustomer);
       if (validatedPassword && checkRole) {
         const token = jwt.sign(
-          { username: user.username, id: user._id },
+          { username: user.username, id: user._id, role: user.role },
           process.env.JWT_SECRET,
           {
             expiresIn: process.env.JWT_EXPIRY,
