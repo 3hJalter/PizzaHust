@@ -12,7 +12,7 @@ const {
 
 router.route('/').get(getVouchers);
 router.route('/add-voucher').post(addVoucher);
-router.route('/update-voucher').put(updateVoucher);
+router.route('/:id').put(updateVoucher);
 router.route('/:id').get(getVoucherById).delete(deleteVoucher);
 router.route('/search/:key').get(searchVouchers);
 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function AdminPizzaTypes() {
   const token = getItemFromLocalStorage('token');
-  const [pizzaType, SetPizzaType] = useState([]);
+  const [pizzaType, setPizzaType] = useState([]);
   const getPizzaTypeData = async () => {
     const { data } = await axios.get(`/pizzaType`, {
       headers: {
@@ -13,14 +13,27 @@ export default function AdminPizzaTypes() {
       },
     });
     console.log(data);
-    SetPizzaType(data.types);
+    setPizzaType(data.types);
   }
 
   useEffect(() => {
     getPizzaTypeData().then(() => {});
   }, []);
 
-
+  const removePizzaType = async (id) => {
+    console.log('id: ' + id)
+    try {
+      await axios.delete(`/pizzaType/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setPizzaType(pizzaType.filter((item) => item._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
   return (
     <>
       <div>This is Admin PizzaTypes</div>
@@ -41,6 +54,13 @@ export default function AdminPizzaTypes() {
                   <span className='font-semibold'>${pizzaTypeItem.description} </span>
                 </div>
               </Link>
+              <button className='primary hover:bg-secondary transition my-4'
+                      onClick={() => {
+                        removePizzaType(pizzaTypeItem._id).then(() => {
+                        });
+                      }}>
+                Remove
+              </button>
             </div>
           ))}
           <Link to={'/admin/pizzaTypes/new'} className="primary hover:bg-secondary transition my-4">

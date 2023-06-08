@@ -9,7 +9,7 @@ exports.addPizzaType = async (req, res) => {
         message: 'You are not authorized to add a pizza type',
       });
     }
-    const typeData = req.body.typeData;
+    const typeData = req.body.pizzaType;
     const pizzaType = await PizzaType.create({
       name: typeData.name,
       description: typeData.description,

@@ -18,10 +18,25 @@ export default function AdminCombos() {
   };
 
   useEffect(() => {
+    console.log('Use effect');
     getComboData().then(() => {
     });
     console.log('Load index page');
   }, []);
+
+  const removeCombo = async (id) => {
+    console.log('id: ' + id)
+    try {
+      await axios.delete(`/combo/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCombo(combo.filter((item) => item._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div>
@@ -41,6 +56,13 @@ export default function AdminCombos() {
                 discount
               </div>
             </Link>
+            <button className='primary hover:bg-secondary transition my-4'
+                    onClick={() => {
+                      removeCombo(comboItem._id).then(() => {
+                      });
+                    }}>
+              Remove
+            </button>
           </div>
         ))}
         <Link to={'/admin/combos/new'} className="primary hover:bg-secondary transition my-4">

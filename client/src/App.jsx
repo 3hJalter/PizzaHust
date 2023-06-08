@@ -26,6 +26,13 @@ import AdminUsers from './pages/Admin/Pages/AdminUsers.jsx';
 import AdminPizzaTypes from './pages/Admin/Pages/AdminPizzaTypes.jsx';
 import AdminSideDishTypes from './pages/Admin/Pages/AdminSideDishTypes.jsx';
 import AdminComboPage from './pages/Admin/Pages/AdminComboPage.jsx';
+import AdminPizzaPage from './pages/Admin/Pages/AdminPizzaPage.jsx';
+import AdminPizzaToppingPage from './pages/Admin/Pages/AdminPizzaToppingPage.jsx';
+import AdminPizzaTypePage from './pages/Admin/Pages/AdminPizzaTypePage.jsx';
+import AdminSideDishPage from './pages/Admin/Pages/AdminSideDishPage.jsx';
+import AdminSideDishTypePage from './pages/Admin/Pages/AdminSideDishTypePage.jsx';
+import AdminVoucherPage from './pages/Admin/Pages/AdminVoucherPage.jsx';
+import AdminUserPage from './pages/Admin/Pages/AdminUserPage.jsx';
 
 const token = getItemFromLocalStorage('token');
 
@@ -60,11 +67,25 @@ function App() {
                 <Route path='/admin/combos/new' element={<AdminComboPage />} />
                 <Route path='/admin/combos/:id' element={<AdminComboPage/>}/>
                 <Route path='/admin/pizzas' element={<AdminPizzas />} />
+                <Route path='/admin/pizzas/new' element={<AdminPizzaPage />} />
+                <Route path='/admin/pizzas/:id' element={<AdminPizzaPage/>}/>
+                <Route path='/admin/pizzaTypes/new' element={<AdminPizzaTypePage />}/>
+                <Route path='/admin/pizzaTypes/:id' element={<AdminPizzaTypePage />}/>
                 <Route path='/admin/pizzaTypes' element={<AdminPizzaTypes />}/>
+                <Route path='/admin/pizzaToppings/new' element={<AdminPizzaToppingPage />} />
+                <Route path='/admin/pizzaToppings/:id' element={<AdminPizzaToppingPage />} />
                 <Route path='/admin/pizzaToppings' element={<AdminPizzaToppings />} />
+                <Route path='/admin/sideDishes/new' element={<AdminSideDishPage/>}/>
+                <Route path='/admin/sideDishes/:id' element={<AdminSideDishPage/>}/>
                 <Route path='/admin/sideDishes' element={<AdminSideDishes/>}/>
+                <Route path='/admin/sideDishTypes/new' element={<AdminSideDishTypePage/>}/>
+                <Route path='/admin/sideDishTypes/:id' element={<AdminSideDishTypePage/>}/>
                 <Route path='/admin/sideDishTypes' element={<AdminSideDishTypes/>}/>
+                <Route path='/admin/vouchers/new' element={<AdminVoucherPage />}/>
+                <Route path='/admin/vouchers/:id' element={<AdminVoucherPage />}/>
                 <Route path='/admin/vouchers' element={<AdminVouchers />}/>
+                <Route path='/admin/users/new' element={<AdminUserPage/>}/>
+                <Route path='/admin/users/:id' element={<AdminUserPage/>}/>
                 <Route path='/admin/users' element={<AdminUsers/>}/>
               </Route>
             </Routes>

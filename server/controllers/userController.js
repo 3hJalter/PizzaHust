@@ -2,8 +2,8 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const userFromToken = require('../utils/userFromToken');
 const jwt = require('jsonwebtoken');
-
-
+require('../models/Combo');
+require('../models/PizzaTopping');
 exports.getUsers = async (req, res) => {
   try {
     const userData = userFromToken(req);
@@ -22,6 +22,25 @@ exports.getUsers = async (req, res) => {
     res.status(500).json({
       message: 'Internal server Error',
       error: err,
+    });
+  }
+};
+
+exports.getUserById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(400).json({
+        message: 'User not found',
+      });
+    }
+    res.status(200).json({
+      user: user,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal server error',
     });
   }
 };
@@ -124,11 +143,12 @@ exports.profile = async (req, res) => {
   }
 };
 
+
 exports.updateProfile = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    const userDataInfo = req.body.userDataInfo;
-    const user = await SideDishType.findById(userData.id);
+    const userDataInfo = req.body.user;
+    const user = await User.findById(userData.id);
     if (!user) {
       return res.status(400).json({
         message: 'user not found',
@@ -153,6 +173,31 @@ exports.updateProfile = async (req, res) => {
     });
   }
 };
+
+exports.deleteProfile = async (req, res) => {
+  try {
+    const userData = userFromToken(req);
+    if (userData.role !== 'Admin') return res.status(403).json({
+      message: 'You are not authorized to delete this combo',
+    });
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(400).json({
+        message: 'User not found',
+      });
+    }
+    await User.findByIdAndDelete(userId);
+    res.status(200).json({
+      message: 'User deleted!',
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal server error',
+      error: err,
+    });
+  }
+}
 
 exports.logout = async (req, res) => {
   res.cookie('token', '').json({

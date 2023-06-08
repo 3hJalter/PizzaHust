@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function AdminSideDishTypes() {
   const token = getItemFromLocalStorage('token');
-  const [sideDishType, SetSideDishType] = useState([]);
+  const [sideDishType, setSideDishType] = useState([]);
   const getSideDishTypeData = async () => {
     const { data } = await axios.get(`/sideDishType`, {
       headers: {
@@ -13,14 +13,27 @@ export default function AdminSideDishTypes() {
       },
     });
     console.log(data);
-    SetSideDishType(data.types);
+    setSideDishType(data.types);
   }
 
   useEffect(() => {
     getSideDishTypeData().then(() => {});
   }, []);
 
-
+  const removeSideDishType = async (id) => {
+    console.log('id: ' + id)
+    try {
+      await axios.delete(`/sideDishType/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setSideDishType(sideDishType.filter((item) => item._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
   return (
     <>
       <div>This is Admin SideDishTypes</div>
@@ -41,6 +54,13 @@ export default function AdminSideDishTypes() {
                   <span className='font-semibold'>${sideDishTypeItem.description} </span>
                 </div>
               </Link>
+              <button className='primary hover:bg-secondary transition my-4'
+                      onClick={() => {
+                        removeSideDishType(sideDishTypeItem._id).then(() => {
+                        });
+                      }}>
+                Remove
+              </button>
             </div>
           ))}
           <Link to={'/admin/sideDishTypes/new'} className="primary hover:bg-secondary transition my-4">

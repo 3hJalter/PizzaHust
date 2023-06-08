@@ -9,7 +9,7 @@ exports.addSideDishType = async (req, res) => {
         message: 'You are not authorized to add a side dish type',
       });
     }
-    const typeData = req.body.typeData;
+    const typeData = req.body.sideDishType;
     const sideDishType = await SideDishType.create({
       name: typeData.name,
       description: typeData.description,
@@ -48,7 +48,7 @@ exports.updateSideDishType = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const typeData = req.body.typeData;
+    const typeData = req.body.sideDishType;
     const sideDishType = await SideDishType.findById(typeData.id);
     if (!sideDishType) {
       return res.status(400).json({

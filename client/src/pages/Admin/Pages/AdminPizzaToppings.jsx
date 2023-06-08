@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function AdminPizzaToppings() {
   const token = getItemFromLocalStorage('token');
-  const [pizzaTopping, SetPizzaTopping] = useState([]);
+  const [pizzaTopping, setPizzaTopping] = useState([]);
   const getPizzaToppingData = async () => {
     const { data } = await axios.get(`/pizzaTopping`, {
       headers: {
@@ -13,14 +13,27 @@ export default function AdminPizzaToppings() {
       },
     });
     console.log(data);
-    SetPizzaTopping(data.toppings);
+    setPizzaTopping(data.toppings);
   }
 
   useEffect(() => {
     getPizzaToppingData().then(() => {});
   }, []);
 
-
+  const removePizzaTopping = async (id) => {
+    console.log('id: ' + id)
+    try {
+      await axios.delete(`/pizzaTopping/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setPizzaTopping(pizzaTopping.filter((item) => item._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
   return (
     <>
       <div>This is Admin PizzaToppings</div>
@@ -41,7 +54,15 @@ export default function AdminPizzaToppings() {
                   discount
                 </div>
               </Link>
+              <button className='primary hover:bg-secondary transition my-4'
+                      onClick={() => {
+                        removePizzaTopping(pizzaToppingItem._id).then(() => {
+                        });
+                      }}>
+                Remove
+              </button>
             </div>
+            
           ))}
           <Link to={'/admin/pizzaToppings/new'} className="primary hover:bg-secondary transition my-4">
             Add new pizzaTopping

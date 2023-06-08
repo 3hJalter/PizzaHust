@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function AdminSideDishes() {
   const token = getItemFromLocalStorage('token');
-  const [sideDish, SetSideDish] = useState([]);
+  const [sideDish, setSideDish] = useState([]);
   const getSideDishData = async () => {
     const { data } = await axios.get(`/sideDish`, {
       headers: {
@@ -13,14 +13,27 @@ export default function AdminSideDishes() {
       },
     });
     console.log(data);
-    SetSideDish(data.sideDishes);
+    setSideDish(data.sideDishes);
   }
 
   useEffect(() => {
     getSideDishData().then(() => {});
   }, []);
 
-
+  const removeSideDish = async (id) => {
+    console.log('id: ' + id)
+    try {
+      await axios.delete(`/sideDish/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setSideDish(sideDish.filter((item) => item._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
   return (
     <>
       <div>This is Admin SideDishes</div>
@@ -41,6 +54,13 @@ export default function AdminSideDishes() {
                 </div>
                 <div> <h3 className='text-sm text-gray-500 '>{sideDishItem.description}</h3> </div>
               </Link>
+              <button className='primary hover:bg-secondary transition my-4'
+                      onClick={() => {
+                        removeSideDish(sideDishItem._id).then(() => {
+                        });
+                      }}>
+                Remove
+              </button>
             </div>
           ))}
           <Link to={'/admin/sideDishes/new'} className="primary hover:bg-secondary transition my-4">

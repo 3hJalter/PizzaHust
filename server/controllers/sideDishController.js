@@ -9,7 +9,7 @@ exports.addSideDish = async (req, res) => {
         message: 'You are not authorized to add a side dish',
       });
     }
-    const sideDishData = req.body.sideDishData;
+    const sideDishData = req.body.sideDish;
     const sideDish = await SideDish.create({
       name: sideDishData.name,
       sideDishTypeId: sideDishData.sideDishTypeId,
@@ -50,7 +50,7 @@ exports.updateSideDish = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const sideDishData = req.body.sideDishData;
+    const sideDishData = req.body.sideDish;
     const sideDish = await SideDish.findById(sideDishData.id);
     if (!sideDish) {
       return res.status(400).json({

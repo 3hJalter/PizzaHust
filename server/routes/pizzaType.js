@@ -11,7 +11,7 @@ const {
 
 router.route('/').get(getPizzaTypes);
 router.route('/add-pizzaType').post(addPizzaType);
-router.route('/update-pizzaType').put(updatePizzaType);
+router.route('/:id').put(updatePizzaType);
 router.route('/:id').get(getPizzaTypeById).delete(deletePizzaType);
 
 module.exports = router;

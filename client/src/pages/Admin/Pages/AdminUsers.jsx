@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function AdminUsers() {
   const token = getItemFromLocalStorage('token');
-  const [user, SetUser] = useState([]);
+  const [user, setUser] = useState([]);
   const getUserData = async () => {
     const { data } = await axios.get(`/user`, {
       headers: {
@@ -13,13 +13,26 @@ export default function AdminUsers() {
       },
     });
     console.log(data);
-    SetUser(data.users);
+    setUser(data.users);
   }
 
   useEffect(() => {
     getUserData().then(() => {});
   }, []);
 
+  const removeUser = async (id) => {
+    console.log('id: ' + id)
+    try {
+      await axios.delete(`/user/profile${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(user.filter((item) => item._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <>
@@ -47,6 +60,16 @@ export default function AdminUsers() {
                   <span className='font-semibold'>{userItem.description} </span>
                 </div>
               </Link>
+              {userItem.role !== 'Admin' && (
+                <button
+                  className='primary hover:bg-secondary transition my-4'
+                  onClick={() => {
+                    removeUser(userItem._id).then(() => {});
+                  }}
+                >
+                  Remove
+                </button>
+              )}
             </div>
           ))}
           <Link to={'/admin/users/new'} className="primary hover:bg-secondary transition my-4">

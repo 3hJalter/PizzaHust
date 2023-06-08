@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function AdminVouchers() {
   const token = getItemFromLocalStorage('token');
-  const [voucher, SetVoucher] = useState([]);
+  const [voucher, setVoucher] = useState([]);
   const getVoucherData = async () => {
     const { data } = await axios.get(`/voucher`, {
       headers: {
@@ -13,14 +13,27 @@ export default function AdminVouchers() {
       },
     });
     console.log(data);
-    SetVoucher(data.vouchers);
+    setVoucher(data.vouchers);
   }
 
   useEffect(() => {
     getVoucherData().then(() => {});
   }, []);
 
-
+  const removeVoucher = async (id) => {
+    console.log('id: ' + id)
+    try {
+      await axios.delete(`/voucher/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setVoucher(voucher.filter((item) => item._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
   return (
     <>
       <div>This is Admin Vouchers</div>
@@ -42,6 +55,13 @@ export default function AdminVouchers() {
                   Description: <span className='font-semibold'>{voucherItem.description} </span>
                 </div>
               </Link>
+              <button className='primary hover:bg-secondary transition my-4'
+                      onClick={() => {
+                        removeVoucher(voucherItem._id).then(() => {
+                        });
+                      }}>
+                Remove
+              </button>
             </div>
           ))}
           <Link to={'/admin/vouchers/new'} className="primary hover:bg-secondary transition my-4">

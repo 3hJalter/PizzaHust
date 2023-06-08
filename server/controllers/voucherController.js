@@ -9,7 +9,7 @@ exports.addVoucher = async (req, res) => {
         message: 'You are not authorized to add a voucher',
       });
     }
-    const voucherData = req.body.voucherData;
+    const voucherData = req.body.voucher;
     const voucher = await Voucher.create({
       priceRequired: voucherData.priceRequired,
       discount: voucherData.discount,
@@ -49,13 +49,15 @@ exports.updateVoucher = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const voucherData = req.body.voucherData;
+    const voucherData = req.body.voucher;
     const voucher = await Voucher.findById(voucherData.id);
     if (!voucher) {
       return res.status(400).json({
         message: 'Voucher not found',
       });
     }
+    voucher.name = voucherData.name;
+    voucher.type = voucherData.type;
     voucher.priceRequired = voucherData.priceRequired;
     voucher.discount = voucherData.discount;
     voucher.description = voucherData.description;
