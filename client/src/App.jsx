@@ -57,6 +57,7 @@ function App() {
                 <Route index element={<AdminPage />} />
                 <Route path='/admin/orders' element={<AdminOrders />} />
                 <Route path='/admin/combos' element={<AdminCombos />} />
+                <Route path='/admin/combos/new' element={<AdminComboPage />} />
                 <Route path='/admin/combos/:id' element={<AdminComboPage/>}/>
                 <Route path='/admin/pizzas' element={<AdminPizzas />} />
                 <Route path='/admin/pizzaTypes' element={<AdminPizzaTypes />}/>

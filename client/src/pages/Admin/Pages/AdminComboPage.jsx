@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Navigate, useParams } from 'react-router-dom';
 import { getItemFromLocalStorage } from '../../../utils/index.js';
 import { toast } from 'react-toastify';
+
 const AdminComboPage = () => {
   const { id } = useParams();
   const [name, setName] = useState('');
@@ -23,21 +24,22 @@ const AdminComboPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/combo/${id}`).then((response) => {
-      const { combo } = response.data;
-      console.log("Get side id: ", combo.sideDishListId);
-      setName(combo.name);
-      setDescription(combo.description);
-      setDiscount(combo.discount);
-      setImage(combo.image);
-      setPizzaListId(combo.pizzaListId);
-      setSideDishListId(combo.sideDishListId);
-      setPrice(combo.price);
-    });
+    if (id)
+      axios.get(`/combo/${id}`).then((response) => {
+        const { combo } = response.data;
+        console.log('Get side id: ', combo.sideDishListId);
+        setName(combo.name);
+        setDescription(combo.description);
+        setDiscount(combo.discount);
+        setImage(combo.image);
+        setPizzaListId(combo.pizzaListId);
+        setSideDishListId(combo.sideDishListId);
+        setPrice(combo.price);
+      });
     axios.get(`/pizza`).then((response) => {
-      const result  = response.data.pizzas;
+      const result = response.data.pizzas;
       setPizzaList(result);
-      console.log('PizzaList: ', result)
+      console.log('PizzaList: ', result);
     });
     axios.get('/sideDish').then((response) => {
       const result = response.data.sideDishes;
@@ -59,7 +61,7 @@ const AdminComboPage = () => {
       }
       console.log('Total after add pizza: ', total);
     });
-    console.log("Get side id for cal: ", sideDishListId);
+    console.log('Get side id for cal: ', sideDishListId);
     sideDishListId.forEach((sideDishId) => {
       const sideDish = sideDishList.find((sideDish) => sideDish._id === sideDishId);
       if (sideDish) {
@@ -87,7 +89,7 @@ const AdminComboPage = () => {
   const handleSideDishSelect = (e) => {
     const selectedSideDishId = e.target.value;
     setSideDishListId((prevSideDishListId) => [...prevSideDishListId, selectedSideDishId]);
-  }
+  };
 
   const saveCombo = async (e) => {
     e.preventDefault();
@@ -100,7 +102,7 @@ const AdminComboPage = () => {
       pizzaListId,
       sideDishListId,
       price,
-    }
+    };
     if (id) {
       comboData = { id, ...comboData };
       // update existing combo
@@ -111,7 +113,7 @@ const AdminComboPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       toast.success(data.message);
     } else {
@@ -123,7 +125,7 @@ const AdminComboPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       toast.success(data.message);
     }
@@ -168,7 +170,7 @@ const AdminComboPage = () => {
   return (
     <>
       <div>Go to combo with id = ${id}</div>
-      <form onSubmit={saveCombo} className='mx-8'>
+      <div className='mx-8'>
         {preInput(
           'Name',
           'Name of the combo',
@@ -297,10 +299,14 @@ const AdminComboPage = () => {
 
         <h2 className='text-2xl mt-4'>Total Price: {price}</h2>
 
-        <button className="primary hover:bg-secondary transition my-4">
+        <button className='primary hover:bg-secondary transition my-4'
+                onClick={(e) => {
+                  saveCombo(e).then(() => {
+                  });
+                }}>
           Save
         </button>
-      </form>
+      </div>
     </>
   );
 };

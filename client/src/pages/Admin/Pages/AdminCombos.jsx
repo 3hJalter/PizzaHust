@@ -27,8 +27,8 @@ export default function AdminCombos() {
     <div>
       <div className='mt-8 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
         {combo.length > 0 && combo.map((comboItem) => (
-          <>
-            <Link to={`/admin/combos/${comboItem._id}`} key={comboItem._id}>
+          <div  key={comboItem._id}>
+            <Link to={`/admin/combos/${comboItem._id}`}>
               <div className="flex items-center space-x-4 cursor-pointer hover:scale-105 transition transform duration-200 ease-out">
                 Need to set image
               </div>
@@ -41,8 +41,11 @@ export default function AdminCombos() {
                 discount
               </div>
             </Link>
-          </>
+          </div>
         ))}
+        <Link to={'/admin/combos/new'} className="primary hover:bg-secondary transition my-4">
+          Add new combo
+        </Link>
       </div>
     </div>
   );

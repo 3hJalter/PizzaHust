@@ -22,7 +22,7 @@ const LoginPage = () => {
       const { data } = await axios.post('user/login', { username, password, isCustomer });
       setItemsInLocalStorage('token', data.token);
       setUser(data.user);
-
+      console.log(data.user);
       toast.success('Login successfully!');
       if (isCustomer) setRedirect(true);
       else setRedirectAdmin(true);
