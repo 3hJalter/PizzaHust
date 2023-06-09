@@ -1,4 +1,5 @@
 const SideDishType = require('../models/SideDishType');
+const SideDish = require('../models/SideDish');
 const userFromToken = require('../utils/userFromToken');
 
 exports.addSideDishType = async (req, res) => {
@@ -108,6 +109,8 @@ exports.deleteSideDishType = async (req, res) => {
     res.status(200).json({
       message: 'Side dish type deleted!',
     });
+
+    await SideDish.deleteMany({sideDishTypeId: typeId}); // remove
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

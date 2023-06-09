@@ -1,5 +1,6 @@
 const PizzaType = require('../models/PizzaType');
 const userFromToken = require('../utils/userFromToken');
+const Pizza = require('../models/Pizza');
 
 exports.addPizzaType = async (req, res) => {
   try {
@@ -100,12 +101,17 @@ exports.deletePizzaType = async (req, res) => {
       });
     }
     const typeId = req.params.id;
+
     const pizzaType = await PizzaType.findById(typeId);
+
     if (!pizzaType) {
       return res.status(400).json({
         message: 'Pizza type not found',
       });
     }
+
+    await Pizza.deleteMany({ pizzaTypeId: typeId });
+
     await PizzaType.findByIdAndDelete(typeId);
     res.status(200).json({
       message: 'Pizza type deleted!',

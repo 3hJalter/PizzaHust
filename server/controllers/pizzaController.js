@@ -1,4 +1,5 @@
 const Pizza = require('../models/Pizza');
+const Combo = require('../models/Combo');
 const userFromToken = require('../utils/userFromToken');
 
 exports.addPizza = async (req, res) => {
@@ -133,6 +134,7 @@ exports.deletePizza = async (req, res) => {
       });
     }
     await Pizza.findByIdAndDelete(pizzaId);
+    await Combo.deleteMany({ pizzaListId: { $in: [pizzaId] } });
     res.status(200).json({
       message: 'Pizza deleted!',
     });

@@ -1,5 +1,6 @@
 const SideDish = require('../models/SideDish');
 const userFromToken = require('../utils/userFromToken');
+const Combo = require('../models/Combo');
 
 exports.addSideDish = async (req, res) => {
   try {
@@ -131,6 +132,7 @@ exports.deleteSideDish = async (req, res) => {
       });
     }
     await SideDish.findByIdAndDelete(sideDishId);
+    await Combo.deleteMany({ sideDishListId: { $in: [sideDishId] } });
     res.status(200).json({
       message: 'Side dish deleted!',
     });
