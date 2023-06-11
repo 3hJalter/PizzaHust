@@ -1,4 +1,5 @@
 const SideDishType = require('../models/SideDishType');
+const SideDish = require('../models/SideDish');
 const userFromToken = require('../utils/userFromToken');
 
 exports.addSideDishType = async (req, res) => {
@@ -9,7 +10,7 @@ exports.addSideDishType = async (req, res) => {
         message: 'You are not authorized to add a side dish type',
       });
     }
-    const typeData = req.body.typeData;
+    const typeData = req.body.sideDishType;
     const sideDishType = await SideDishType.create({
       name: typeData.name,
       description: typeData.description,
@@ -48,7 +49,7 @@ exports.updateSideDishType = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const typeData = req.body.typeData;
+    const typeData = req.body.sideDishType;
     const sideDishType = await SideDishType.findById(typeData.id);
     if (!sideDishType) {
       return res.status(400).json({
@@ -108,6 +109,8 @@ exports.deleteSideDishType = async (req, res) => {
     res.status(200).json({
       message: 'Side dish type deleted!',
     });
+
+    await SideDish.deleteMany({sideDishTypeId: typeId}); // remove
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

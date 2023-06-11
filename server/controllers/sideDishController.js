@@ -1,5 +1,6 @@
 const SideDish = require('../models/SideDish');
 const userFromToken = require('../utils/userFromToken');
+const Combo = require('../models/Combo');
 
 exports.addSideDish = async (req, res) => {
   try {
@@ -9,7 +10,7 @@ exports.addSideDish = async (req, res) => {
         message: 'You are not authorized to add a side dish',
       });
     }
-    const sideDishData = req.body.sideDishData;
+    const sideDishData = req.body.sideDish;
     const sideDish = await SideDish.create({
       name: sideDishData.name,
       sideDishTypeId: sideDishData.sideDishTypeId,
@@ -50,7 +51,7 @@ exports.updateSideDish = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const sideDishData = req.body.sideDishData;
+    const sideDishData = req.body.sideDish;
     const sideDish = await SideDish.findById(sideDishData.id);
     if (!sideDish) {
       return res.status(400).json({
@@ -131,6 +132,7 @@ exports.deleteSideDish = async (req, res) => {
       });
     }
     await SideDish.findByIdAndDelete(sideDishId);
+    await Combo.deleteMany({ sideDishListId: { $in: [sideDishId] } });
     res.status(200).json({
       message: 'Side dish deleted!',
     });

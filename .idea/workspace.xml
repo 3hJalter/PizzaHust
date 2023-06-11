@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="CRUD for all collections except Order">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaTypeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/sideDishController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sideDishController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/sideDishTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sideDishTypeController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,19 +23,71 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Q0Lc6IrVHpNdp9WSyjhjs5pAgB" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/Class/Week10&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Code\\WebStorm 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin\components" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient\src" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient\src\providers" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev client">
+    <configuration name="dev client" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/client/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="server dev" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -41,7 +97,67 @@
       <option name="presentableId" value="Default" />
       <updated>1684485630067</updated>
       <workItem from="1684485633187" duration="19000" />
+      <workItem from="1684486595602" duration="15000" />
+      <workItem from="1684900595256" duration="154000" />
+      <workItem from="1685416423656" duration="1138000" />
+      <workItem from="1685595304700" duration="1138000" />
+      <workItem from="1685767363834" duration="1630000" />
+      <workItem from="1685788631581" duration="1788000" />
+      <workItem from="1685864078616" duration="2336000" />
+      <workItem from="1685875218778" duration="612000" />
+      <workItem from="1685883893866" duration="1000000" />
+      <workItem from="1685934317477" duration="15000" />
+      <workItem from="1685934879002" duration="5871000" />
+      <workItem from="1685943961401" duration="2712000" />
+      <workItem from="1685976833864" duration="828000" />
+      <workItem from="1686020221795" duration="7059000" />
+      <workItem from="1686033298808" duration="8110000" />
+      <workItem from="1686109647273" duration="2989000" />
+      <workItem from="1686143943724" duration="4849000" />
+      <workItem from="1686192023316" duration="3857000" />
+      <workItem from="1686230491052" duration="8540000" />
+      <workItem from="1686278826553" duration="1195000" />
+      <workItem from="1686294756699" duration="724000" />
+      <workItem from="1686296548921" duration="350000" />
+      <workItem from="1686300981598" duration="207000" />
+      <workItem from="1686301983621" duration="294000" />
     </task>
+    <task id="LOCAL-00001" summary="Modify API and admin page">
+      <created>1686020956846</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686020956846</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Modify API and admin page">
+      <created>1686026876869</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686026876869</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Complete Connect API to Admin Combo">
+      <created>1686147592351</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686147592351</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Read Information of all attributes in admin page">
+      <created>1686196056215</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686196056215</updated>
+    </task>
+    <task id="LOCAL-00005" summary="CRUD for all collections except Order">
+      <created>1686240410263</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686240410263</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -52,10 +168,45 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Modify API and admin page" />
+    <MESSAGE value="Complete Connect API to Admin Combo" />
+    <MESSAGE value="Read Information of all attributes in admin page" />
+    <MESSAGE value="CRUD for all collections except Order" />
+    <option name="LAST_COMMIT_MESSAGE" value="CRUD for all collections except Order" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/voucherController.js</url>
+          <line>64</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>50</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

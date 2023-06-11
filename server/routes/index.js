@@ -85,9 +85,12 @@ router.post('/upload', upload.array('photos', 100), async (req, res) => {
 router.use('/user', require('./user'));
 router.use('/chatbot', require('./chatbot'));
 router.use('/combo', require('./combo'));
+router.use('/order', require('./order'));
 router.use('/pizza', require('./pizza'));
-router.use('/pizza-topping', require('./pizzaTopping'));
-router.use('/side-dish', require('./sideDish'));
+router.use('/pizzaType', require('./pizzaType'))
+router.use('/pizzaTopping', require('./pizzaTopping'));
+router.use('/sideDish', require('./sideDish'));
+router.use('/sideDishType', require('./sideDishType'));
 router.use('/voucher', require('./voucher'));
 
 

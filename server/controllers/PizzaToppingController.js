@@ -9,7 +9,7 @@ exports.addPizzaTopping = async (req, res) => {
         message: 'You are not authorized to add a pizza topping',
       });
     }
-    const toppingData = req.body.toppingData;
+    const toppingData = req.body.pizzaTopping;
     const topping = await PizzaTopping.create({
       name: toppingData.name,
       price: toppingData.price,
@@ -48,7 +48,7 @@ exports.updatePizzaTopping = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const toppingData = req.body.toppingData;
+    const toppingData = req.body.pizzaTopping;
     const topping = await PizzaTopping.findById(toppingData.id);
     if (!topping) {
       return res.status(400).json({

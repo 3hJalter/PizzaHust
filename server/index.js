@@ -22,9 +22,10 @@ app.use(express.json());
 
 const whiteList = [
   'http://localhost:5173',
+  'http://localhost:5174'
 ];
 
-// CORS
+// // CORS
 app.use(
   cors({
     credentials: true,

@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 
 const voucherSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+  },
   priceRequired: {
     type: Number,
     required: true,
