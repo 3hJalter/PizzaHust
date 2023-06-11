@@ -33,9 +33,6 @@ import AdminSideDishPage from './pages/Admin/Pages/AdminSideDishPage.jsx';
 import AdminSideDishTypePage from './pages/Admin/Pages/AdminSideDishTypePage.jsx';
 import AdminVoucherPage from './pages/Admin/Pages/AdminVoucherPage.jsx';
 import AdminUserPage from './pages/Admin/Pages/AdminUserPage.jsx';
-import CartPage from './pages/CartPage';
-import OrderPage from './pages/OrderPage';
-const token = getItemFromLocalStorage('token');
 
 axios.defaults.baseURL = 'http://localhost:8001';
 axios.defaults.withCredentials = true;

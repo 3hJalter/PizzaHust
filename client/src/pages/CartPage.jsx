@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Navigate, useNavigate } from 'react-router-dom';
 
-export default function CartPage() {
+function CartPage() {
     const [cartItems, setCartItems] = useState([
         {
             id: 1,
@@ -171,3 +171,5 @@ export default function CartPage() {
         </div>
     );
 }
+
+export default CartPage
