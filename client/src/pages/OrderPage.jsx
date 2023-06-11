@@ -111,7 +111,6 @@ const OrderPage = () => {
 
             <h2 className="content m-2 text-2xl">Order Price: ${totalPrice}</h2>
             <h2 className="content m-2 text-2xl">Discount: </h2>
-
             {/* <h2 className="content m-2  text-2xl">Tax Price</h2>
             <h2 className="content m-2  text-2xl">Shipping Price</h2> */}
             <h2 className="content m-2 text-2xl">Total Price: </h2>
@@ -192,5 +191,7 @@ const OrderPage = () => {
         </div>
     );
 };
+
+export default OrderPage;
 
 export default OrderPage;
