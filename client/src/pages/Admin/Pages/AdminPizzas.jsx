@@ -21,7 +21,7 @@ export default function AdminPizzas() {
     const { data } = await axios.get(`/pizzaType`, {
       headers: {
         Authorization: `Bearer ${token}`,
-      },
+      },    
     });
     console.log(data.types);
     setPizzaType(data.types)

@@ -1,9 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import IndexPage from './pages/IndexPage';
+import DetailPage from './pages/DetailPage'
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import TestPage from './pages/TestPage';
+
 import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
@@ -54,7 +57,7 @@ function App() {
           <MapProvider>
             <Routes>
               <Route path='/' element={<Layout /> }>
-                <Route index element={<IndexPage />} />
+                <Route index element={<DetailPage id='648fa09d83fc6b58d747b53f' type_id='64670433aac03b50b8029d78' />} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/account' element={<ProfilePage />} />

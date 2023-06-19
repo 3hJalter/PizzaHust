@@ -3,7 +3,11 @@ import { Button } from '@mui/material';
 import RadioButton from './RadioButton';
 
 const ShowProduct = (props) => {
+<<<<<<< Updated upstream
     const { image, name, cost, description } = props;
+=======
+    const { image, name, cost, description, pizzaType } = props;
+>>>>>>> Stashed changes
 
     return (
         <div className="grid grid-cols-5 mx-12 space-x-4">
@@ -21,6 +25,7 @@ const ShowProduct = (props) => {
                 </div>
 
                 <div className="text-xl font-bold text-red-600">
+<<<<<<< Updated upstream
                     ${cost}
                 </div>
 
@@ -30,6 +35,18 @@ const ShowProduct = (props) => {
 
                 <RadioButton />
                 <RadioButton />
+=======
+                    Cost: ${cost}
+                </div>
+
+                <div>
+                    Pizza type: {pizzaType}
+                </div>
+
+                <div>
+                    Description: {description}
+                </div>
+>>>>>>> Stashed changes
 
                 <Button variant="contained">Add to card</Button>
             </div>
