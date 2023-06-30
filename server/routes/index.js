@@ -5,7 +5,7 @@ const multer = require('multer');
 const opencage = require('opencage-api-client');
 
 // multer
-const upload = multer({ dest: '/temp' });
+const upload = multer({ dest: './temp' });
 
 router.get('/', (req, res) => {
   res.status(200).json({

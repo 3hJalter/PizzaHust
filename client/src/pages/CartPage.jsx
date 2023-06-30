@@ -43,30 +43,6 @@ export default function CartPage() {
             price: 10,
             image: "https://via.placeholder.com/150",
         },
-        {
-            id: 6,
-            name: "Product 6",
-            size: "M",
-            quantity: 2,
-            price: 20,
-            image: "https://via.placeholder.com/150",
-        },
-        {
-            id: 7,
-            name: "Product 7",
-            size: "M",
-            quantity: 3,
-            price: 30,
-            image: "https://via.placeholder.com/150",
-        },
-        {
-            id: 8,
-            name: "Product 8",
-            size: "M",
-            quantity: 3,
-            price: 30,
-            image: "https://via.placeholder.com/150",
-        },
     ]);
     const [totalPrice, setTotalPrice] = useState(
         cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
@@ -114,7 +90,7 @@ export default function CartPage() {
     return (
         <div>
             {/* <Toast ref={toast} /> */}
-            <h1 className="b-2">Shopping Cart</h1>
+            <h1 className="text-3xl my-6 text-center">Shopping Cart</h1>
             <table className="min-w-full ">
                 <thead>
                     <tr>
@@ -130,8 +106,8 @@ export default function CartPage() {
                     {cartItems.map((item) => (
                         <tr key={item.id}>
                             <td className="px-4 py-2 text-center">{item.name}</td>
-                            <td className="px-4 py-2 text-center">
-                                <img src={item.image} alt={item.name} />
+                            <td className="px-4 py-2 flex justify-center">
+                                <img src={item.image} alt={item.name} className="w-1/2"/>
                             </td>
                             <td className="px-4 py-2 text-center">{item.size}</td>
                             <td className="px-4 py-2 text-center">

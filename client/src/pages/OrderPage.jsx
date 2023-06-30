@@ -25,23 +25,7 @@ const OrderPage = () => {
             quantity: 3,
             price: 30,
             image: "https://via.placeholder.com/150",
-        },
-        {
-            id: 4,
-            name: "Product 4",
-            size: "M",
-            quantity: 3,
-            price: 30,
-            image: "https://via.placeholder.com/150",
-        },
-        {
-            id: 5,
-            name: "Product 5",
-            size: "M",
-            quantity: 1,
-            price: 10,
-            image: "https://via.placeholder.com/150",
-        },
+        },  
     ]);
 
     const [user, setUser] = useState('');
@@ -98,8 +82,8 @@ const OrderPage = () => {
                 {cartItems.map((item) => (
                 <tr key={item.id}>
                     <td className="px-4 py-2 text-center">{item.name}</td>
-                    <td className="px-4 py-2 text-center">
-                    <img src={item.image} alt={item.name} />
+                    <td className="px-4 py-2 flex justify-center">
+                        <img src={item.image} alt={item.name} className='w-1/2 items-center' />
                     </td>
                     <td className="px-4 py-2 text-center">{item.size}</td>
                     <td className="px-4 py-2 text-center">{item.quantity}</td>
