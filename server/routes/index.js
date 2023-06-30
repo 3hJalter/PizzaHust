@@ -82,6 +82,7 @@ router.post('/upload', upload.array('photos', 100), async (req, res) => {
   }
 });
 
+router.use('/cart', require('./cart'));
 router.use('/user', require('./user'));
 router.use('/chatbot', require('./chatbot'));
 router.use('/combo', require('./combo'));

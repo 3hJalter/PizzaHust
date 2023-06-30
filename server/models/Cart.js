@@ -1,85 +1,66 @@
 const mongoose = require('mongoose');
 
-// Must Re-write orderController.js.
-
-const orderSchema = new mongoose.Schema({
+const CartSchema = new mongoose.Schema({
   comboList: [{
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'pizzas',
+    },
     name: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
-      required: true,
     },
     quantity: {
       type: Number,
-      required: true,
     },
   }],
   pizzaList: [{
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'pizzas',
+    },
     name: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
-      required: true,
     },
     quantity: {
       type: Number,
-      required: true,
     },
   }],
   pizzaToppingList: [{
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'pizzas',
+    },
     name: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
-      required: true,
     },
     quantity: {
       type: Number,
-      required: true,
     },
   }],
   sideDishList: [{
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'pizzas',
+    },
     name: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
-      required: true,
     },
     quantity: {
       type: Number,
-      required: true,
     },
   }],
-  voucher: {
-    name: {
-      type: String,
-    },
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  orderStatus: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
@@ -87,6 +68,6 @@ const orderSchema = new mongoose.Schema({
   },
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const Cart = mongoose.model('Cart', CartSchema);
 
-module.exports = Order;
+module.exports = Cart;

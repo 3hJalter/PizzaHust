@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="CRUD for all collections except Order">
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Update Cart">
+      <change afterPath="$PROJECT_DIR$/server/controllers/CartController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/models/Cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaTypeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/sideDishController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sideDishController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/sideDishTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sideDishTypeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Combo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Combo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +21,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="item_detail" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -50,7 +59,7 @@
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.rcb.reactComponents" value="false" />
-        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="true" />
       </map>
     </option>
   </component>
@@ -66,7 +75,7 @@
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev client">
+  <component name="RunManager" selected="npm.server dev">
     <configuration name="dev client" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/client/package.json" />
       <command value="run" />
@@ -121,6 +130,13 @@
       <workItem from="1686296548921" duration="350000" />
       <workItem from="1686300981598" duration="207000" />
       <workItem from="1686301983621" duration="294000" />
+      <workItem from="1687097213853" duration="1062000" />
+      <workItem from="1687393741550" duration="15000" />
+      <workItem from="1687824493555" duration="2248000" />
+      <workItem from="1687833487715" duration="3316000" />
+      <workItem from="1687918728236" duration="67000" />
+      <workItem from="1688072084830" duration="1231000" />
+      <workItem from="1688091805139" duration="6407000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -191,22 +207,7 @@
     <MESSAGE value="Complete Connect API to Admin Combo" />
     <MESSAGE value="Read Information of all attributes in admin page" />
     <MESSAGE value="CRUD for all collections except Order" />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD for all collections except Order" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/voucherController.js</url>
-          <line>64</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>50</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Update Cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Cart" />
   </component>
 </project>
