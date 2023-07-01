@@ -70,8 +70,31 @@ const IndexPage = () => {
   if (user && user.role === 'Customer'){
     
     return (
-      <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-      </div>
+      // <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      // </div>
+      <ProductList>
+      {/* <div className='m-50 p-50'>
+        Product list
+      </div> */}
+        <WhiteBox> 
+        {pizza.length > 0 && pizza.slice(0,12).map((pizzaItem) => (
+          <ItemSlot>
+            <div class="product-list-container" key={pizzaItem._id}>
+              
+              <div class="product-card"><a href=''>
+                <img  src={pizzaItem.image} alt={pizzaItem.name}/></a>
+                <strong class="product-title">Name: {pizzaItem.name}</strong>
+                <p class="product-description">Type: {getPizzaTypeName(pizzaItem.pizzaTypeId)}</p>
+                <p class="product-price">Size: {pizzaItem.pizzaSize}</p>
+                <p class="product-price">Price: {pizzaItem.price}</p>
+                <br></br>
+                <a class="addbtn" href="">Add to cart</a>
+              </div>
+            </div>
+          </ItemSlot>
+          ))}
+          </WhiteBox>
+      </ProductList>
     );}
     return (
     <>
