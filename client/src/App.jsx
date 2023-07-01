@@ -4,8 +4,13 @@ import IndexPage from './pages/IndexPage';
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import CartPage from './pages/CartPage';
-import OrderPage from './pages/OrderPage';
+import TestPage from './pages/TestPage';
+
+import PizzaPage from './pages/PizzaPage';
+import ComboPage from './pages/ComboPage';
+import SideDishPage from './pages/SideDishPage';
+import PizzaToppingPage from './pages/PizzaToppingPage';
+
 import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
@@ -56,12 +61,10 @@ function App() {
           <MapProvider>
             <Routes>
               <Route path='/' element={<Layout /> }>
-                <Route index element={<IndexPage />} />
+                <Route index element={<ComboPage id='649c4ab36d62981af81aa651'/>} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/account' element={<ProfilePage />} />
-                <Route path='/cart' element={<CartPage />} />
-                <Route path='/order' element={<OrderPage />} />
                 <Route path='*' element={<NotFound />} />
               </Route>
               <Route path='/admin' element={<AdminLayout/>}>
