@@ -4,7 +4,11 @@ import RadioButton from './RadioButton';
 
 const ShowProduct = (props) => {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     const { image, name, cost, description } = props;
+=======
+    const { image, name, cost, description, pizzaType } = props;
+>>>>>>> Stashed changes
 =======
     const { image, name, cost, description, pizzaType } = props;
 >>>>>>> Stashed changes
@@ -26,6 +30,7 @@ const ShowProduct = (props) => {
 
                 <div className="text-xl font-bold text-red-600">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     ${cost}
                 </div>
 
@@ -36,6 +41,8 @@ const ShowProduct = (props) => {
                 <RadioButton />
                 <RadioButton />
 =======
+=======
+>>>>>>> Stashed changes
                     Cost: ${cost}
                 </div>
 
@@ -46,6 +53,9 @@ const ShowProduct = (props) => {
                 <div>
                     Description: {description}
                 </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
                 <Button variant="contained">Add to card</Button>

@@ -7,6 +7,14 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import TestPage from './pages/TestPage';
 
+<<<<<<< Updated upstream
+=======
+import PizzaPage from './pages/PizzaPage';
+import ComboPage from './pages/ComboPage';
+import SideDishPage from './pages/SideDishPage';
+import PizzaToppingPage from './pages/PizzaToppingPage';
+
+>>>>>>> Stashed changes
 import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
@@ -57,7 +65,11 @@ function App() {
           <MapProvider>
             <Routes>
               <Route path='/' element={<Layout /> }>
+<<<<<<< Updated upstream
                 <Route index element={<DetailPage id='648fa09d83fc6b58d747b53f' type_id='64670433aac03b50b8029d78' />} />
+=======
+                <Route index element={<ComboPage id='649c4ab36d62981af81aa651'/>} />
+>>>>>>> Stashed changes
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/account' element={<ProfilePage />} />
