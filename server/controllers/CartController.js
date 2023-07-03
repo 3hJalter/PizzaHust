@@ -15,12 +15,12 @@ exports.updateCart = async (req, res) => {
     }
 
     const productData = req.body.productData;
-    const existingProductIndex = cart[productData.type].findIndex(
+    const existingProductIndex = cart.productList.findIndex(
       (product) => product._id.toString() === productData.id,
     );
     if (existingProductIndex !== -1) {
       // Product already exists in the cart, modify the quantity
-      cart[productData.type][existingProductIndex].quantity = productData.quantity;
+      cart.productList[existingProductIndex].quantity += productData.quantity;
     } else {
       const newProduct = {
         name: productData.name,

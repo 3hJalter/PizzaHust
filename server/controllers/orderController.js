@@ -1,10 +1,6 @@
 const Order = require('../models/Order');
 const userFromToken = require('../utils/userFromToken');
 const Voucher = require('../models/Voucher');
-const Combo = require('../models/Combo');
-const Pizza = require('../models/Pizza');
-const PizzaTopping = require('../models/PizzaTopping');
-const SideDish = require('../models/SideDish');
 
 exports.addOrder = async (req, res) => {
   try {
@@ -14,30 +10,13 @@ exports.addOrder = async (req, res) => {
     });
     const orderData = req.body.orderData;
 
-    const comboListIds = orderData.comboListId;
-    const pizzaListIds = orderData.pizzaListId;
-    const pizzaToppingListIds = orderData.pizzaToppingListId;
-    const sideDishListIds = orderData.sideDishListId;
-
-    const comboList = await Combo.find({ _id: { $in: comboListIds } })
-      .select('name').select('price');
-    const pizzaList = await Pizza.find({ _id: { $in: pizzaListIds } })
-      .select('name').select('price');
-    const pizzaToppingList = await PizzaTopping.find({ _id: { $in: pizzaToppingListIds } })
-      .select('name').select('price');
-    const sideDishList = await SideDish.find({ _id: { $in: sideDishListIds } })
-      .select('name').select('price');
-
     const voucher = await Voucher.findById(orderData.voucherId).select('name');
 
     const order = await Order.create({
-      comboList: comboList,
-      pizzaList: pizzaList,
-      pizzaToppingList: pizzaToppingList,
-      sideDishList: sideDishList,
+      productList: orderData.productList,
       voucher: voucher,
       price: orderData.price,
-      orderStatus: orderData.orderStatus,
+      orderStatus: "Pending",
       description: orderData.description,
       userId: userData.id,
     });

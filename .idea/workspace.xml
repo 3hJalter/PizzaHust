@@ -5,15 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Update Cart">
-      <change afterPath="$PROJECT_DIR$/server/controllers/CartController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/Cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/.eslintrc.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/public/vite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/App.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/authProvider.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/course/CourseCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/course/CourseEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/course/CourseList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/lesson/LessonCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/lesson/LessonEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/lesson/LessonList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/order/OrderEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/order/OrderList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/themes/mui.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/css/style.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/animate/animate.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/easing/easing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/easing/easing.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/assets/ajax-loader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/assets/owl.carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/assets/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/assets/owl.theme.default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/assets/owl.theme.default.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/assets/owl.theme.green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/assets/owl.theme.green.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/assets/owl.video.play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/owl.carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/lib/owlcarousel/owl.carousel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_06_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_06_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_24_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_24_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Combo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Combo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/AdminPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin/AdminPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/CartController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/CartController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/orderController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +71,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="item_detail" />
+        <entry key="$PROJECT_DIR$" value="vuhonghai" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,7 +92,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/Class/Week10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/PizzaHust/client/src/components&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -59,23 +107,23 @@
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.rcb.reactComponents" value="false" />
-        <entry key="com.haulmont.rcb.reactInspector" value="true" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
       </map>
     </option>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\components" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin\components" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient\src" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient\src\providers" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server dev">
+  <component name="RunManager" selected="npm.dev client">
     <configuration name="dev client" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/client/package.json" />
       <command value="run" />
@@ -137,6 +185,8 @@
       <workItem from="1687918728236" duration="67000" />
       <workItem from="1688072084830" duration="1231000" />
       <workItem from="1688091805139" duration="6407000" />
+      <workItem from="1688221229684" duration="2334000" />
+      <workItem from="1688355750754" duration="993000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -209,5 +259,51 @@
     <MESSAGE value="CRUD for all collections except Order" />
     <MESSAGE value="Update Cart" />
     <option name="LAST_COMMIT_MESSAGE" value="Update Cart" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>92</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>93</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>94</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>95</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>96</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>97</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>98</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>111</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
