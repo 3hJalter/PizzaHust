@@ -1,71 +1,46 @@
 const mongoose = require('mongoose');
 
 const CartSchema = new mongoose.Schema({
-  comboList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-    },
-    name: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    quantity: {
-      type: Number,
-    },
-  }],
-  pizzaList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-    },
-    name: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    quantity: {
-      type: Number,
-    },
-  }],
-  pizzaToppingList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-    },
-    name: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    quantity: {
-      type: Number,
-    },
-  }],
-  sideDishList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-    },
-    name: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    quantity: {
-      type: Number,
-    },
-  }],
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
     required: true,
   },
+  productList: [{
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    type: {
+      type: String,
+    },
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    name: {
+      type: String,
+    },
+    price: {
+      type: Number,
+    },
+    quantity: {
+      type: Number,
+    },
+    size: {
+      type: String,
+    },
+    toppingList: [{
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pizzaToppings',
+      },
+      name: {
+        type: String,
+      },
+      price: {
+        type: Number,
+      }
+    }]
+  }]
 });
 
 const Cart = mongoose.model('Cart', CartSchema);
