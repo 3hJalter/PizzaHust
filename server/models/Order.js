@@ -3,61 +3,40 @@ const mongoose = require('mongoose');
 // Must Re-write orderController.js.
 
 const orderSchema = new mongoose.Schema({
-  comboList: [{
+  productList: [{
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    type: {
+      type: String,
+    },
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
     name: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
-      required: true,
     },
     quantity: {
       type: Number,
-      required: true,
     },
-  }],
-  pizzaList: [{
-    name: {
+    size: {
       type: String,
-      required: true,
     },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-  }],
-  pizzaToppingList: [{
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-  }],
-  sideDishList: [{
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
+    toppingList: [{
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pizzaToppings',
+      },
+      name: {
+        type: String,
+      },
+      price: {
+        type: Number,
+      }
+    }]
   }],
   voucher: {
     name: {
