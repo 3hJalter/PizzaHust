@@ -40,7 +40,23 @@ const CartSchema = new mongoose.Schema({
         type: Number,
       }
     }]
-  }]
+  }],
+  totalPrice: {
+    type: Number,
+  }
+});
+
+CartSchema.index({ userId: 1 }, { unique: 1 });
+
+// Calculate total price automatically after save
+CartSchema.pre("save", function (next) {
+  this.totalPrice = this.productList.reduce(
+    (total, item) =>
+      total + item.price,
+      0
+  );
+  console.log(this.totalPrice);
+  next();
 });
 
 const Cart = mongoose.model('Cart', CartSchema);

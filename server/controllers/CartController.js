@@ -166,7 +166,7 @@ exports.userCart = async (req, res) => {
     // const id = userData.id;
     // Remove below code when testing done
     const id = '64670433aac03b50b8029d73';
-    const cart = await Cart.find({ userId: id });
+    const cart = await Cart.findOne({ userId: id });
     res.status(200).json(cart);
   } catch (err) {
     res.status(500).json({

@@ -5,6 +5,10 @@ const voucherSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  voucherValue: {
+    type: Number,
+    required: true,
+  },
   type: {
     type: String,
     required: true,

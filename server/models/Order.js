@@ -43,8 +43,16 @@ const orderSchema = new mongoose.Schema({
       type: String,
     },
   },
-  price: {
+  shippingFee: {
     type: Number,
+    default: 22000,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+  address: {
+    type: String,
     required: true,
   },
   createdAt: {
@@ -52,10 +60,6 @@ const orderSchema = new mongoose.Schema({
     default: Date.now,
   },
   orderStatus: {
-    type: String,
-    required: true,
-  },
-  description: {
     type: String,
     required: true,
   },
