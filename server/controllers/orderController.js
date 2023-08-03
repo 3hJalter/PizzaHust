@@ -1,24 +1,67 @@
 const Order = require('../models/Order');
+const Cart = require('../models/Cart');
 const userFromToken = require('../utils/userFromToken');
 const Voucher = require('../models/Voucher');
 
 exports.addOrder = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    if (userData.role !== 'Customer') return res.status(403).json({
-      message: 'You are not authorized to create this order',
-    });
-    const orderData = req.body.orderData;
+    // const id = userData.id;
+    const id = '64670433aac03b50b8029d73';
+    // if (userData.role !== 'Customer') return res.status(403).json({
+    //   message: 'You are not authorized to create this order',
+    // });
+    const cart = await Cart.findOne({ userId: id });
+    let tPrice = cart.totalPrice
 
-    const voucher = await Voucher.findById(orderData.voucherId).select('name');
+    const orderData = req.body;
+
+    const voucher = await Voucher.findById(orderData.voucherId);
+
+    if (orderData.voucherId) {
+      // Check orderData.voucherId exist
+
+      // If no voucher found
+      if (!voucher)
+          return {
+              message: "No voucher code found!",
+          };
+
+
+      // Check min price required
+      if (cart.totalPrice > voucher.priceRequired) {
+          // Check price unit
+          if (voucher.type === "percent") {
+              // Check value to reduce amount
+              const reducedAmount =
+                  (cart.totalPrice * voucher.discount) / 100;
+
+              if (reducedAmount > cart.totalPrice) {
+                  tPrice -= cart.totalPrice;
+              } else {
+                  tPrice -= reducedAmount;
+              }
+          } else {
+              tPrice -= voucher.discount;
+          }
+      }
+      // discount.available -= 1;
+      // await voucher.save();
+  }
+
+    let fPrice = tPrice + orderData.shippingFee;
 
     const order = await Order.create({
-      productList: orderData.productList,
-      voucher: voucher,
-      price: orderData.price,
+      productList: cart.productList,
+      orderPrice: orderData.orderPrice,
+      voucher: voucher.description,
+      totalPrice: tPrice,
+      shippingFee: orderData.shippingFee,
+      finalPrice: fPrice,
+      address: orderData.address,
       orderStatus: "Pending",
-      description: orderData.description,
-      userId: userData.id,
+      userId: id,
+      phone: orderData.phone,
     });
 
     res.status(200).json({
@@ -103,8 +146,10 @@ exports.getOrderById = async (req, res) => {
 exports.userOrders = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    const id = userData.id;
-    res.status(200).json(await Order.find({ userId: id }));
+    // const id = userData.id;
+    const id = '64670433aac03b50b8029d73';
+    const orders = await Order.find({ userId: id })
+    res.status(200).json({orders});
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

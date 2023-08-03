@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-
 export default function CartPage() {
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -55,6 +54,8 @@ export default function CartPage() {
         <div>
             {/* <Toast ref={toast} /> */}
             <h1 className="text-3xl my-6 text-center">Shopping Cart</h1>
+
+
             <table className="min-w-full ">
                 <thead>
                     <tr>
