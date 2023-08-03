@@ -13,36 +13,38 @@ export default function CartPage() {
     const toast = useRef(null);
 
     const getCartItems = async () => {
-        const response = await axios.get("/cart/user-cart");
-        setCartItems(response.data.productList);
-        setTotalPrice(response.data.totalPrice);
-        console.log(response.data);
+        try {
+            const response = await axios.get("/cart/user-cart");
+            setCartItems(response.data.productList);
+            setTotalPrice(response.data.totalPrice);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const addCartItem = async (rowData) => {
+        try {
+            const response = await axios.patch("/cart/add-product",rowData);
+            setCartItems(response.data.productList);
+            setTotalPrice(response.data.totalPrice);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const removeCartItem = async (rowData) => {
+        try {
+            const response = await axios.patch("/cart/remove-product",rowData);
+            setCartItems(response.data.productList);
+            setTotalPrice(response.data.totalPrice);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     useEffect(() => {
         getCartItems();
-    },[])
-
-
-    const onQuantityChange = (event, rowData) => {
-        const updatedItems = [...cartItems];
-        const index = updatedItems.findIndex((item) => item._id === rowData._id);
-        updatedItems[index].quantity = event.target.value;
-        setCartItems(updatedItems);
-        setTotalPrice(
-            updatedItems.reduce((total, item) => total + item.price * item.quantity, 0)
-        );
-    };
-
-
-    const deleteCartItem = (rowData) => {
-        const updatedItems = cartItems.filter((item) => item._id !== rowData._id);
-        setCartItems(updatedItems);
-        setTotalPrice(
-            updatedItems.reduce((total, item) => total + item.price * item.quantity, 0)
-        );
-    };
-
+    },[addCartItem, removeCartItem])
 
     const handlePayment = () => {
         navigate('/order');
@@ -66,7 +68,7 @@ export default function CartPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {cartItems.map((item) => (
+                    {cartItems?.map((item) => (
                         <tr key={item._id} className="border-t last:border-b">
                             <td className="px-4 py-2 text-center">{item.name}</td>
                             <td className="px-4 py-2 text-center">
@@ -76,21 +78,22 @@ export default function CartPage() {
                             <td className="px-4 py-2 text-center">{item.size}</td>
                             <td className="px-4 py-2 text-center">{item.type}</td>
                             <td className="px-4 py-2 text-center">
-                            <input
-                                type="number"
-                                value={item.quantity}
-                                min={1}
-                                max={100}
-                                onChange={(e) => onQuantityChange(e, item)}
-                            />
+                            {item.quantity}
                             </td>
                             <td className="px-4 py-2 text-center">{item.price}</td>
                             <td className="px-4 py-2 text-center">
                                 <button
-                                    className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                                    onClick={() => deleteCartItem(item)}
+                                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+                                    onClick={() => addCartItem(item)}
                                 >
-                                    Remove
+                                    +
+                                </button>
+                                {" "}
+                                <button
+                                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                    onClick={() => removeCartItem(item)}
+                                >
+                                    -
                                 </button>
                             </td>
                         </tr>

@@ -1,30 +1,35 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 const OrderPage = () => {
     const [cartItems, setCartItems] = useState([]);
     const [user, setUser] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
-    const [totalPrice, setTotalPrice] = useState(
-        // cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
-    );
+    const [orderPrice, setOrderPrice] = useState('');
+    const [shippingFee, setShippingFee] = useState(22000);
+    const [finalPrice, setFinalPrice] = useState();
     const [voucherSelected, setVoucherSelected] = useState('');
     const [vouchers, setVouchers] = useState([]);
+
+    const [loading, setLoading] = useState('');
+    const navigate = useNavigate();
     const toast = useRef(null);
 
     const fetchCartItems = async () => {
         const response = await axios.get("/cart/user-cart");
         setCartItems(response.data.productList);
-        setTotalPrice(response.data.totalPrice);
-        console.log(response.data);
+        setOrderPrice(response.data.totalPrice);
+        // setShippingFee(response.data.shippingFee);
+        setFinalPrice(response.data.totalPrice);
     };
 
     const fetchVoucher = async () => {
         const response = await axios.get("/voucher");
         setVouchers(response.data.vouchers);
-        setTotalPrice(response.data.totalPrice);
-        console.log(response.data.vouchers);
+        setOrderPrice(response.data.totalPrice);
     }
 
     useEffect(() => {
@@ -32,42 +37,54 @@ const OrderPage = () => {
         fetchVoucher();
     },[])
 
-
-
-
-    const handlePlaceOrder = () => {
-    // Perform order placement logic here
-
+    const createOrder = async () => {
+        setLoading(true);
+        try {
+            const data = {
+                user,
+                address,
+                phone,
+                orderPrice,
+                shippingFee,
+                voucherId: voucherSelected,
+            };
+            const response = await axios.post('/order/add-order', data);
+            setOrderPrice(0);
+            setShippingFee(0);
+            setVoucherSelected('');
+            setUser('');
+            setAddress('');
+            setPhone('');
+        } catch (error) {
+            console.log(error.response);
+        }
+        setLoading(false);
     };
 
+    const handlePlaceOrder = () => {
+        createOrder();
+        // navigate('/order-history');
+    };
 
     const handleCancelOrder = () => {
         // Perform order cancellation logic here
 
     };
 
-    const shippingFee = 22000;
-    const finalPrice = totalPrice + shippingFee;
-    // const showFinalPrice = (total) => {
-    //     let finalPrice = total;
-    //     const discount = discounts.find(
-    //         (item) => item._id === discountSelected
-    //     );
-
-    //     if (discount.discountUnit === "percent") {
-    //         const reducedAmount = (total * discount.discountValue) / 100;
-
-    //         if (reducedAmount > discount.maxDiscountAmount) {
-    //             finalPrice -= discount.maxDiscountAmount;
-    //         } else {
-    //             finalPrice -= reducedAmount;
-    //         }
-    //     } else {
-    //         finalPrice -= discount.discountValue;
-    //     }
-    //     return Math.floor(finalPrice);
-    // };
-
+    
+    const showTotalPrice = (total) => {
+        let totalPrice = total;
+        const voucher = vouchers.find(
+            (item) => item._id === voucherSelected
+        );
+        if (voucher.type === "percent") {
+            const reducedAmount = (total * voucher.discount) / 100;
+            totalPrice -= reducedAmount;
+        } else {
+            totalPrice -= voucher.discount;
+        }
+        return Math.floor(totalPrice);
+    };
 
     return (
         <div className="order-container">
@@ -104,10 +121,13 @@ const OrderPage = () => {
                 </table>
 
 
-                <h2 className="content m-2 text-2xl">Order Price: {new Intl.NumberFormat().format(totalPrice)}đ</h2>
-                
+                <h2 className="content m-2 text-2xl">
+                    Order Price: {new Intl.NumberFormat().format(orderPrice)}
+                    đ
+                </h2>
+
                 <div className="flex">
-                    <h2 className="content m-2 text-2xl">Discount: </h2>
+                    <h2 className="content m-2 text-2xl">Voucher: </h2>
                     <div className="p-field flex relative">
                         <select
                             id="vouchers"
@@ -116,10 +136,9 @@ const OrderPage = () => {
                             onChange={(e) => {
                                 setVoucherSelected(e.target.value);
                             }}
-                            placeholder="Choose a voucher"
                         >
                             <option disabled value="">
-                                Choose a discount
+                                Choose a voucher
                             </option>
                             {vouchers.map((voucher) => (
                                 <option key={voucher._id} value={voucher._id}>
@@ -130,10 +149,49 @@ const OrderPage = () => {
                     </div>
                 </div>
 
-                <h2 className="content m-2 text-2xl">Total Price: đ</h2>
-                <h2 className="content m-2 text-2xl">Shipping Fee: {new Intl.NumberFormat().format(shippingFee)}đ</h2>
-                <h2 className="content m-2 text-2xl">Final Price: 
-                    {new Intl.NumberFormat().format(finalPrice)}
+                <h2 className="content m-2 text-2xl">
+                    <span className="">Total Price</span>:{" "}
+                    <span
+                        className={`font-bold  ${
+                            voucherSelected
+                                ? "text-gray-400 font-normal line-through"
+                                : "text-red-700"
+                        }`}
+                    >
+                        {new Intl.NumberFormat().format(orderPrice)}
+                        đ
+                    </span>
+                    
+                    {voucherSelected && (
+                        <>
+                            <span className="mx-2 font-bold text-red-700">
+                                {new Intl.NumberFormat().format(
+                                    showTotalPrice(orderPrice)
+                                )}
+                                <span className="text-red-500">
+                                    đ
+                                </span>
+                            </span>
+                        </>
+                    )}
+                </h2>
+
+                <h2 className="content m-2 text-2xl">
+                    Shipping Fee: {new Intl.NumberFormat().format(shippingFee)}
+                    đ
+                </h2>
+
+                <h2 className="content m-2 text-2xl">
+                    Final Price: 
+                    {voucherSelected && (
+                        <>
+                            <span className="mx-2">
+                                {new Intl.NumberFormat().format(
+                                    showTotalPrice(orderPrice) + shippingFee
+                                )}
+                            </span>
+                        </>
+                    )}
                     đ
                 </h2>
 
@@ -145,7 +203,6 @@ const OrderPage = () => {
                             id="user"
                             value={user}
                             required
-                            // defaultValue={JSON.parse(localStorage.getItem('profile'))}
                             onChange={(e) => setUser(e.target.value)}
                         />
                     </div>
@@ -160,30 +217,10 @@ const OrderPage = () => {
                             id="address"
                             value={address}
                             required
-                            // defaultValue={JSON.parse(localStorage.getItem('profile'))}
                             onChange={(e) => setAddress(e.target.value)}
                         />
                     </div>
                 </div>
-
-
-                {/* <h2 className="content m-2 text-2xl">Payment Method</h2>
-                <div className="p-field p-2">
-                    <select
-                        id="paymentMethod"
-                        value={paymentMethod}
-                        onChange={(e) => setPaymentMethod(e.target.value)}
-                        required
-                    >
-                        <option value="">Select a payment method</option>
-                        <option value="cash">Cash</option>
-                        <option value="debitCard">Debit Card</option>
-                        <option value="creditCard">Credit Card</option>
-                        <option value="mobilePayment">Mobile Payment</option>
-                        <option value="e-banking">E-Banking</option>
-                    </select>
-                </div> */}
-
 
                 <h2 className="content m-2 text-2xl">Contact Phone</h2>
                 <div className="p-field">
@@ -195,9 +232,6 @@ const OrderPage = () => {
                         onChange={(e) => setPhone(e.target.value)}
                     />
                 </div>
-
-                
-
 
                 <div className='content my-4 text-center'>
                     <button

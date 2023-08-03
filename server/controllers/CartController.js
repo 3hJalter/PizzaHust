@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 exports.addProduct = async (req, res) => {
   try {
     // -- Find Cart -- //
-
     // const userData = userFromToken(req);
     // const id = userData.id;
     // Remove below code when testing done
@@ -17,7 +16,7 @@ exports.addProduct = async (req, res) => {
       });
     }
     // -- Handle Adding Cart Logic -- //
-    const productData = req.body.productData;
+    const productData = req.body;
     if (productData.type === 'pizza') {
       const sameIdProductList = cart.productList.filter(
         (product) => product.productId.toString() === productData.productId

@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import CartPage from './pages/CartPage';
 import OrderPage from './pages/OrderPage';
+import OrderHistoryPage from './pages/OrderHistoryPage';
 import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
@@ -62,6 +63,7 @@ function App() {
                 <Route path='/account' element={<ProfilePage />} />
                 <Route path='/cart' element={<CartPage />} />
                 <Route path='/order' element={<OrderPage />} />
+                <Route path='/order-history' element={<OrderHistoryPage />} />
                 <Route path='*' element={<NotFound />} />
               </Route>
               <Route path='/admin' element={<AdminLayout/>}>

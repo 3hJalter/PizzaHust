@@ -38,21 +38,30 @@ const orderSchema = new mongoose.Schema({
       }
     }]
   }],
+  orderPrice: {
+    type: Number,
+  },
   voucher: {
-    name: {
-      type: String,
-    },
+    type: String,
+  },
+  totalPrice: {
+    type: Number,
+    default: 0,
   },
   shippingFee: {
     type: Number,
     default: 22000,
   },
-  totalPrice: {
+  finalPrice: {
     type: Number,
-    required: true,
+    default: 0,
   },
   address: {
     type: String,
+    required: true,
+  },
+  phone: {
+    type: Number,
     required: true,
   },
   createdAt: {
