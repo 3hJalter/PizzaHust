@@ -19,17 +19,24 @@ const OrderPage = () => {
     const toast = useRef(null);
 
     const fetchCartItems = async () => {
-        const response = await axios.get("/cart/user-cart");
-        setCartItems(response.data.productList);
-        setOrderPrice(response.data.totalPrice);
-        // setShippingFee(response.data.shippingFee);
-        setFinalPrice(response.data.totalPrice);
+        try{
+            const response = await axios.get("/cart/user-cart");
+            setCartItems(response.data.productList);
+            setOrderPrice(response.data.totalPrice);
+            setFinalPrice(response.data.totalPrice);
+        } catch(err){
+            console.log(err);
+        }
     };
 
     const fetchVoucher = async () => {
-        const response = await axios.get("/voucher");
-        setVouchers(response.data.vouchers);
-        setOrderPrice(response.data.totalPrice);
+        try {
+            const response = await axios.get("/voucher");
+            setVouchers(response.data.vouchers);
+            setOrderPrice(response.data.totalPrice);
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     useEffect(() => {
@@ -38,7 +45,6 @@ const OrderPage = () => {
     },[])
 
     const createOrder = async () => {
-        setLoading(true);
         try {
             const data = {
                 user,
@@ -58,17 +64,15 @@ const OrderPage = () => {
         } catch (error) {
             console.log(error.response);
         }
-        setLoading(false);
     };
 
     const handlePlaceOrder = () => {
         createOrder();
-        // navigate('/order-history');
+        navigate('/order-history');
     };
 
     const handleCancelOrder = () => {
-        // Perform order cancellation logic here
-
+        navigate('/cart');
     };
 
     
