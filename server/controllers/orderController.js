@@ -35,10 +35,15 @@ exports.addOrder = async (req, res) => {
 
 exports.getOrders = async (req, res) => {
   try {
-    const userData = userFromToken(req);
-    const orders = userData.role !== 'Customer' ?
+    // const userData = userFromToken(req);
+    const id = '64670433aac03b50b8029d73';
+    const role = 'Customer'
+    const orders = role !== 'Customer' ?
       await Order.find() :
-      await Order.find({ user: userData.id })
+      await Order.find({ userId: id })
+    // const orders = userData.role !== 'Customer' ?
+    //   await Order.find() :
+    //   await Order.find({ user: userData.id })
     res.status(200).json({
       orders,
     });
