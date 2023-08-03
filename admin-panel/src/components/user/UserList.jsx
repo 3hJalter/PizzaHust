@@ -26,15 +26,13 @@ export default function UserList(props) {
       <Datagrid>
         <TextField source="id" />
         <ImageField
-          source="coverImage"
+          source="image"
           sx={{
             "& img": { maxWidth: 100, maxHeight: 100, objectFit: "cover" },
           }}
         />
         <TextField source="name" />
-        <NumberField source="price" />
-        <NumberField source="studentsEnrolled" />
-        <DateField source="createdAt" />
+        <TextField source="email" />
         <EditButton />
         <DeleteButton />
       </Datagrid>

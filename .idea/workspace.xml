@@ -4,10 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Add removeProduct method for Cart">
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Change to test order method">
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/MyLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_06_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_06_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_24_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_24_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/chatbot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUserPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUserPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUsers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUsers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/OrderHistoryPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/OrderHistoryPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/providers/UserProvider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/providers/UserProvider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="hong-quang" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,6 +83,16 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.server dev">
+    <configuration name="admin dev" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/admin-panel/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev client" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/client/package.json" />
       <command value="run" />
@@ -90,6 +113,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.dev client" />
+      <item itemvalue="npm.server dev" />
+      <item itemvalue="npm.admin dev" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -142,6 +170,7 @@
       <workItem from="1689168365644" duration="26000" />
       <workItem from="1690881327914" duration="2046000" />
       <workItem from="1690883648579" duration="2001000" />
+      <workItem from="1691082392603" duration="5720000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -252,43 +281,20 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>92</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>93</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>94</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>95</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>96</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>97</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>98</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>111</line>
+          <line>117</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>144</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
+          <line>64</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

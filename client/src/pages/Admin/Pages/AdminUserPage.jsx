@@ -25,7 +25,7 @@ const AdminUserPage = () => {
   useEffect(() => {
     setLoading(true);
     if (id) {
-      axios.get(`/user/profile${id}`).then((response) => {
+      axios.get(`/user/${id}`).then((response) => {
         const { user } = response.data;
         setName(user.name);
         setUsername(user.username);
@@ -62,7 +62,7 @@ const AdminUserPage = () => {
       userData = { id, ...userData };
       // update existing user
       const { data } = await axios.put(
-        `/user/profile${id}`,
+        `/user/${id}`,
         { user: userData },
         {
           headers: {

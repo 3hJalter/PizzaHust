@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from '../components/Spinner';
+import axios from 'axios';
 
 const OrderHistoryPage = () => {
     const [orders, setOrders] = useState([]);
@@ -23,7 +24,7 @@ const OrderHistoryPage = () => {
     const fetchOrders = async () => {
         // setLoading(true);
         try {
-            const response = await axios.get('/order/user-orders');
+            const response = await axios.get('/order');
             console.log(response);
             setOrders(response.data.orders);
         } catch (error) {

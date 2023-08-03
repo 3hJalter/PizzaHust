@@ -7,11 +7,14 @@ require('../models/PizzaTopping');
 exports.getUsers = async (req, res) => {
   try {
     const userData = userFromToken(req);
+    // let role ="Admin"
+    // if (role !== 'Customer') {
     if (userData.role !== 'Customer') {
       const users = await User.find();
-      res.status(200).json({
-        users,
-      });
+      const formattedUsers = users.map(user => ({ ...user._doc, id: user._id })); // Add 'id' field based on '_id'
+      res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+      res.setHeader("Content-Range", `courses 0-20/${users.length}`);
+      res.status(200).json(formattedUsers);
     }
     else {
       res.status(404).json({
@@ -20,7 +23,7 @@ exports.getUsers = async (req, res) => {
     }
   } catch (err) {
     res.status(500).json({
-      message: 'Internal server Error',
+      message: `Internal server Error with message: ${err}`,
       error: err,
     });
   }
@@ -35,9 +38,10 @@ exports.getUserById = async (req, res) => {
         message: 'User not found',
       });
     }
-    res.status(200).json({
-      user: user,
-    });
+    const formattedUser = { ...user._doc, id: user._id };
+    res.status(200).json(
+      formattedUser
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -47,7 +51,7 @@ exports.getUserById = async (req, res) => {
 
 exports.register = async (req, res) => {
   try {
-    const userData = req.body.userData;
+    const userData = req.body;
     if (!userData.username || !userData.name || !userData.birth || !userData.email ||
       !userData.address || !userData.phone || !userData.password || !userData.role) {
       return res.status(400).json({
@@ -61,6 +65,7 @@ exports.register = async (req, res) => {
     if (user) {
       return res.status(400).json({
         message: 'User already registered',
+        user: null,
       });
     }
 
@@ -72,7 +77,8 @@ exports.register = async (req, res) => {
       address: userData.address,
       phone: userData.phone,
       description: userData.description,
-      password: await bcrypt.hash(userData.password, 10),
+      // password: await bcrypt.hash(userData.password, 10),
+      password: userData.password,
       role: userData.role,
       image: userData.image,
     });
@@ -147,28 +153,24 @@ exports.profile = async (req, res) => {
 exports.updateProfile = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    const userDataInfo = req.body.user;
+    const userDataInfo = req.body;
     const user = await User.findById(userData.id);
     if (!user) {
       return res.status(400).json({
         message: 'user not found',
       });
     }
-    user.name = userDataInfo.name;
-    user.birth = userDataInfo.birth;
-    user.email = userDataInfo.email;
-    user.address = userDataInfo.address;
-    user.phone = userDataInfo.phone;
-    user.description = userDataInfo.description;
-    user.password = userDataInfo.password;
-    user.image = userDataInfo.image;
-    await user.save();
-    res.status(200).json({
-      message: 'User updated!',
+    Object.keys(userDataInfo).forEach(key => {
+      if (userDataInfo[key] !== undefined) {
+        user[key] = userDataInfo[key];
+      }
     });
+    await user.save();
+    const formattedUser = { ...user._doc, id: user._id };
+    res.status(200).json(formattedUser);
   } catch (err) {
     res.status(500).json({
-      message: 'Internal server Error',
+      message: 'Internal server Error with message: ' + err.message,
       error: err,
     });
   }

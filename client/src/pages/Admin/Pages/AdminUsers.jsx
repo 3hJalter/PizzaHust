@@ -23,7 +23,7 @@ export default function AdminUsers() {
   const removeUser = async (id) => {
     console.log('id: ' + id)
     try {
-      await axios.delete(`/user/profile${id}`, {
+      await axios.delete(`/user/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

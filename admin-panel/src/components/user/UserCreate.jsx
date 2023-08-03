@@ -4,8 +4,8 @@ import {
   NumberInput,
   SimpleForm,
   TextInput,
-  required,
-} from "react-admin";
+  required, DateInput, SelectInput,
+} from 'react-admin';
 import { useNavigate } from "react-router-dom";
 
 const VITE_APP_BASE_URL =
@@ -17,26 +17,32 @@ const UserCreate = (props) => {
   const handleSubmit = async (userData) => {
     try {
       const response = await axios.post(
-        `${VITE_APP_BASE_URL}/upload`,
+        `${VITE_APP_BASE_URL}/user/register`,
         userData
       );
       console.log("User created successfully!", response);
       navigate(-1);
     } catch (err) {
-      console.error("Error creating user:", err);
+      alert("Error creating user: username already taken!");
     }
   };
 
   return (
     <Create title="Upload a user" {...props}>
       <SimpleForm onSubmit={handleSubmit}>
-        <TextInput source="playlistUrl" fullWidth validate={required()} />
-        <NumberInput source="price" fullWidth validate={required()} />
-        <TextInput
-          source="coverImage"
-          fullWidth
-          helperText="By default, the cover image will be the image of the playlist."
-        />
+        <TextInput source="name" fullWidth validate={required()} />
+        <TextInput source="username" fullWidth validate={required()} />
+        <TextInput source="password" fullWidth validate={required()} />
+        <DateInput source="birth" fullWidth validate={required()} />
+        <TextInput source="email" fullWidth validate={required()} />
+        <TextInput source="phone" fullWidth validate={required()} />
+        <TextInput source="address" fullWidth validate={required()} />
+        <TextInput source="description" fullWidth />
+        <SelectInput source="role" fullWidth choices={[
+          { id: 'admin', name: 'Admin' },
+          { id: 'customer', name: 'Customer' },
+        ]} validate={required()}/>
+        <TextInput source="image" fullWidth validate={required()} />
       </SimpleForm>
     </Create>
   );
