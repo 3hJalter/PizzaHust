@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from '../components/Spinner';
-import axios from 'axios';
+import axios from "axios";
 
 const OrderHistoryPage = () => {
     const [orders, setOrders] = useState([]);
@@ -22,15 +22,14 @@ const OrderHistoryPage = () => {
     };
 
     const fetchOrders = async () => {
-        // setLoading(true);
+        setLoading(true);
         try {
-            const response = await axios.get('/order');
-            console.log(response);
+            const response = await axios.get("/order");
             setOrders(response.data.orders);
         } catch (error) {
             console.log(error.response);
         }
-        // setLoading(false);
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -38,7 +37,7 @@ const OrderHistoryPage = () => {
     }, []);
 
     const handleViewDetail = (orderId) => {
-        // navigate(`${route.ORDER}/${orderId}`);
+        navigate(`/order/${orderId}`);
     };
 
     return (
@@ -47,20 +46,20 @@ const OrderHistoryPage = () => {
                 Order History
             </h2>
 
-            {/* {loading && (
+            {loading && (
                 <div className="w-full flex justify-center mt-12">
                     <Spinner />
                 </div>
-            )} */}
+            )}
 
-            {/* {!loading && ( */}
+            {!loading && (
                 <>
                     <table className="w-full">
                         <thead>
                             <tr>
                                 <th className="py-2 px-4">Order ID</th>
                                 <th className="py-2 px-4">Time</th>
-                                <th className="py-2 px-4">Total Price</th>
+                                <th className="py-2 px-4">Final Price</th>
                                 <th className="py-2 px-4">Status</th>
                                 <th className="py-2 px-4">Action</th>
                             </tr>
@@ -81,7 +80,7 @@ const OrderHistoryPage = () => {
                                     <td className="py-2 px-4">
                                         <div className="w-full flex justify-center">
                                             {new Intl.NumberFormat().format(
-                                                order.totalPrice
+                                                order.finalPrice
                                             )}
                                             <span className="text-sm text-red-500">
                                                 đ
@@ -110,7 +109,7 @@ const OrderHistoryPage = () => {
                         </tbody>
                     </table>
                 </>
-            {/* )} */}
+            )}
         </div>
     );
 };
