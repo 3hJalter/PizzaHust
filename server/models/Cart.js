@@ -52,10 +52,9 @@ CartSchema.index({ userId: 1 }, { unique: 1 });
 CartSchema.pre("save", function (next) {
   this.totalPrice = this.productList.reduce(
     (total, item) =>
-      total + item.price,
+      total + (item.price)*(item.quantity),
       0
   );
-  console.log(this.totalPrice);
   next();
 });
 

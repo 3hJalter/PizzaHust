@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 exports.addProduct = async (req, res) => {
   try {
     // -- Find Cart -- //
-
     // const userData = userFromToken(req);
     // const id = userData.id;
     // Remove below code when testing done
@@ -17,7 +16,7 @@ exports.addProduct = async (req, res) => {
       });
     }
     // -- Handle Adding Cart Logic -- //
-    const productData = req.body.productData;
+    const productData = req.body;
     if (productData.type === 'pizza') {
       const sameIdProductList = cart.productList.filter(
         (product) => product.productId.toString() === productData.productId
@@ -97,6 +96,59 @@ exports.addProduct = async (req, res) => {
   }
 }
 
+exports.removeProduct = async (req, res) => {
+  try {
+    // -- Find Cart -- //
+
+    // const userData = userFromToken(req);
+    // const id = userData.id;
+    // Remove below code when testing done
+    const id = '64670433aac03b50b8029d73';
+    const cart = await Cart.findOne({ userId: id });
+    if (!cart) {
+      return res.status(400).json({
+        message: 'Cart not found',
+      });
+    }
+
+    // -- Handle Removing Product from Cart Logic -- //
+    const productIdToRemove = req.body._id; // Assuming you pass the product ID in the request body
+
+    // Find the index of the product with the matching ID in the cart's productList array
+    const productIndex = cart.productList.findIndex(
+      (product) => product._id.toString() === productIdToRemove
+    );
+
+    // If the product is not found in the cart, return an error response
+    if (productIndex === -1) {
+      return res.status(404).json({
+        message: 'Product not found in the cart',
+      });
+    }
+
+    // Decrement the quantity of the product by 1
+    cart.productList[productIndex].quantity--;
+
+    // If the updated quantity is 0, remove the product from the cart
+    if (cart.productList[productIndex].quantity === 0) {
+      cart.productList.splice(productIndex, 1);
+    }
+
+    await cart.save();
+    res.status(200).json({
+      cartData: cart,
+      message: 'Cart updated!',
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal server error',
+      error: err.toString(),
+    });
+  }
+}
+
+
+/*
 exports.updateCart = async (req, res) => {
   try {
     // const userData = userFromToken(req);
@@ -158,6 +210,7 @@ exports.updateCart = async (req, res) => {
     });
   }
 };
+*/
 
 
 exports.userCart = async (req, res) => {

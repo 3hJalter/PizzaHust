@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Fix Cart">
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Add removeProduct method for Cart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/chatbot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +17,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="vuhonghai" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -135,7 +136,12 @@
       <workItem from="1688361583299" duration="13619000" />
       <workItem from="1688443455402" duration="634000" />
       <workItem from="1688445779513" duration="257000" />
-      <workItem from="1688553600763" duration="377000" />
+      <workItem from="1688553600763" duration="459000" />
+      <workItem from="1688649605484" duration="107000" />
+      <workItem from="1688895021974" duration="14000" />
+      <workItem from="1689168365644" duration="26000" />
+      <workItem from="1690881327914" duration="2046000" />
+      <workItem from="1690883648579" duration="2001000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -186,7 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688443567750</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fix Order Schema">
+      <created>1688554047061</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1688554047061</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add removeProduct method for Cart">
+      <created>1690883380337</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1690883380337</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +223,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -223,7 +243,9 @@
     <MESSAGE value="Update Cart" />
     <MESSAGE value="Fix Cart and Order" />
     <MESSAGE value="Fix Cart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Cart" />
+    <MESSAGE value="Fix Order Schema" />
+    <MESSAGE value="Add removeProduct method for Cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add removeProduct method for Cart" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
