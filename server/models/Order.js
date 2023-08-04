@@ -22,9 +22,6 @@ const orderSchema = new mongoose.Schema({
     quantity: {
       type: Number,
     },
-    size: {
-      type: String,
-    },
     toppingList: [{
       _id: {
         type: mongoose.Schema.Types.ObjectId,
