@@ -10,7 +10,7 @@ const OrderPage = () => {
     const [phone, setPhone] = useState('');
     const [orderPrice, setOrderPrice] = useState('');
     const [shippingFee, setShippingFee] = useState(22000);
-    const [finalPrice, setFinalPrice] = useState();
+    const [finalPrice, setFinalPrice] = useState('');
     const [voucherSelected, setVoucherSelected] = useState('');
     const [vouchers, setVouchers] = useState([]);
 
@@ -23,7 +23,7 @@ const OrderPage = () => {
             const response = await axios.get("/cart/user-cart");
             setCartItems(response.data.productList);
             setOrderPrice(response.data.totalPrice);
-            setFinalPrice(response.data.totalPrice);
+            setFinalPrice(response.data.totalPrice + shippingFee);
         } catch(err){
             console.log(err);
         }
@@ -32,8 +32,7 @@ const OrderPage = () => {
     const fetchVoucher = async () => {
         try {
             const response = await axios.get("/voucher");
-            setVouchers(response.data.vouchers);
-            setOrderPrice(response.data.totalPrice);
+            setVouchers(response.data);
         } catch(err) {
             console.log(err);
         }
@@ -101,7 +100,6 @@ const OrderPage = () => {
                         <tr>
                             <th className="px-4 py-2 w-2/12">Name</th>
                             <th className="px-4 py-2 w-2/12">Topping List</th>
-                            <th className="px-4 py-2">Size</th>
                             <th className="px-4 py-2">Type</th>
                             <th className="px-4 py-2">Quantity</th>
                             <th className="px-4 py-2">Price</th>
@@ -115,7 +113,6 @@ const OrderPage = () => {
                                     {item.toppingList.map((topping) => (
                                         <p key={topping._id}>{topping.name}</p>))}
                                 </td>
-                                <td className="px-4 py-2 text-center">{item.size}</td>
                                 <td className="px-4 py-2 text-center">{item.type}</td>
                                 <td className="px-4 py-2 text-center">{item.quantity}</td>
                                 <td className="px-4 py-2 text-center">{item.price}</td>
@@ -186,17 +183,29 @@ const OrderPage = () => {
                 </h2>
 
                 <h2 className="content m-2 text-2xl">
-                    Final Price: 
-                    {voucherSelected && (
+                    <span className="">Final Price</span>:{" "}
+                    <span
+                        className={`font-bold  ${
+                            voucherSelected
+                                ? "text-gray-400 font-normal line-through"
+                                : "text-red-700"
+                        }`}
+                    >
+                        {new Intl.NumberFormat().format(orderPrice+shippingFee)}
+                        đ
+                    </span>
+                    {(voucherSelected && (
                         <>
                             <span className="mx-2">
                                 {new Intl.NumberFormat().format(
                                     showTotalPrice(orderPrice) + shippingFee
                                 )}
                             </span>
+                            <span className="text-red-500">
+                                đ
+                            </span>
                         </>
-                    )}
-                    đ
+                    ))}
                 </h2>
 
                 <h2 className="content m-2 text-2xl">Name</h2>
