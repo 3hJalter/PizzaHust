@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Add user method to react-admin panel">
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaTopping/PizzaToppingCreate.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaTopping/PizzaToppingEdit.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaTopping/pizzaToppingList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/voucher/VoucherCreate.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/voucher/VoucherEdit.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/voucher/VoucherList.jsx" afterDir="false" />
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/PizzaToppingController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/PizzaToppingController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/voucherController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/voucherController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/order/OrderEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/order/OrderEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +70,7 @@
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server dev">
+  <component name="RunManager" selected="npm.admin dev">
     <configuration name="admin dev" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/admin-panel/package.json" />
       <command value="run" />
@@ -167,6 +160,7 @@
       <workItem from="1690883648579" duration="2001000" />
       <workItem from="1691082392603" duration="5992000" />
       <workItem from="1691134848322" duration="4017000" />
+      <workItem from="1691146507878" duration="2453000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -238,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691088331228</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)">
+      <created>1691146754737</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1691146754737</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +279,7 @@
     <MESSAGE value="Fix Order Schema" />
     <MESSAGE value="Add removeProduct method for Cart" />
     <MESSAGE value="Add user method to react-admin panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add user method to react-admin panel" />
+    <MESSAGE value="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)" />
   </component>
 </project>

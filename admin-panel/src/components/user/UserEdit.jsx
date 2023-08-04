@@ -35,8 +35,8 @@ const UserEdit = (props) => {
           <TextInput source="address" fullWidth validate={required()} />
           <TextInput source="description" fullWidth />
           <SelectInput source="role" fullWidth choices={[
-            { id: 'admin', name: 'Admin' },
-            { id: 'customer', name: 'Customer' },
+            { id: 'Admin', name: 'Admin' },
+            { id: 'Customer', name: 'Customer' },
           ]} validate={required()}/>
           <TextInput source="image" fullWidth validate={required()} />
         </FormTab>

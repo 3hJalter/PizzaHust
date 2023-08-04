@@ -28,8 +28,8 @@ const VoucherEdit = (props) => {
           <NumberInput source="priceRequired" fullWidth validate={required()} />
           <TextInput source="name" fullWidth validate={required()} />
           <SelectInput source="type" fullWidth choices={[
-            { id: 'Minus', name: 'minus' },
-            { id: 'Percent', name: 'percent' },
+            { id: 'minus', name: 'minus' },
+            { id: 'percent', name: 'percent' },
           ]} validate={required()}/>
           <TextInput source="image" fullWidth validate={required()} />
         </FormTab>

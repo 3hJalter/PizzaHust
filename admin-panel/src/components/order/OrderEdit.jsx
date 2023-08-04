@@ -1,14 +1,13 @@
-import { Edit, NumberInput, SimpleForm, TextInput } from "react-admin";
+import { Edit, required, SelectInput, SimpleForm } from 'react-admin';
 
 const OrderEdit = (props) => {
   return (
     <Edit title="Edit the order" {...props}>
       <SimpleForm>
-        <TextInput source="id" fullWidth disabled />
-        <TextInput source="userId" fullWidth disabled />
-        <NumberInput source="amount" />
-        <TextInput source="address" fullWidth disabled />
-        <TextInput source="status" />
+        <SelectInput source="status" fullWidth choices={[
+          { id: 'Pending', name: 'pending' },
+          { id: "Done", name: 'done' },
+        ]} validate={required()}/>
       </SimpleForm>
     </Edit>
   );
