@@ -5,6 +5,15 @@ import authProvider from "./authProvider";
 import UserCreate from "./components/user/UserCreate";
 import UserEdit from "./components/user/UserEdit";
 import UserList from "./components/user/UserList";
+
+import VoucherList from './components/voucher/VoucherList.jsx';
+import VoucherEdit from './components/voucher/VoucherEdit.jsx';
+import VoucherCreate from './components/voucher/VoucherCreate.jsx';
+
+import PizzaToppingList from './components/pizzaTopping/pizzaToppingList.jsx';
+import PizzaToppingEdit from './components/pizzaTopping/pizzaToppingEdit.jsx';
+import PizzaToppingCreate from './components/pizzaTopping/PizzaToppingCreate.jsx';
+
 import theme from "./themes/mui";
 import { MyLayout } from './components/MyLayout.jsx';
 
@@ -37,6 +46,18 @@ function App() {
         list={UserList}
         create={UserCreate}
         edit={UserEdit}
+      />
+      <Resource
+        name="voucher"
+        list={VoucherList}
+        create={VoucherCreate}
+        edit={VoucherEdit}
+      />
+      <Resource
+        name="pizzaTopping"
+        list={PizzaToppingList}
+        create={PizzaToppingCreate}
+        edit={PizzaToppingEdit}
       />
     </Admin>
   );

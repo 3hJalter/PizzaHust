@@ -64,6 +64,10 @@ exports.addOrder = async (req, res) => {
       phone: orderData.phone,
     });
 
+    cart.productList = [];
+    cart.totalPrice = 0;
+    await cart.save();
+
     res.status(200).json({
       order,
       message: 'Order added successfully',

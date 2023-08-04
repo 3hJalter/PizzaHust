@@ -1,9 +1,11 @@
 const User = require('../models/User');
+const Cart = require('../models/Cart');
 const bcrypt = require('bcryptjs');
 const userFromToken = require('../utils/userFromToken');
 const jwt = require('jsonwebtoken');
 require('../models/Combo');
 require('../models/PizzaTopping');
+
 exports.getUsers = async (req, res) => {
   try {
     const userData = userFromToken(req);
@@ -82,6 +84,18 @@ exports.register = async (req, res) => {
       role: userData.role,
       image: userData.image,
     });
+
+    // Create a new cart for the user
+    if (user.role.toString() === "Customer") {
+      const cart = new Cart({
+        userId: user._id, // Associate the cart with the user's ObjectId
+        productList: [], // You can add initial products to the cart if needed
+        totalPrice: 0, // Set the initial total price to 0
+      });
+      // Save the cart to the database
+      await cart.save();
+    }
+
 
     res.status(200).json({
       user,
@@ -180,7 +194,7 @@ exports.deleteProfile = async (req, res) => {
   try {
     const userData = userFromToken(req);
     if (userData.role !== 'Admin') return res.status(403).json({
-      message: 'You are not authorized to delete this combo',
+      message: 'You are not authorized to delete this account',
     });
     const userId = req.params.id;
     const user = await User.findById(userId);
@@ -189,6 +203,13 @@ exports.deleteProfile = async (req, res) => {
         message: 'User not found',
       });
     }
+
+    const cart = await Cart.findOne({ userId: userId });
+    if (cart) {
+      // If the cart exists, remove it
+      await Cart.findByIdAndDelete(cart._id);
+    }
+
     await User.findByIdAndDelete(userId);
     res.status(200).json({
       message: 'User deleted!',

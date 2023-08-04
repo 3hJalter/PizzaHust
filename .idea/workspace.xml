@@ -4,23 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Change to test order method">
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/MyLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_06_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_06_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_24_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_24_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Add user method to react-admin panel">
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaTopping/PizzaToppingCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaTopping/PizzaToppingEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaTopping/pizzaToppingList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/voucher/VoucherCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/voucher/VoucherEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/voucher/VoucherList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-panel/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUserPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUserPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUsers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUsers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/OrderHistoryPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/OrderHistoryPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/providers/UserProvider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/providers/UserProvider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/PizzaToppingController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/PizzaToppingController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/voucherController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/voucherController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +46,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/PizzaHust/client/src/components&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/PizzaHust/admin-panel/src/components/pizzaTopping&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -72,11 +67,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\pizzaTopping" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\voucher" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\components" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin\components" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient\src" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient\src\providers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
@@ -170,7 +165,8 @@
       <workItem from="1689168365644" duration="26000" />
       <workItem from="1690881327914" duration="2046000" />
       <workItem from="1690883648579" duration="2001000" />
-      <workItem from="1691082392603" duration="5720000" />
+      <workItem from="1691082392603" duration="5992000" />
+      <workItem from="1691134848322" duration="4017000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -235,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690883380337</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add user method to react-admin panel">
+      <created>1691088331228</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1691088331228</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +255,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -274,29 +277,7 @@
     <MESSAGE value="Fix Cart" />
     <MESSAGE value="Fix Order Schema" />
     <MESSAGE value="Add removeProduct method for Cart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add removeProduct method for Cart" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>117</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>144</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>64</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Add user method to react-admin panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add user method to react-admin panel" />
   </component>
 </project>
