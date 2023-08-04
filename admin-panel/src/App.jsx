@@ -14,6 +14,9 @@ import PizzaToppingList from './components/pizzaTopping/pizzaToppingList.jsx';
 import PizzaToppingEdit from './components/pizzaTopping/pizzaToppingEdit.jsx';
 import PizzaToppingCreate from './components/pizzaTopping/PizzaToppingCreate.jsx';
 
+import OrderList from './components/order/OrderList.jsx';
+import OrderEdit from './components/order/OrderEdit.jsx';
+
 import theme from "./themes/mui";
 import { MyLayout } from './components/MyLayout.jsx';
 
@@ -58,6 +61,11 @@ function App() {
         list={PizzaToppingList}
         create={PizzaToppingCreate}
         edit={PizzaToppingEdit}
+      />
+      <Resource
+        name="order"
+        list={OrderList}
+        edit={OrderEdit}
       />
     </Admin>
   );

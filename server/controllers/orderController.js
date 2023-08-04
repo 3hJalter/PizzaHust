@@ -7,11 +7,11 @@ exports.addOrder = async (req, res) => {
   try {
     const userData = userFromToken(req);
     // const id = userData.id;
-    const id = '64670433aac03b50b8029d73';
+    // const id = '64670433aac03b50b8029d73';
     // if (userData.role !== 'Customer') return res.status(403).json({
     //   message: 'You are not authorized to create this order',
     // });
-    const cart = await Cart.findOne({ userId: id });
+    const cart = await Cart.findOne({ userId: userData.id });
     let tPrice = cart.totalPrice
 
     const orderData = req.body;
@@ -82,18 +82,21 @@ exports.addOrder = async (req, res) => {
 
 exports.getOrders = async (req, res) => {
   try {
-    // const userData = userFromToken(req);
-    const id = '64670433aac03b50b8029d73';
-    const role = 'Customer'
-    const orders = role !== 'Customer' ?
-      await Order.find() :
-      await Order.find({ userId: id })
-    // const orders = userData.role !== 'Customer' ?
+    const userData = userFromToken(req);
+    // const id = '64670433aac03b50b8029d73';
+    // const role = 'Customer'
+    // const orders = role !== 'Customer' ?
     //   await Order.find() :
-    //   await Order.find({ user: userData.id })
-    res.status(200).json({
-      orders,
-    });
+    //   await Order.find({ userId: id })
+    let orders;
+    orders = userData.role !== 'Customer' ?
+      await Order.find() :
+      await Order.find({ user: userData.id })
+
+    const formattedOrders = orders.map(order => ({ ...order._doc, id: order._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${orders.length}`);
+    res.status(200).json(formattedOrders);
   } catch (err) {
     res.status(500).json({
         message: `Internal server error: ${err}`,
@@ -108,7 +111,7 @@ exports.updateOrder = async (req, res) => {
       message: 'You are not authorized to update this order',
     });
     const { id } = req.params;
-    const orderData = req.body.orderData;
+    const orderData = req.body;
     const order = await Order.findById(id);
     if (!order) {
       return res.status(400).json({
@@ -117,9 +120,8 @@ exports.updateOrder = async (req, res) => {
     }
     order.orderStatus = orderData.orderStatus;
     await order.save();
-    res.status(200).json({
-      message: 'Order updated!',
-    });
+    const formattedOrder = { ...order._doc, id: order._id };
+    res.status(200).json(formattedOrder);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -137,9 +139,8 @@ exports.getOrderById = async (req, res) => {
         message: 'Order not found',
       });
     }
-    res.status(200).json({
-      order,
-    });
+    const formattedOrder = { ...order._doc, id: order._id };
+    res.status(200).json(formattedOrder);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

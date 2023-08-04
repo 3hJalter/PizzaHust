@@ -4,7 +4,7 @@ const OrderEdit = (props) => {
   return (
     <Edit title="Edit the order" {...props}>
       <SimpleForm>
-        <SelectInput source="status" fullWidth choices={[
+        <SelectInput source="orderStatus" fullWidth choices={[
           { id: 'Pending', name: 'pending' },
           { id: "Done", name: 'done' },
         ]} validate={required()}/>

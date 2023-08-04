@@ -15,16 +15,16 @@ const OrderList = (props) => {
       <Datagrid>
         <TextField source="id" />
         <TextField source="userId" />
-        <ArrayField source="items">
+        <ArrayField source="productList">
           <Datagrid bulkActionButtons={false}>
-            <TextField source="courseId" />
+            <TextField source="name" />
+            <NumberField source="price" />
+            <NumberField source="quantity" />
           </Datagrid>
         </ArrayField>
-        <NumberField source="amount" />
-        <TextField source="address" />
-        <TextField source="status" />
+        <NumberField source="finalPrice" />
+        <TextField source="orderStatus" />
         <DateField source="createdAt" />
-        <DateField source="updatedAt" />
         <EditButton />
         <DeleteButton />
       </Datagrid>

@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)">
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Fix user Role bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-panel/src/components/order/OrderEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/order/OrderEdit.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserCreate.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/user/UserEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/order/OrderList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/order/OrderList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/orderController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/order.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +162,7 @@
       <workItem from="1690883648579" duration="2001000" />
       <workItem from="1691082392603" duration="5992000" />
       <workItem from="1691134848322" duration="4017000" />
-      <workItem from="1691146507878" duration="2453000" />
+      <workItem from="1691146507878" duration="4193000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -239,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691146754737</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fix user Role bugs">
+      <created>1691149787410</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1691149787410</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +289,7 @@
     <MESSAGE value="Add removeProduct method for Cart" />
     <MESSAGE value="Add user method to react-admin panel" />
     <MESSAGE value="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)" />
+    <MESSAGE value="Fix user Role bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix user Role bugs" />
   </component>
 </project>
