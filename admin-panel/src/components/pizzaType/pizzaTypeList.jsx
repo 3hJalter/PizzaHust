@@ -3,13 +3,14 @@ import {
   DateField,
   DeleteButton,
   EditButton,
+  ImageField,
   List,
   NumberField,
   TextField,
   TextInput,
 } from "react-admin";
 
-const lessonFilters = [
+const userFilters = [
   <TextInput
     key="q"
     label="Search"
@@ -17,18 +18,21 @@ const lessonFilters = [
     alwaysOn
     placeholder="Partial name and id"
   />,
-  <TextInput key="type" label="Type" source="type" />,
 ];
 
-export default function LessonList(props) {
+export default function PizzaTypeList(props) {
   return (
-    <List filters={lessonFilters} {...props}>
+    <List filters={userFilters} {...props}>
       <Datagrid>
         <TextField source="id" />
+        <ImageField
+          source="image"
+          sx={{
+            "& img": { maxWidth: 100, maxHeight: 100, objectFit: "cover" },
+          }}
+        />
         <TextField source="name" />
-        <TextField source="type" />
-        <NumberField source="lengthSeconds" />
-        <DateField source="createdAt" />
+        <TextField source="description" />
         <EditButton />
         <DeleteButton />
       </Datagrid>

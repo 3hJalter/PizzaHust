@@ -10,7 +10,7 @@ exports.addSideDishType = async (req, res) => {
         message: 'You are not authorized to add a side dish type',
       });
     }
-    const typeData = req.body.sideDishType;
+    const typeData = req.body;
     const sideDishType = await SideDishType.create({
       name: typeData.name,
       description: typeData.description,
@@ -18,7 +18,6 @@ exports.addSideDishType = async (req, res) => {
     });
     res.status(200).json({
       sideDishType,
-      message: 'Side dish type added successfully',
     });
   } catch (err) {
     res.status(500).json({
@@ -31,9 +30,10 @@ exports.addSideDishType = async (req, res) => {
 exports.getSideDishTypes = async (req, res) => {
   try {
     const types = await SideDishType.find();
-    res.status(200).json({
-      types,
-    });
+    const formattedType = types.map(type => ({ ...type._doc, id: type._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${types.length}`);
+    res.status(200).json(formattedType);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -49,20 +49,21 @@ exports.updateSideDishType = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const typeData = req.body.sideDishType;
+    const typeData = req.body;
     const sideDishType = await SideDishType.findById(typeData.id);
     if (!sideDishType) {
       return res.status(400).json({
         message: 'Side dish type not found',
       });
     }
-    sideDishType.name = typeData.name;
-    sideDishType.description = typeData.description;
-    sideDishType.image = typeData.image;
-    await sideDishType.save();
-    res.status(200).json({
-      message: 'Side dish type updated!',
+    Object.keys(typeData).forEach(key => {
+      if (typeData[key] !== undefined) {
+        sideDishType[key] = typeData[key];
+      }
     });
+    await sideDishType.save();
+    const formattedType = { ...sideDishType._doc, id: sideDishType._id };
+    res.status(200).json(formattedType);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -80,9 +81,10 @@ exports.getSideDishTypeById = async (req, res) => {
         message: 'Side dish type not found',
       });
     }
-    res.status(200).json({
-      sideDishType,
-    });
+    const formattedType = { ...sideDishType._doc, id: sideDishType._id };
+    res.status(200).json(
+      formattedType
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

@@ -12,6 +12,7 @@ const {
 router.route('/').get(getSideDishTypes);
 router.route('/add-side-dish').post(addSideDishType);
 router.route('/:id').put(updateSideDishType);
-router.route('/:id').get(getSideDishTypeById).delete(deleteSideDishType);
+router.route('/:id').get(getSideDishTypeById)
+router.route('/:id').delete(deleteSideDishType);
 
 module.exports = router;

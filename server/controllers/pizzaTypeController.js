@@ -10,7 +10,7 @@ exports.addPizzaType = async (req, res) => {
         message: 'You are not authorized to add a pizza type',
       });
     }
-    const typeData = req.body.pizzaType;
+    const typeData = req.body;
     const pizzaType = await PizzaType.create({
       name: typeData.name,
       description: typeData.description,
@@ -18,7 +18,6 @@ exports.addPizzaType = async (req, res) => {
     });
     res.status(200).json({
       pizzaType,
-      message: 'Pizza type added successfully',
     });
   } catch (err) {
     res.status(500).json({
@@ -31,9 +30,10 @@ exports.addPizzaType = async (req, res) => {
 exports.getPizzaTypes = async (req, res) => {
   try {
     const types = await PizzaType.find();
-    res.status(200).json({
-      types,
-    });
+    const formattedType = types.map(type => ({ ...type._doc, id: type._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${types.length}`);
+    res.status(200).json(formattedType);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -49,20 +49,21 @@ exports.updatePizzaType = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const typeData = req.body.typeData;
+    const typeData = req.body;
     const pizzaType = await PizzaType.findById(typeData.id);
     if (!pizzaType) {
       return res.status(400).json({
         message: 'Pizza type not found',
       });
     }
-    pizzaType.name = typeData.name;
-    pizzaType.description = typeData.description;
-    pizzaType.image = typeData.image;
-    await pizzaType.save();
-    res.status(200).json({
-      message: 'Pizza type updated!',
+    Object.keys(typeData).forEach(key => {
+      if (typeData[key] !== undefined) {
+        pizzaType[key] = typeData[key];
+      }
     });
+    await pizzaType.save();
+    const formattedType = { ...pizzaType._doc, id: pizzaType._id };
+    res.status(200).json(formattedType);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -80,9 +81,10 @@ exports.getPizzaTypeById = async (req, res) => {
         message: 'Pizza type not found',
       });
     }
-    res.status(200).json({
-      pizzaType,
-    });
+    const formattedType = { ...pizzaType._doc, id: pizzaType._id };
+    res.status(200).json(
+      formattedType
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

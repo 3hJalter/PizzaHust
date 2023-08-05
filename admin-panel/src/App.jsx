@@ -17,6 +17,26 @@ import PizzaToppingCreate from './components/pizzaTopping/PizzaToppingCreate.jsx
 import OrderList from './components/order/OrderList.jsx';
 import OrderEdit from './components/order/OrderEdit.jsx';
 
+import PizzaTypeList from './components/pizzaType/pizzaTypeList.jsx';
+import PizzaTypeEdit from './components/pizzaType/pizzaTypeEdit.jsx';
+import PizzaTypeCreate from './components/pizzaType/PizzaTypeCreate.jsx';
+
+import SideDishTypeList from './components/sideDishType/SideDishTypeList.jsx';
+import SideDishTypeEdit from './components/sideDishType/SideDishTypeEdit.jsx';
+import SideDishTypeCreate from './components/sideDishType/SideDishTypeCreate.jsx';
+
+import SideDishList from './components/sideDish/SideDishList.jsx';
+import SideDishCreate from './components/sideDish/SideDishCreate.jsx';
+import SideDishEdit from './components/sideDish/SideDishEdit.jsx';
+
+import PizzaList from './components/pizza/PizzaList.jsx';
+import PizzaCreate from './components/pizza/PizzaCreate.jsx';
+import PizzaEdit from './components/pizza/PizzaEdit.jsx';
+
+import ComboList from './components/combo/ComboList.jsx';
+import ComboEdit from './components/combo/ComboEdit.jsx';
+import ComboCreate from './components/combo/ComboCreate.jsx';
+
 import theme from "./themes/mui";
 import { MyLayout } from './components/MyLayout.jsx';
 
@@ -62,6 +82,37 @@ function App() {
         create={PizzaToppingCreate}
         edit={PizzaToppingEdit}
       />
+      <Resource
+        name="pizzaType"
+        list={PizzaTypeList}
+        create={PizzaTypeCreate}
+        edit={PizzaTypeEdit}
+      />
+      <Resource
+        name="pizza"
+        list={PizzaList}
+        create={PizzaCreate}
+        edit={PizzaEdit}
+      />
+      <Resource
+        name="sideDishType"
+        list={SideDishTypeList}
+        create={SideDishTypeCreate}
+        edit={SideDishTypeEdit}
+      />
+      <Resource
+        name="sideDish"
+        list={SideDishList}
+        create={SideDishCreate}
+        edit={SideDishEdit}
+      />
+      <Resource
+        name="combo"
+        list={ComboList}
+        create={ComboCreate}
+        edit={ComboEdit}
+      />
+
       <Resource
         name="order"
         list={OrderList}

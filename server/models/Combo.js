@@ -6,7 +6,7 @@ const comboSchema = new mongoose.Schema({
     required: true,
   },
   pizzaListId: [{
-    id: {
+    _id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'pizzas',
       required: true,
@@ -17,7 +17,7 @@ const comboSchema = new mongoose.Schema({
     },
   }],
   sideDishListId: [{
-    id: {
+    _id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'sideDishes',
       required: true,
@@ -27,10 +27,6 @@ const comboSchema = new mongoose.Schema({
       required: true,
     },
   }],
-  discount: {
-    type: Number,
-    required: true,
-  },
   price: {
     type: Number,
     required: true,

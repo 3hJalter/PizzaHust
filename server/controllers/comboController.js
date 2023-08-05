@@ -7,19 +7,17 @@ exports.addCombo = async (req, res) => {
     if (userData.role !== 'Admin') return res.status(403).json({
       message: 'You are not authorized to create this combo',
     });
-    const comboData = req.body.comboData;
+    const comboData = req.body;
     const combo = await Combo.create({
       name: comboData.name,
       pizzaListId: comboData.pizzaListId,
       sideDishListId: comboData.sideDishListId,
-      discount: comboData.discount,
       price: comboData.price,
       description: comboData.description,
       image: comboData.image,
     });
     res.status(200).json({
       combo,
-      message: 'Combo added successfully',
     });
   } catch (err) {
     res.status(500).json({
@@ -32,9 +30,10 @@ exports.addCombo = async (req, res) => {
 exports.getCombos = async (req, res) => {
   try {
     const combos = await Combo.find();
-    res.status(200).json({
-      combos,
-    });
+    const formattedCombos = combos.map(combo => ({ ...combo._doc, id: combo._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${combos.length}`);
+    res.status(200).json(formattedCombos);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -48,24 +47,21 @@ exports.updateCombo = async (req, res) => {
     if (userData.role !== 'Admin') return res.status(500).json({
       message: 'Not Admin account',
     });
-    const comboData = req.body.comboData;
+    const comboData = req.body;
     const combo = await Combo.findById(comboData.id);
     if (!combo) {
       return res.status(400).json({
         message: 'Combo not found',
       });
     }
-    combo.name = comboData.name;
-    combo.pizzaListId = comboData.pizzaListId;
-    combo.sideDishListId = comboData.sideDishListId;
-    combo.discount = comboData.discount;
-    combo.price = comboData.price;
-    combo.description = comboData.description;
-    combo.image = comboData.image;
-    await combo.save();
-    res.status(200).json({
-      message: 'Combo updated!',
+    Object.keys(comboData).forEach(key => {
+      if (comboData[key] !== undefined) {
+        combo[key] = comboData[key];
+      }
     });
+    await combo.save();
+    const formattedType = { ...combo._doc, id: combo._id };
+    res.status(200).json(formattedType);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -83,9 +79,10 @@ exports.getComboById = async (req, res) => {
         message: 'Combo not found',
       });
     }
-    res.status(200).json({
-      combo,
-    });
+    const formattedType = { ...combo._doc, id: combo._id };
+    res.status(200).json(
+      formattedType
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

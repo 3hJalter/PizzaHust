@@ -4,13 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Fix user Role bugs">
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Add order method for admin-panel">
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/combo/ComboCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/combo/ComboEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/combo/ComboList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizza/PizzaCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizza/PizzaEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizza/PizzaList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaType/PizzaTypeCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaType/PizzaTypeEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/sideDish/SideDishCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/sideDish/SideDishEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/sideDish/SideDishList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/sideDishType/SideDishTypeCreate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/sideDishType/SideDishTypeEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-panel/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/order/OrderEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/order/OrderEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/course/CourseCreate.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/course/CourseEdit.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/course/CourseList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaType/pizzaTypeList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/lesson/LessonCreate.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/lesson/LessonEdit.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/lesson/LessonList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/sideDishType/SideDishTypeList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-panel/src/components/order/OrderList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/order/OrderList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/orderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/comboController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/comboController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaTypeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/sideDishController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sideDishController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/sideDishTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sideDishTypeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Combo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Combo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/combo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/combo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/pizza.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/pizza.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/sideDishType.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/sideDishType.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +68,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/PizzaHust/admin-panel/src/components/pizzaTopping&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/PizzaHust/admin-panel/src/components/combo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,17 +89,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\combo" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\pizza" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\sideDish" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\pizzaTopping" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\voucher" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\components" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin\components" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.admin dev">
+  <component name="RunManager" selected="npm.server dev">
     <configuration name="admin dev" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/admin-panel/package.json" />
       <command value="run" />
@@ -162,7 +189,9 @@
       <workItem from="1690883648579" duration="2001000" />
       <workItem from="1691082392603" duration="5992000" />
       <workItem from="1691134848322" duration="4017000" />
-      <workItem from="1691146507878" duration="4193000" />
+      <workItem from="1691146507878" duration="4354000" />
+      <workItem from="1691159754113" duration="8241000" />
+      <workItem from="1691208259835" duration="7022000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -248,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691149787410</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add order method for admin-panel">
+      <created>1691151518278</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1691151518278</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,6 +326,7 @@
     <MESSAGE value="Add user method to react-admin panel" />
     <MESSAGE value="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)" />
     <MESSAGE value="Fix user Role bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix user Role bugs" />
+    <MESSAGE value="Add order method for admin-panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add order method for admin-panel" />
   </component>
 </project>

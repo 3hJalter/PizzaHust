@@ -1,16 +1,14 @@
 import {
   Datagrid,
-  DateField,
   DeleteButton,
   EditButton,
   ImageField,
-  List,
-  NumberField,
+  List, NumberField, ReferenceField,
   TextField,
   TextInput,
-} from "react-admin";
+} from 'react-admin';
 
-const courseFilters = [
+const userFilters = [
   <TextInput
     key="q"
     label="Search"
@@ -20,21 +18,23 @@ const courseFilters = [
   />,
 ];
 
-export default function CourseList(props) {
+export default function PizzaList(props) {
   return (
-    <List filters={courseFilters} {...props}>
+    <List filters={userFilters} {...props}>
       <Datagrid>
         <TextField source="id" />
         <ImageField
-          source="coverImage"
+          source="image"
           sx={{
             "& img": { maxWidth: 100, maxHeight: 100, objectFit: "cover" },
           }}
         />
         <TextField source="name" />
         <NumberField source="price" />
-        <NumberField source="studentsEnrolled" />
-        <DateField source="createdAt" />
+        <ReferenceField source="pizzaTypeId" reference="pizzaType">
+          <TextField source="name" />
+        </ReferenceField>
+        <TextField source="description" />
         <EditButton />
         <DeleteButton />
       </Datagrid>
