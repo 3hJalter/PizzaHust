@@ -57,7 +57,6 @@ const OrderDetailPage = () => {
                         <tr>
                             <th className="px-4 py-2 w-2/12">Name</th>
                             <th className="px-4 py-2 w-2/12">Topping List</th>
-                            <th className="px-4 py-2">Size</th>
                             <th className="px-4 py-2">Type</th>
                             <th className="px-4 py-2">Quantity</th>
                             <th className="px-4 py-2">Price</th>
@@ -71,7 +70,6 @@ const OrderDetailPage = () => {
                                     {item.toppingList.map((topping) => (
                                         <p key={topping._id}>{topping.name}</p>))}
                                 </td>
-                                <td className="px-4 py-2 text-center">{item.size}</td>
                                 <td className="px-4 py-2 text-center">{item.type}</td>
                                 <td className="px-4 py-2 text-center">{item.quantity}</td>
                                 <td className="px-4 py-2 text-center">{item.price}</td>
