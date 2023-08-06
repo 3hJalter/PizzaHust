@@ -45,7 +45,7 @@ function App() {
           <MapProvider>
             <Routes>
               <Route path='/' element={<Layout /> }>
-                <Route index element={<ComboPage id='649c4ab36d62981af81aa651' />} />
+                <Route index element={<IndexPage />} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/account' element={<ProfilePage />} />
