@@ -1,16 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
-import { Link } from 'react-router-dom';
-
 import { Button } from '@mui/material';
-import RadioButton from '../components/RadioButton';
 
 const ComboPage = ({ id }) => {
   const token = getItemFromLocalStorage('token');
-  const [combo, setCombo] = useState([]);
-  const [pizza, setPizza] = useState([]);
+  const [combo, setCombo] = useState({});
+
+  const [pizzaListId, setPizzaListId] = useState([]);
+  const [pizzasData, setPizzasData] = useState({});
+  const [pizzasQty, setPizzasQty] = useState({});
   
+  const [sideDishListId, setSideDishListId] = useState([]);
+  const [sideDishesData, setSideDishesData] = useState({});
+  const [sideDishesQty, setSideDishesQty] = useState({});
+
   const getCombo = async (id) => {
     try {
       const response = await axios.get(`/combo/${id}`, {
@@ -18,20 +22,27 @@ const ComboPage = ({ id }) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(response.data);
+      setCombo(response.data);
 
-      const { combo } = response.data;
+      const pizzaData = response.data.pizzaListId;
+      const pizzaIds = pizzaData.map(pizza => pizza._id);
+      setPizzaListId(pizzaIds);
 
-      if (!combo) {
-        throw new Error('Pizza not found');
-      }
+      const pizzaQty = pizzaData.map(pizza => pizza.quantity);
+      setPizzasQty(pizzaQty);
 
-      console.log(combo);
-      setCombo(combo);
-      // Handle the pizza data here
+      const sideDishData = response.data.sideDishListId;
+      const sideDishIds = sideDishData.map(sideDish => sideDish._id);
+      setSideDishListId(sideDishIds);
+
+      const sideDishQty = sideDishData.map(sideDish => sideDish.quantity);
+      setSideDishesQty(sideDishQty);
+
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const getPizzaData = async (id) => {
     try {
@@ -41,15 +52,33 @@ const ComboPage = ({ id }) => {
         },
       });
 
-      const { pizza } = response.data;
-
-      if (!pizza) {
-        throw new Error('Pizza not found');
+      // Check if the pizza data is already present in pizzasData
+      if (!pizzasData[response.data._id]) {
+        setPizzasData(prevPizzasData => ({
+          ...prevPizzasData,
+          [response.data._id]: response.data
+        }));
       }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-      console.log(pizza);
-      setPizza(pizza);
-      // Handle the pizza data here
+  const getSideDishData = async (id) => {
+    try {
+      const response = await axios.get(`/sideDish/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      // Check if the side dish data is already present in sideDishesData
+      if (!sideDishesData[response.data._id]) {
+        setSideDishesData(prevSideDishesData => ({
+          ...prevSideDishesData,
+          [response.data._id]: response.data
+        }));
+      }
     } catch (error) {
       console.error(error);
     }
@@ -57,18 +86,22 @@ const ComboPage = ({ id }) => {
 
   useEffect(() => {
     getCombo(id);
-    if (combo && combo.pizzaListId) {
-      combo.pizzaListId.forEach((pizzaId) => {
-        getPizzaData(pizzaId);
-      });
-    }
   }, [id]);
+
+  useEffect(() => {
+    pizzaListId.forEach(pizzaId => {
+      getPizzaData(pizzaId);
+    });
+    sideDishListId.forEach(sideDishId => {
+      getSideDishData(sideDishId);
+    });
+  }, [pizzaListId, sideDishListId]);
 
   return (
     <div className="mt-8 grid">
       <div className="grid grid-cols-5 mx-12 space-x-4 my-10">
         <div className="col-span-2 flex justify-center bg-white p-2 rounded-xl">
-          
+          <img src={combo.image}></img>
         </div>
 
         <div className="col-span-3 bg-white p-2 rounded-xl space-y-3">
@@ -89,13 +122,25 @@ const ComboPage = ({ id }) => {
           </div>
 
           <div>
-            Pizza: {pizza.name}
+            <ul>
+              {Object.values(pizzasData).map((pizzaData, index) => (
+                <li key={pizzaData._id}>
+                  Pizza {index + 1}: {pizzaData.name} - Quantities: {pizzasQty[index]}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
-            Side Dish: {combo.sideDishListId}
+            <ul>
+              {Object.values(sideDishesData).map((sideDishData, index) => (
+                <li key={sideDishData._id}>
+                  Side Dish {index + 1}: {sideDishData.name} - Quantities: {sideDishesQty[index]}
+                </li>
+              ))}
+            </ul>
           </div>
-
+           
           <Button variant="contained">Add to card</Button>
         </div>
 

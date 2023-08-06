@@ -3,68 +3,61 @@ const mongoose = require('mongoose');
 // Must Re-write orderController.js.
 
 const orderSchema = new mongoose.Schema({
-  comboList: [{
+  productList: [{
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    type: {
+      type: String,
+    },
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
     name: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
-      required: true,
     },
     quantity: {
       type: Number,
-      required: true,
     },
+    toppingList: [{
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pizzaToppings',
+      },
+      name: {
+        type: String,
+      },
+      price: {
+        type: Number,
+      }
+    }]
   }],
-  pizzaList: [{
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-  }],
-  pizzaToppingList: [{
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-  }],
-  sideDishList: [{
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-  }],
-  voucher: {
-    name: {
-      type: String,
-    },
+  orderPrice: {
+    type: Number,
   },
-  price: {
+  voucher: {
+    type: String,
+  },
+  totalPrice: {
+    type: Number,
+    default: 0,
+  },
+  shippingFee: {
+    type: Number,
+    default: 22000,
+  },
+  finalPrice: {
+    type: Number,
+    default: 0,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  phone: {
     type: Number,
     required: true,
   },
@@ -73,10 +66,6 @@ const orderSchema = new mongoose.Schema({
     default: Date.now,
   },
   orderStatus: {
-    type: String,
-    required: true,
-  },
-  description: {
     type: String,
     required: true,
   },

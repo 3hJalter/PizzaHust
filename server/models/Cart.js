@@ -1,71 +1,61 @@
 const mongoose = require('mongoose');
 
 const CartSchema = new mongoose.Schema({
-  comboList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-    },
-    name: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    quantity: {
-      type: Number,
-    },
-  }],
-  pizzaList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-    },
-    name: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    quantity: {
-      type: Number,
-    },
-  }],
-  pizzaToppingList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-    },
-    name: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    quantity: {
-      type: Number,
-    },
-  }],
-  sideDishList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-    },
-    name: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    quantity: {
-      type: Number,
-    },
-  }],
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
     required: true,
   },
+  productList: [{
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    type: {
+      type: String,
+    },
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    name: {
+      type: String,
+    },
+    price: {
+      type: Number,
+    },
+    quantity: {
+      type: Number,
+    },
+    toppingList: [{
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pizzaToppings',
+      },
+      name: {
+        type: String,
+      },
+      price: {
+        type: Number,
+      }
+    }]
+  }],
+  totalPrice: {
+    type: Number,
+  },
+  finalPrice: {
+    type: Number,
+  },
+});
+
+CartSchema.index({ userId: 1 }, { unique: 1 });
+
+// Calculate total price automatically after save
+CartSchema.pre("save", function (next) {
+  this.totalPrice = this.productList.reduce(
+    (total, item) =>
+      total + (item.price)*(item.quantity),
+      0
+  );
+  next();
 });
 
 const Cart = mongoose.model('Cart', CartSchema);

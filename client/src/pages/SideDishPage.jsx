@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
-import { Link } from 'react-router-dom';
 
 import { Button } from '@mui/material';
-import RadioButton from '../components/RadioButton';
 
 const SideDishPage = ({ id }) => {
   const token = getItemFromLocalStorage('token');
@@ -19,15 +17,7 @@ const SideDishPage = ({ id }) => {
         },
       });
 
-      const { sideDish } = response.data;
-
-      if (!sideDish) {
-        throw new Error('Side dish not found');
-      }
-
-      console.log(sideDish);
-      setSideDish(sideDish);
-      // Handle the pizza data here
+      setSideDish(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -41,14 +31,7 @@ const SideDishPage = ({ id }) => {
         },
       });
 
-      const { sideDishType } = response.data;
-
-      if (!sideDishType) {
-        throw new Error('Side dish type not found');
-      }
-
-      console.log(sideDishType);
-      setSideDishType(sideDishType);
+      setSideDishType(response.data);
     } catch (error) {
       console.error(error);
     }

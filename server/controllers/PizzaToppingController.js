@@ -9,15 +9,14 @@ exports.addPizzaTopping = async (req, res) => {
         message: 'You are not authorized to add a pizza topping',
       });
     }
-    const toppingData = req.body.pizzaTopping;
+    const toppingData = req.body;
     const topping = await PizzaTopping.create({
       name: toppingData.name,
       price: toppingData.price,
       image: toppingData.image,
     });
     res.status(200).json({
-      topping,
-      message: 'Pizza topping added successfully',
+      topping
     });
   } catch (err) {
     res.status(500).json({
@@ -30,9 +29,12 @@ exports.addPizzaTopping = async (req, res) => {
 exports.getPizzaToppings = async (req, res) => {
   try {
     const toppings = await PizzaTopping.find();
-    res.status(200).json({
-      toppings,
-    });
+    const formattedToppings = toppings.map(topping => ({ ...topping._doc, id: topping._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${toppings.length}`);
+    res.status(200).json(
+      formattedToppings
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -48,20 +50,21 @@ exports.updatePizzaTopping = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const toppingData = req.body.pizzaTopping;
+    const toppingData = req.body;
     const topping = await PizzaTopping.findById(toppingData.id);
     if (!topping) {
       return res.status(400).json({
         message: 'Pizza topping not found',
       });
     }
-    topping.name = toppingData.name;
-    topping.price = toppingData.price;
-    topping.image = toppingData.image;
-    await topping.save();
-    res.status(200).json({
-      message: 'Pizza topping updated!',
+    Object.keys(toppingData).forEach(key => {
+      if (toppingData[key] !== undefined) {
+        topping[key] = toppingData[key];
+      }
     });
+    await topping.save();
+    const formattedTopping = { ...topping._doc, id: topping._id };
+    res.status(200).json(formattedTopping);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -79,9 +82,10 @@ exports.getPizzaToppingById = async (req, res) => {
         message: 'Pizza topping not found',
       });
     }
-    res.status(200).json({
-      topping,
-    });
+    const formattedTopping = { ...topping._doc, id: topping._id };
+    res.status(200).json(
+      formattedTopping
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

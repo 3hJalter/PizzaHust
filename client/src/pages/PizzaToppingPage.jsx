@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
-import { Link } from 'react-router-dom';
-
 import { Button } from '@mui/material';
-import RadioButton from '../components/RadioButton';
 
 const PizzaToppingPage = ({ id }) => {
   const token = getItemFromLocalStorage('token');
@@ -18,15 +15,7 @@ const PizzaToppingPage = ({ id }) => {
         },
       });
 
-      const { topping } = response.data;
-
-      if (!topping) {
-        throw new Error('Topping not found');
-      }
-
-      console.log(topping);
-      setTopping(topping);
-      // Handle the pizza data here
+      setTopping(response.data);
     } catch (error) {
       console.error(error);
     }

@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
-import { Link } from 'react-router-dom';
-
 import { Button } from '@mui/material';
-import RadioButton from '../components/RadioButton';
 
-const DetailPage = ({ id }) => {
+const PizzaPage = ({ id }) => {
   const token = getItemFromLocalStorage('token');
   const [pizza, setPizza] = useState([]);
   const [pizzaType, setPizzaType] = useState([]);
@@ -19,15 +16,8 @@ const DetailPage = ({ id }) => {
         },
       });
 
-      const { pizza } = response.data;
-
-      if (!pizza) {
-        throw new Error('Pizza not found');
-      }
-
-      console.log(pizza);
-      setPizza(pizza);
-      // Handle the pizza data here
+      setPizza(response.data);
+      
     } catch (error) {
       console.error(error);
     }
@@ -41,14 +31,7 @@ const DetailPage = ({ id }) => {
         },
       });
 
-      const { pizzaType } = response.data;
-
-      if (!pizzaType) {
-        throw new Error('Pizza type not found');
-      }
-
-      console.log(pizzaType);
-      setPizzaType(pizzaType);
+      setPizzaType(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -82,7 +65,7 @@ const DetailPage = ({ id }) => {
           </div>
 
           <div>
-            Side dish type: {pizzaType.name}
+            Pizza type: {pizzaType.name}
           </div>
 
           <div>
@@ -102,4 +85,4 @@ const DetailPage = ({ id }) => {
   );
 };
 
-export default DetailPage;
+export default PizzaPage;
