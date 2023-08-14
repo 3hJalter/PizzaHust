@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Fix Trung and Quang bugs">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_06_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_06_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_24_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_11_2023_8_24_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/ComboPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ComboPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/OrderDetailPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/OrderDetailPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/OrderHistoryPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/OrderHistoryPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/providers/UserProvider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/providers/UserProvider.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/CartController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/CartController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/orderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/pizza.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/pizza.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -338,6 +327,7 @@
     <MESSAGE value="Add order method for admin-panel" />
     <MESSAGE value="All CRUD products for admin" />
     <MESSAGE value="Fix Trung and Quang bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Trung and Quang bugs" />
+    <MESSAGE value="Fix navigate on Combo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix navigate on Combo" />
   </component>
 </project>

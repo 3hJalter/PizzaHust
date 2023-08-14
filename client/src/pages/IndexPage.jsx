@@ -121,7 +121,7 @@ const IndexPage = () => {
                   <p className='product-price'>Price: {comboItem.price}</p>
                   <br></br>
                   <a className='addbtn' href=''>Add to cart</a>
-                  <Link class='addbtn' to={`/pizza/${comboItem._id}`}>More details</Link>
+                  <Link class='addbtn' to={`/combo/${comboItem._id}`}>More details</Link>
                 </div>
               </div>
 
