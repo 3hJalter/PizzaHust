@@ -60,7 +60,7 @@ exports.addOrder = async (req, res) => {
       finalPrice: fPrice,
       address: orderData.address,
       orderStatus: "Pending",
-      userId: id,
+      userId: userData.id,
       phone: orderData.phone,
     });
 
@@ -151,8 +151,7 @@ exports.getOrderById = async (req, res) => {
 exports.userOrders = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    // const id = userData.id;
-    const id = '64670433aac03b50b8029d73';
+    const id = userData.id;
     const orders = await Order.find({ userId: id })
     res.status(200).json({orders});
   } catch (err) {

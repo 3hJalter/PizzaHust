@@ -46,7 +46,13 @@ function App() {
             <Routes>
               <Route path='/' element={<Layout /> }>
                 <Route index element={<IndexPage />} />
+                <Route path='/combo/:id' element={<ComboPage/>} />
                 <Route path='/login' element={<LoginPage />} />
+                <Route path='/combo' element={<ComboPage />} />
+                <Route path='/pizza' element={<PizzaPage />} />
+                <Route path='/sideDish' element={<SideDishPage />} />
+                <Route path='/pizzaTopping' element={<PizzaToppingPage />} />
+                <Route path='/voucher' element={<SideDishPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/account' element={<ProfilePage />} />
                 <Route path='/cart' element={<CartPage />} />

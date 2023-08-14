@@ -47,7 +47,7 @@ export const footer = [
   {
     title: 'Support',
     content: [
-      'Help Center',
+      'Check',
       'AirCover',
       'Safety information',
       'Supporting people with disabilities',

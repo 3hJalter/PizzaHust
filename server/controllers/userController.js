@@ -6,6 +6,27 @@ const jwt = require('jsonwebtoken');
 require('../models/Combo');
 require('../models/PizzaTopping');
 
+exports.getUser = async (req, res) => {
+  try {
+    const userData = userFromToken(req);
+    // let role ="Admin"
+    // if (role !== 'Customer') {
+    if (userData.role === 'Customer') {
+      res.status(200).json(userData);
+    }
+    else {
+      res.status(404).json({
+        message: 'Cannot find users because of no confirm role'
+      })
+    }
+  } catch (err) {
+    res.status(500).json({
+      message: `Internal server Error with message: ${err}`,
+      error: err,
+    });
+  }
+};
+
 exports.getUsers = async (req, res) => {
   try {
     const userData = userFromToken(req);
@@ -95,7 +116,6 @@ exports.register = async (req, res) => {
       // Save the cart to the database
       await cart.save();
     }
-
 
     res.status(200).json({
       user,

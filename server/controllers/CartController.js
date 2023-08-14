@@ -4,11 +4,8 @@ const mongoose = require('mongoose');
 
 exports.addProduct = async (req, res) => {
   try {
-    // -- Find Cart -- //
-    // const userData = userFromToken(req);
-    // const id = userData.id;
-    // Remove below code when testing done
-    const id = '64670433aac03b50b8029d73';
+    const userData = userFromToken(req);
+    const id = userData.id;
     const cart = await Cart.findOne({ userId: id });
     if (!cart) {
       return res.status(400).json({
@@ -98,12 +95,8 @@ exports.addProduct = async (req, res) => {
 
 exports.removeProduct = async (req, res) => {
   try {
-    // -- Find Cart -- //
-
-    // const userData = userFromToken(req);
-    // const id = userData.id;
-    // Remove below code when testing done
-    const id = '64670433aac03b50b8029d73';
+    const userData = userFromToken(req);
+    const id = userData.id;
     const cart = await Cart.findOne({ userId: id });
     if (!cart) {
       return res.status(400).json({
@@ -147,78 +140,10 @@ exports.removeProduct = async (req, res) => {
   }
 }
 
-
-/*
-exports.updateCart = async (req, res) => {
-  try {
-    // const userData = userFromToken(req);
-    // const id = userData.id;
-    // Remove below code when testing done
-    const id = '64670433aac03b50b8029d73';
-    const cart = await Cart.findOne({ userId: id });
-    if (!cart) {
-      return res.status(400).json({
-        message: 'Cart not found',
-      });
-    }
-
-    const productData = req.body.productData;
-    const existingProductIndex = cart.productList.findIndex(
-      (product) => product._id.toString() === productData.id,
-    );
-    if (existingProductIndex !== -1) {
-      // Product already exists in the cart, modify the quantity
-      if (productData.type !== 'pizza') {
-        cart.productList[existingProductIndex].quantity += productData.quantity;
-      }
-      else {
-
-      }
-    } else {
-      if (productData.type !== 'pizza') {
-        const newProduct = {
-          name: productData.name,
-          price: productData.price,
-          quantity: productData.quantity,
-          _id: productData.id,
-          type: productData.type
-        };
-        cart[productData.type].push(newProduct);
-      }
-      else {
-        const newProduct = {
-          name: productData.name,
-          price: productData.price,
-          quantity: productData.quantity,
-          _id: productData.id,
-          type: productData.type,
-          size: productData.size,
-          toppingList: productData.toppingList
-        };
-        cart[productData.type].push(newProduct);
-      }
-    }
-
-    await cart.save();
-    res.status(200).json({
-      message: 'Cart updated!',
-    });
-  } catch (err) {
-    res.status(500).json({
-      message: 'Internal server error',
-      error: err,
-    });
-  }
-};
-*/
-
-
 exports.userCart = async (req, res) => {
   try {
-    // const userData = userFromToken(req);
-    // const id = userData.id;
-    // Remove below code when testing done
-    const id = '64670433aac03b50b8029d73';
+    const userData = userFromToken(req);
+    const id = userData.id;
     const cart = await Cart.findOne({ userId: id });
     res.status(200).json(cart);
   } catch (err) {

@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
     if (!user) {
       const token = getItemFromLocalStorage('token');
       if (token) {
-        axios.get('/user/',{
+        axios.get('/user/getUserFromToken',{
           headers: {
             Authorization: `Bearer ${token}`,
           },
