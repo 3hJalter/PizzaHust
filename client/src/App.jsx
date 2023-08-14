@@ -46,6 +46,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Layout /> }>
                 <Route index element={<IndexPage />} />
+                <Route path='/combo/:id' element={<ComboPage/>} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/account' element={<ProfilePage />} />

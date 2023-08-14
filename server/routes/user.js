@@ -9,10 +9,11 @@ const {
   logout,
   getUsers,
   deleteProfile,
-  getUserById,
+  getUserById, getUser,
 } = require('../controllers/userController');
 
 router.route('/').get(getUsers)
+router.route('/getUserFromToken').get(getUser)
 router.route('/register').post(register);
 router.route('/login').post(login);
 router.route('/:id').get(getUserById);

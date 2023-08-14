@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
 import { Button } from '@mui/material';
+import { useParams } from 'react-router-dom';
 
-const ComboPage = ({ id }) => {
+const ComboPage = () => {
+  const {id} = useParams();
   const token = getItemFromLocalStorage('token');
   const [combo, setCombo] = useState({});
 

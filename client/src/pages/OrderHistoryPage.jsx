@@ -24,7 +24,7 @@ const OrderHistoryPage = () => {
     const fetchOrders = async () => {
         setLoading(true);
         try {
-            const response = await axios.get("/order");
+            const response = await axios.get("/order/user-orders");
             setOrders(response.data.orders);
         } catch (error) {
             console.log(error.response);

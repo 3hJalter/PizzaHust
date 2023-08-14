@@ -13,7 +13,8 @@ const {
 router.route('/').get(getPizzas);
 router.route('/add-pizza').post(addPizza);
 router.route('/:id').put(updatePizza);
-router.route('/:id').get(getPizzaById).delete(deletePizza);
+router.route('/:id').get(getPizzaById)
+router.route('/:id').delete(deletePizza);
 router.route('/search/:key').get(searchPizzas);
 
 module.exports = router;

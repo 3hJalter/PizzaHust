@@ -30,8 +30,9 @@ const OrderDetailPage = () => {
         setLoading(true);
         try {
             const response = await axios.get(`/order/${id}`);
-            setOrder(response.data.order);
-            setCartItems(response.data.order.productList);
+            console.log(response.data);
+            setOrder(response.data);
+            setCartItems(response.data.productList);
         } catch (error) {
             console.log(error);
         }
