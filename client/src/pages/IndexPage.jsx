@@ -11,9 +11,11 @@ const IndexPage = () => {
   const token = getItemFromLocalStorage('token');
   const [pizza, setPizza] = useState([]);
   const [pizzaType, setPizzaType] = useState([]);
-  const [combo, setCombo] = useState({});
+  const [combo, setCombo] = useState([]);
+  const [voucher, setVoucher] = useState([]);
 
-  const getCombo = async (id) => {
+
+  const getCombo = async () => {
     try {
       const { data } = await axios.get(`/combo`, {
         headers: {
@@ -22,6 +24,19 @@ const IndexPage = () => {
       });
       console.log(data);
       setCombo(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const getVoucher = async () => {
+    try {
+      const { data } = await axios.get(`/voucher`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(data);
+      setVoucher(data);
     } catch (error) {
       console.error(error);
     }
@@ -56,6 +71,7 @@ const IndexPage = () => {
       getPizzaTypeData();
       getPizzaTypeName();
       getCombo();
+      getVoucher();
       console.log('Load index page');
     }, []);
   if (user && user.role === 'Admin')
@@ -137,6 +153,38 @@ const IndexPage = () => {
                 <p class="product-price">Price: {pizzaItem.price}</p>
                 <br></br>
                 <a class="addbtn" href="">Add to cart</a>        <Link class="addbtn" to="`/pizza/${pizzaItem._id}`">More details</Link>
+              </div>
+            </div>
+            
+          </li>
+          
+          ))}
+      </ul>
+    </div>
+    <br></br>
+    <br></br>
+    <div className="">
+      <h1 className='text-left text-6xl titleh1'>
+        Voucher List
+      </h1>
+    </div>
+
+    <div class="productList">
+    <ul className='list-none flex flex-wrap justify-center'>
+        {voucher.length > 0 && voucher.map((voucherItem) => (
+          
+          <li className='m-10 p-10 '>
+            
+            <div class="product-list-container" key={voucherItem._id}>          
+              <div class="product-card"><a href='/pizza/${pizzaItem._id}'>
+                <img  src={voucherItem.image} alt={voucherItem.name}/></a>
+                <strong class="product-title">Name: {voucherItem.name}</strong>
+                <p class="product-description">Description: {voucherItem.description}</p>
+                <p class="product-price">Type: {voucherItem.type}</p>
+                <p class="product-price">Discount amount: {voucherItem.discount}</p>
+                <p class="product-price">Minimun price required: {voucherItem.priceRequired}</p>
+                <br></br>
+                <Link class="addbtn" to="`/pizza/${pizzaItem._id}`">More details</Link>
               </div>
             </div>
             
