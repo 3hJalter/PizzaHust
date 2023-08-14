@@ -11,6 +11,21 @@ const IndexPage = () => {
   const token = getItemFromLocalStorage('token');
   const [pizza, setPizza] = useState([]);
   const [pizzaType, setPizzaType] = useState([]);
+  const [combo, setCombo] = useState({});
+
+  const getCombo = async (id) => {
+    try {
+      const { data } = await axios.get(`/combo`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(data);
+      setCombo(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const getPizzaData = async () => {
     const { data } = await axios.get(`/pizza`, {
       headers: {
@@ -40,6 +55,7 @@ const IndexPage = () => {
       getPizzaData();
       getPizzaTypeData();
       getPizzaTypeName();
+      getCombo();
       console.log('Load index page');
     }, []);
   if (user && user.role === 'Admin')
@@ -51,24 +67,53 @@ const IndexPage = () => {
     );
   return (
     <>
+
     <br></br>
 
     <ul className='list-none flex flex-wrap justify-center'>
     <li className='m-5 p-5'>
-        <a class="addbtn" href='/voucher/'>Voucher</a>
+        <a class="addbtn" href='/voucher/'>Vouchers</a>
       </li>
       <li className='m-5 p-5'>
-        <a class="addbtn" href='/combo/'>Combo</a>
+        <a class="addbtn" href='/combo/'>Combos</a>
       </li>
       <li className='m-5 p-5'>
-        <a class="addbtn" href='/pizza/'>All Pizzas</a>
+        <a class="addbtn" href='/pizza/'>Pizzas</a>
       </li>
       <li className='m-5 p-5'>
-        <a class="addbtn" href='/sideDish/'>Side Dish</a>
+        <a class="addbtn" href='/sideDish/'>Side Dishs</a>
       </li>
 
     </ul>
     <hr className='p-50'></hr>
+    <br></br>
+    <br></br>
+    
+      <h1 className='text-left text-6xl titleh1'>
+        Combo List
+      </h1>
+    <div class="productList">
+    <ul className='list-none flex flex-wrap justify-center'>
+        {combo.length > 0 && combo.map((comboItem) => (
+          
+          <li className='m-10 p-10 '>
+            
+            <div class="product-list-container" key={comboItem._id}>          
+              <div class="product-card"><a href='/pizza/${pizzaItem._id}'>
+                <img  src={comboItem.image} alt={comboItem.name}/></a>
+                <strong class="product-title">Name: {comboItem.name}</strong>
+                <p class="product-price">Discription: {comboItem.description}</p>
+                <p class="product-price">Price: {comboItem.price}</p>
+                <br></br>
+                <a class="addbtn" href="">Add to cart</a>        <Link class="addbtn" to="`/pizza/${pizzaItem._id}`">More details</Link>
+              </div>
+            </div>
+            
+          </li>
+          
+          ))}
+      </ul>
+      </div>
     <br></br>
     <br></br>
     <div className="">
@@ -80,8 +125,10 @@ const IndexPage = () => {
     <div class="productList">
     <ul className='list-none flex flex-wrap justify-center'>
         {pizza.length > 0 && pizza.map((pizzaItem) => (
+          
           <li className='m-10 p-10 '>
-            <div class="product-list-container" key={pizzaItem._id}>             
+            
+            <div class="product-list-container" key={pizzaItem._id}>          
               <div class="product-card"><a href='/pizza/${pizzaItem._id}'>
                 <img  src={pizzaItem.image} alt={pizzaItem.name}/></a>
                 <strong class="product-title">Name: {pizzaItem.name}</strong>
@@ -92,7 +139,9 @@ const IndexPage = () => {
                 <a class="addbtn" href="">Add to cart</a>        <Link class="addbtn" to="`/pizza/${pizzaItem._id}`">More details</Link>
               </div>
             </div>
+            
           </li>
+          
           ))}
       </ul>
     </div>

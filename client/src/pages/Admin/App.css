@@ -61,6 +61,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
 }
 
 .product-card {
@@ -112,3 +113,7 @@ transition: background-color 0.3s ease;
 }
 
 .titleh1 { color: #ff0000; font-family: 'Helvetica Neue', sans-serif; font-size: 275px; font-weight: bold; letter-spacing: -1px; line-height: 1;border-bottom: 10px; border-color:#ff0000; }
+.bgimg{
+  background-image: url('https://vcdn-dulich.vnecdn.net/2022/05/25/1-3152-1653443008.jpg');
+}
+.whitebg{ background-color: #FFFFFF; }
