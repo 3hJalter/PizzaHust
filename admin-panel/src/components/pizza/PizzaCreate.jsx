@@ -38,7 +38,6 @@ const PizzaCreate = (props) => {
         <TextInput source="name" fullWidth validate={required()} />
         <NumberInput source={"price"} fullWidth validate={required()} />
         <TextInput source="description" fullWidth validate={required()} />
-        <TextInput source="pizzaSize" fullWidth validate={required()} />
         <ReferenceInput
           source="pizzaTypeId"
           reference="pizzaType"

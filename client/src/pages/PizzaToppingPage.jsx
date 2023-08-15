@@ -3,59 +3,51 @@ import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
 import { Button } from '@mui/material';
 
-const PizzaToppingPage = ({ id }) => {
-  const token = getItemFromLocalStorage('token');
+const PizzaToppingPage = () => {
   const [topping, setTopping] = useState([]);
+  const token = getItemFromLocalStorage('token');
 
-  const getTopping = async (id) => {
-    try {
-      const response = await axios.get(`/pizzaTopping/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      setTopping(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const getToppingData = async () => {
+    const { data } = await axios.get(`/pizzaTopping`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // console.log(data);
+    setTopping(data);
+  };
 
   useEffect(() => {
-    getTopping(id);
-  }, [id]);
+    getToppingData();
+    console.log('Load index page');
+  }, []);
 
   return (
-    <div className="mt-8 grid">
-      <div className="grid grid-cols-5 mx-12 space-x-4 my-10">
-        <div className="col-span-2 flex justify-center bg-white p-2 rounded-xl">
-          <img
-            src={topping.image}
-            alt={name}
-            className="rounded-xl object-cover"
-          />
-        </div>
+    <div className='m-10 p-2'>
+      <strong>PIZZA TOPPING</strong>
+      <div className='productList'>
+        <ul className='list-none flex flex-wrap justify-center'>
+          {topping.length > 0 && topping.map((toppingItem) => (
 
-        <div className="col-span-3 bg-white p-2 rounded-xl space-y-3">
-          <div className="text-2xl font-bold mb-2">
-            {topping.name}
-          </div>
+            <li key={toppingItem._id} className='m-2 p-2'>
 
-          <div className="text-xl font-bold text-red-600">
-            Cost: ${topping.price}
-          </div>
+              <div className='product-list-container' key={toppingItem._id}>
+                <div className='product-card'>
+                  <img src={toppingItem.image} alt={toppingItem.name} />
+                  <strong className='product-title'>Name: {toppingItem.name}</strong>
+                  <p className='product-price'>Price: ${toppingItem.price}</p>
+                  <Button variant="contained">Add to cart</Button>
+                </div>
+              </div>
 
-          <Button variant="contained">Add to card</Button>
-        </div>
+            </li>
 
+          ))}
+        </ul>
       </div>
-
-      <div className="bg-slate-300 grid mx-12 space-x-4 rounded-xl p-4 py-4">
-        {topping.name}
-      </div>
-
     </div>
   );
+
 };
 
 export default PizzaToppingPage;

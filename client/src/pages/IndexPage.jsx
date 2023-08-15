@@ -73,13 +73,6 @@ const IndexPage = () => {
     getVoucher();
     console.log('Load index page');
   }, []);
-  if (user && user.role === 'Admin')
-    return <Navigate to={'/admin'} />;
-  if (user && user.role === 'Customer')
-    return (
-      <div className='mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
-      </div>
-    );
   return (
     <>
 
@@ -111,7 +104,7 @@ const IndexPage = () => {
         <ul className='list-none flex flex-wrap justify-center'>
           {combo.length > 0 && combo.map((comboItem) => (
 
-            <li className='m-10 p-10 '>
+            <li key={comboItem._id} className='m-10 p-10 '>
 
               <div className='product-list-container' key={comboItem._id}>
                 <div className='product-card'><a href={`/combo/${comboItem._id}`}>
@@ -121,7 +114,7 @@ const IndexPage = () => {
                   <p className='product-price'>Price: {comboItem.price}</p>
                   <br></br>
                   <a className='addbtn' href=''>Add to cart</a>
-                  <Link class='addbtn' to={`/combo/${comboItem._id}`}>More details</Link>
+                  <Link className='addbtn' to={`/combo/${comboItem._id}`}>More details</Link>
                 </div>
               </div>
 
@@ -142,17 +135,16 @@ const IndexPage = () => {
         <ul className='list-none flex flex-wrap justify-center'>
           {pizza.length > 0 && pizza.map((pizzaItem) => (
 
-            <li className='m-10 p-10 '>
+            <li key={pizzaItem._id} className='m-10 p-10 '>
 
               <div className='product-list-container' key={pizzaItem._id}>
                 <div className='product-card'><a href={`/pizza/${pizzaItem._id}`}>
                   <img src={pizzaItem.image} alt={pizzaItem.name} /></a>
                   <strong className='product-title'>Name: {pizzaItem.name}</strong>
                   <p className='product-description'>Type: {getPizzaTypeName(pizzaItem.pizzaTypeId)}</p>
-                  <p className='product-price'>Size: {pizzaItem.pizzaSize}</p>
                   <p className='product-price'>Price: {pizzaItem.price}</p>
                   <br></br>
-                  <a className='addbtn' href=''>Add to cart</a> <Link class='addbtn' to={`/pizza/${pizzaItem._id}`}>More
+                  <a className='addbtn' href=''>Add to cart</a> <Link className='addbtn' to={`/pizza/${pizzaItem._id}`}>More
                     details</Link>
                 </div>
               </div>
@@ -174,7 +166,7 @@ const IndexPage = () => {
         <ul className='list-none flex flex-wrap justify-center'>
           {voucher.length > 0 && voucher.map((voucherItem) => (
 
-            <li className='m-10 p-10 '>
+            <li key={voucherItem._id} className='m-10 p-10 '>
 
               <div className='product-list-container' key={voucherItem._id}>
                 <div className='product-card'><a href='/pizza/${pizzaItem._id}'>
@@ -185,7 +177,7 @@ const IndexPage = () => {
                   <p className='product-price'>Discount amount: {voucherItem.discount}</p>
                   <p className='product-price'>Minimum price required: {voucherItem.priceRequired}</p>
                   <br></br>
-                  <Link class='addbtn' to='`/pizza/${pizzaItem._id}`'>More details</Link>
+                  <Link className='addbtn' to='`/pizza/${pizzaItem._id}`'>More details</Link>
                 </div>
               </div>
 
