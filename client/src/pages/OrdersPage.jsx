@@ -1,60 +1,114 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import AccountNav from '../components/AccountNav';
-import { getItemFromLocalStorage } from '../utils';
+import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
-import OrderCard from '../components/OrderCard.jsx';
-import AddIcon from '@mui/icons-material/Add';
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const formatDate = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  };
+
+  const fetchOrders = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get("/order/user-orders");
+      setOrders(response.data.orders);
+    } catch (error) {
+      console.log(error.response);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    const token = getItemFromLocalStorage('token');
-    const getOrders = async () => {
-      try {
-        const { data } = await axios.get('orders/user-orders', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setOrders(data);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getOrders();
+    fetchOrders();
   }, []);
 
-  if (loading) {
-    return <Spinner />;
-  }
+  const handleViewDetail = (orderId) => {
+    navigate(`/order/${orderId}`);
+  };
 
   return (
-    <div>
-      <AccountNav />
-      {/* flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:scale-105 transition transform duration-200 ease-out */}
-      <div className="text-center hover:scale-110 transition transform duration-200 ease-out">
-        <Link
-          className="inline-flex gap-1 bg-primary hover:bg-red-700 transition mb-5 text-white py-2 px-6 rounded-full"
-          to={'/account/orders/new'}
-        >
-          <AddIcon />
-          Add new order
-        </Link>
-      </div>
+    <div className="p-4">
+      <h2 className="text-2xl font-bold my-4 flex justify-center">
+        Order History
+      </h2>
 
-      <div className="mt-4 flex flex-wrap">
-        {orders.length > 0 &&
-          orders.map((order) => (
-            <div className="sm:w-1/2 md:w-1/3 lg:w-1/4" key={order._id}>
-              <OrderCard order={order} />
-            </div>
-          ))}
-      </div>
+      {loading && (
+        <div className="w-full flex justify-center mt-12">
+          <Spinner />
+        </div>
+      )}
+
+      {!loading && (
+        <>
+          <table className="w-full">
+            <thead>
+            <tr>
+              <th className="py-2 px-4">Order ID</th>
+              <th className="py-2 px-4">Time</th>
+              <th className="py-2 px-4">Final Price</th>
+              <th className="py-2 px-4">Status</th>
+              <th className="py-2 px-4">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {orders.map((order) => (
+              <tr key={order._id}>
+                <td className="py-2 px-4">
+                  <div className="w-full flex justify-center">
+                    {order._id}
+                  </div>
+                </td>
+                <td className="py-2 px-4">
+                  <div className="w-full flex justify-center">
+                    {formatDate(order.createdAt)}
+                  </div>
+                </td>
+                <td className="py-2 px-4">
+                  <div className="w-full flex justify-center">
+                    {new Intl.NumberFormat().format(
+                      order.finalPrice
+                    )}
+                    <span className="text-sm text-red-500">
+                                                đ
+                                            </span>
+                  </div>
+                </td>
+                <td className="py-2 px-4">
+                  <div className="w-full flex justify-center">
+                    {order.orderStatus}
+                  </div>
+                </td>
+                <td className="py-2 px-4">
+                  <div className="w-full flex justify-center">
+                    <button
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      onClick={() =>
+                        handleViewDetail(order._id)
+                      }
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+            </tbody>
+          </table>
+        </>
+      )}
     </div>
   );
 };

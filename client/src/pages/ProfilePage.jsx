@@ -42,7 +42,7 @@ const ProfilePage = () => {
       <AccountNav />
       {subpage === 'profile' && (
         <div className="text-center max-w-lg mx-auto ">
-          Logged in as {user.name} ({user.email})
+          Logged in
           <br />
           <button
             className="primary max-w-sm mt-4 hover:bg-red-700 hover:scale-110 transition transform duration-200 ease-out"
@@ -53,7 +53,7 @@ const ProfilePage = () => {
           </button>
         </div>
       )}
-      {subpage === 'places' && <OrdersPage />}
+      {subpage === 'orders' && <OrderHistoryPage />}
     </div>
   );
 };
