@@ -15,6 +15,11 @@ import SideDishPage from './pages/SideDishPage';
 import PizzaToppingPage from './pages/PizzaToppingPage';
 import VoucherPage from './pages/VoucherPage';
 
+import PizzaListPage from './pages/PizzaListPage';
+import ComboListPage from './pages/ComboListPage';
+import SideDishesListPage from './pages/SideDishesListPage';
+import PizzaToppingListPage from './pages/PizzaToppingListPage';
+
 import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
@@ -25,6 +30,8 @@ import NotFound from './pages/ErrorPage/NotFound';
 import React, { createContext } from 'react';
 import './styles/App.css';
 import { MapProvider } from './providers/MapProvider.jsx';
+
+const token = getItemFromLocalStorage('token');
 
 axios.defaults.baseURL = 'http://localhost:8001';
 axios.defaults.withCredentials = true;
@@ -58,6 +65,10 @@ function App() {
                 <Route path='/cart' element={<CartPage />} />
                 <Route path='/order' element={<OrderPage />} />
                 <Route path='/order/:id' element={<OrderDetailPage />} />
+                <Route path='/combo-list' element={<ComboListPage />} />
+                <Route path='/pizza-list' element={<PizzaListPage />} />
+                <Route path='/side-dish-list' element={<SideDishesListPage />} />
+                <Route path='/pizza-topping-list' element={<PizzaToppingListPage />} />
                 <Route path='*' element={<NotFound />} />
               </Route>
             </Routes>
