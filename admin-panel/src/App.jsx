@@ -39,6 +39,7 @@ import ComboCreate from './components/combo/ComboCreate.jsx';
 
 import theme from "./themes/mui";
 import { MyLayout } from './components/MyLayout.jsx';
+import Dashboard from './dashboard/Dashboard.jsx';
 
 const VITE_APP_BASE_URL =
   import.meta.env.VITE_APP_BASE_URL || "http://localhost:8001";
@@ -60,9 +61,12 @@ function App() {
     <Admin
       theme={lightTheme}
       darkTheme={darkTheme}
+      defaultTheme={lightTheme}
       authProvider={authProvider}
       dataProvider={simpleRestProvider(VITE_APP_BASE_URL, httpClient)}
       layout={MyLayout}
+      dashboard={Dashboard}
+      // dashboard={Dashboard}
     >
       <Resource
         name="user"
