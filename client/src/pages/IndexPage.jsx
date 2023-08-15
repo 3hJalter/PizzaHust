@@ -145,14 +145,14 @@ const IndexPage = () => {
             <li className='m-10 p-10 '>
 
               <div className='product-list-container' key={pizzaItem._id}>
-                <div className='product-card'><a href='/pizza/${pizzaItem._id}'>
+                <div className='product-card'><a href={`/pizza/${pizzaItem._id}`}>
                   <img src={pizzaItem.image} alt={pizzaItem.name} /></a>
                   <strong className='product-title'>Name: {pizzaItem.name}</strong>
                   <p className='product-description'>Type: {getPizzaTypeName(pizzaItem.pizzaTypeId)}</p>
                   <p className='product-price'>Size: {pizzaItem.pizzaSize}</p>
                   <p className='product-price'>Price: {pizzaItem.price}</p>
                   <br></br>
-                  <a className='addbtn' href=''>Add to cart</a> <Link class='addbtn' to='`/pizza/${pizzaItem._id}`'>More
+                  <a className='addbtn' href=''>Add to cart</a> <Link class='addbtn' to={`/pizza/${pizzaItem._id}`}>More
                     details</Link>
                 </div>
               </div>

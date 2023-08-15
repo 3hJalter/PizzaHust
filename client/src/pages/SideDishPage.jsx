@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
-
 import { Button } from '@mui/material';
+import { useParams } from 'react-router-dom';
 
-const SideDishPage = ({ id }) => {
+const SideDishPage = () => {
+  const {id} = useParams();
   const token = getItemFromLocalStorage('token');
   const [sideDish, setSideDish] = useState([]);
   const [sideDishType, setSideDishType] = useState([]);
