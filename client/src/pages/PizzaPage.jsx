@@ -10,6 +10,8 @@ const PizzaPage = () => {
   const token = getItemFromLocalStorage('token');
   const [pizza, setPizza] = useState([]);
   const [pizzaType, setPizzaType] = useState([]);
+  const [topping, setTopping] = useState([]);
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
   const getPizzaData = async (id) => {
     try {
@@ -45,7 +47,7 @@ const PizzaPage = () => {
     if (pizza && pizza.pizzaTypeId) {
       getPizzaType(pizza.pizzaTypeId);
     }
-  }, []);
+  }, [id, pizza.pizzaTypeId]);
 
   const addToCart = async () => {
     try {
@@ -57,7 +59,7 @@ const PizzaPage = () => {
         price: pizza.price,
         quantity: 1,
         size: pizza.pizzaSize,
-        toppingList: [],
+        toppingList: topping,
       },
       {
         headers: {
@@ -66,6 +68,7 @@ const PizzaPage = () => {
       });
 
       console.log('Pizza added to cart:', response.data);
+      setSuccessMessageVisible(true);
       // Update UI, show success message, etc.
 
     } catch (error) {
@@ -107,6 +110,9 @@ const PizzaPage = () => {
           </div>
 
           <Button variant="contained" onClick={addToCart}>Add to card</Button>
+          {successMessageVisible && (
+            <div style={{ color: 'green' }}>Pizza added to cart successfully!</div>
+          )}
         </div>
 
       </div>
