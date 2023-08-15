@@ -5,15 +5,15 @@ import {
   NumberInput,
   TabbedForm,
   TextInput,
-  required, ReferenceInput, SelectInput,
+  required,
 } from 'react-admin';
 
 const userDefaultValue = () => ({ targetId: "", targetIndex: null });
 
-const PizzaEdit = (props) => {
+const PizzaSizeEdit = (props) => {
   return (
     <Edit
-      title="Edit the pizza "
+      title="Edit the pizza size"
       // mutationMode="pessimistic"
       {...props}
     >
@@ -24,23 +24,11 @@ const PizzaEdit = (props) => {
           </Typography>
           <TextInput source="id" fullWidth disabled />
           <TextInput source="name" fullWidth validate={required()} />
-          <NumberInput source={"price"} fullWidth validate={required()} />
-          <TextInput source="description" fullWidth validate={required()} />
-          <ReferenceInput
-            source="pizzaTypeId"
-            reference="pizzaType"
-            label="Pizza Type"
-            perPage={100}
-            fullWidth
-            validate={required()}
-          >
-            <SelectInput optionText="name" />
-          </ReferenceInput>
-          <TextInput source="image" fullWidth validate={required()} />
+          <NumberInput source="priceMultiple" fullWidth validate={required()} />
         </FormTab>
       </TabbedForm>
     </Edit>
   );
 };
 
-export default PizzaEdit;
+export default PizzaSizeEdit;

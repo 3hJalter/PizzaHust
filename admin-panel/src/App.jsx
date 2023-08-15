@@ -40,6 +40,9 @@ import ComboCreate from './components/combo/ComboCreate.jsx';
 import theme from "./themes/mui";
 import { MyLayout } from './components/MyLayout.jsx';
 import Dashboard from './dashboard/Dashboard.jsx';
+import PizzaSizeCreate from './components/pizzaSize/PizzaSizeCreate.jsx';
+import PizzaSizeList from './components/pizzaSize/pizzaSizeList.jsx';
+import PizzaSizeEdit from './components/pizzaSize/PizzaSizeEdit.jsx';
 
 const VITE_APP_BASE_URL =
   import.meta.env.VITE_APP_BASE_URL || "http://localhost:8001";
@@ -91,6 +94,12 @@ function App() {
         list={PizzaTypeList}
         create={PizzaTypeCreate}
         edit={PizzaTypeEdit}
+      />
+      <Resource
+        name="pizzaSize"
+        list={PizzaSizeList}
+        create={PizzaSizeCreate}
+        edit={PizzaSizeEdit}
       />
       <Resource
         name="pizza"

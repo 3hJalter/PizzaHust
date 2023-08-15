@@ -16,27 +16,39 @@ exports.addProduct = async (req, res) => {
     const productData = req.body;
     if (productData.type === 'pizza') {
       const sameIdProductList = cart.productList.filter(
-        (product) => product.productId.toString() === productData.productId
-        );
+        (product) => product.productId.toString() === productData.productId,
+      );
       if (sameIdProductList.length === 0) {
+        let multiplePrice = 1;
+        switch (productData.size) {
+          case 'M':
+            multiplePrice = 1.5;
+            break;
+          case 'L':
+            multiplePrice = 2;
+            break;
+          default:
+            multiplePrice = 1;
+        }
+        const totalPrice = multiplePrice * productData.price;
         const newProduct = {
           _id: new mongoose.Types.ObjectId(),
           name: productData.name,
-          price: productData.price,
+          price: totalPrice,
           quantity: productData.quantity,
           productId: new mongoose.Types.ObjectId(productData.productId),
           type: productData.type,
           size: productData.size,
-          toppingList: productData.toppingList
+          toppingList: productData.toppingList,
         };
         cart.productList.push(newProduct);
       } else {
         // Find products with same topping list, if not, then create new
         let check = false;
         for (let i = 0; i < sameIdProductList.length; i++) {
-          let string1 = JSON.stringify(sameIdProductList[i].toppingList.sort())
-          let string2 = JSON.stringify(productData.toppingList.sort())
-          if (string1 === string2) {
+          let string1 = JSON.stringify(sameIdProductList[i].toppingList.sort());
+          let string2 = JSON.stringify(productData.toppingList.sort());
+          if (string1 === string2 && productData.name === sameIdProductList[i].name) {
             let index = cart.productList.findIndex(
               (product) => JSON.stringify(product.toppingList.sort()) === JSON.stringify(productData.toppingList.sort()));
             cart.productList[index].quantity += 1;
@@ -45,27 +57,38 @@ exports.addProduct = async (req, res) => {
           }
         }
         if (!check) {
+          let multiplePrice = 1;
+          switch (productData.size) {
+            case 'M':
+              multiplePrice = 1.5;
+              break;
+            case 'L':
+              multiplePrice = 2;
+              break;
+            default:
+              multiplePrice = 1;
+          }
+          const totalPrice = multiplePrice * productData.price;
           const newProduct = {
             _id: new mongoose.Types.ObjectId(),
             name: productData.name,
-            price: productData.price,
+            price: totalPrice,
             quantity: productData.quantity,
             productId: new mongoose.Types.ObjectId(productData.productId),
             type: productData.type,
             size: productData.size,
-            toppingList: productData.toppingList
+            toppingList: productData.toppingList,
           };
           cart.productList.push(newProduct);
         }
       }
-    }
-    else {
+    } else {
       let productIndex = cart.productList.findIndex(
         (product) => {
           let stringId = product.productId.toString();
           return stringId === productData.productId;
-        }
-      )
+        },
+      );
       if (productIndex !== -1) {
         cart.productList[productIndex].quantity += 1;
       } else {
@@ -75,7 +98,7 @@ exports.addProduct = async (req, res) => {
           price: productData.price,
           quantity: 1,
           productId: new mongoose.Types.ObjectId(productData.productId),
-          type: productData.type
+          type: productData.type,
         };
         cart.productList.push(newProduct);
       }
@@ -91,7 +114,7 @@ exports.addProduct = async (req, res) => {
       error: err,
     });
   }
-}
+};
 
 exports.removeProduct = async (req, res) => {
   try {
@@ -109,7 +132,7 @@ exports.removeProduct = async (req, res) => {
 
     // Find the index of the product with the matching ID in the cart's productList array
     const productIndex = cart.productList.findIndex(
-      (product) => product._id.toString() === productIdToRemove
+      (product) => product._id.toString() === productIdToRemove,
     );
 
     // If the product is not found in the cart, return an error response
@@ -138,7 +161,7 @@ exports.removeProduct = async (req, res) => {
       error: err.toString(),
     });
   }
-}
+};
 
 exports.userCart = async (req, res) => {
   try {

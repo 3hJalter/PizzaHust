@@ -103,6 +103,7 @@ router.use('/combo', require('./combo'));
 router.use('/order', require('./order'));
 router.use('/pizza', require('./pizza'));
 router.use('/pizzaType', require('./pizzaType'))
+router.use('/pizzaSize', require('./pizzaSize'));
 router.use('/pizzaTopping', require('./pizzaTopping'));
 router.use('/sideDish', require('./sideDish'));
 router.use('/sideDishType', require('./sideDishType'));

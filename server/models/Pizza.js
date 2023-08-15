@@ -5,10 +5,6 @@ const pizzaSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  pizzaSize: {
-    type: String,
-    required: true,
-  },
   pizzaTypeId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'pizzaTypes',
