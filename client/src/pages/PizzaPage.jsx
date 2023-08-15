@@ -1,9 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
 import { Button } from '@mui/material';
+import { useParams } from 'react-router-dom';
 
-const PizzaPage = ({ id }) => {
+const PizzaPage = () => {
+  const {id} = useParams();
   const token = getItemFromLocalStorage('token');
   const [pizza, setPizza] = useState([]);
   const [pizzaType, setPizzaType] = useState([]);

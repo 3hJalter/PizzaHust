@@ -8,14 +8,13 @@ import CartPage from './pages/CartPage';
 import OrderPage from './pages/OrderPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import OrderDetailPage from './pages/OrderDetailPage';
-import axios from 'axios';
-
 
 import PizzaPage from './pages/PizzaPage';
 import ComboPage from './pages/ComboPage';
 import SideDishPage from './pages/SideDishPage';
 import PizzaToppingPage from './pages/PizzaToppingPage';
 
+import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
