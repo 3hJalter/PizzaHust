@@ -9,6 +9,13 @@ import OrderPage from './pages/OrderPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import OrderDetailPage from './pages/OrderDetailPage';
 import axios from 'axios';
+
+
+import PizzaPage from './pages/PizzaPage';
+import ComboPage from './pages/ComboPage';
+import SideDishPage from './pages/SideDishPage';
+import PizzaToppingPage from './pages/PizzaToppingPage';
+
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,11 +47,10 @@ function App() {
             <Routes>
               <Route path='/' element={<Layout /> }>
                 <Route index element={<IndexPage />} />
-                <Route path='/combo/:id' element={<ComboPage/>} />
                 <Route path='/login' element={<LoginPage />} />
-                <Route path='/combo' element={<ComboPage />} />
-                <Route path='/pizza' element={<PizzaPage />} />
-                <Route path='/sideDish' element={<SideDishPage />} />
+                <Route path='/combo/:id' element={<ComboPage />} />
+                <Route path='/pizza/:id' element={<PizzaPage />} />
+                <Route path='/sideDish/:id' element={<SideDishPage />} />
                 <Route path='/pizzaTopping' element={<PizzaToppingPage />} />
                 <Route path='/voucher' element={<SideDishPage />} />
                 <Route path='/register' element={<RegisterPage />} />
