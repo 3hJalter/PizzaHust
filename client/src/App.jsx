@@ -67,8 +67,8 @@ function App() {
                 <Route path='/order/:id' element={<OrderDetailPage />} />
                 <Route path='/combo-list' element={<ComboListPage />} />
                 <Route path='/pizza-list' element={<PizzaListPage />} />
-                <Route path='/side-dish-list' element={<SideDishesListPage />} />
-                <Route path='/pizza-topping-list' element={<PizzaToppingListPage />} />
+                <Route path='/sideDish-list' element={<SideDishesListPage />} />
+                <Route path='/pizzaTopping-list' element={<PizzaToppingListPage />} />
                 <Route path='*' element={<NotFound />} />
               </Route>
             </Routes>
