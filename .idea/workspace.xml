@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="CRUD for all collections except Order">
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Fix Trung and Quang bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaTypeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/sideDishController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sideDishController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/sideDishTypeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/sideDishTypeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +15,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="vuhonghai" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -35,7 +38,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/Class/Week10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/PizzaHust/admin-panel/src/components/combo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -56,17 +59,27 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin\components" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\pages\Admin" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient\src" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient\src\providers" />
-      <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\combo" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\pizza" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\sideDish" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components" />
+      <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\pizzaTopping" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev client">
+  <component name="RunManager" selected="npm.server dev">
+    <configuration name="admin dev" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/admin-panel/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev client" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/client/package.json" />
       <command value="run" />
@@ -87,6 +100,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.dev client" />
+      <item itemvalue="npm.server dev" />
+      <item itemvalue="npm.admin dev" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -121,6 +139,30 @@
       <workItem from="1686296548921" duration="350000" />
       <workItem from="1686300981598" duration="207000" />
       <workItem from="1686301983621" duration="294000" />
+      <workItem from="1687097213853" duration="1062000" />
+      <workItem from="1687393741550" duration="15000" />
+      <workItem from="1687824493555" duration="2248000" />
+      <workItem from="1687833487715" duration="3316000" />
+      <workItem from="1687918728236" duration="67000" />
+      <workItem from="1688072084830" duration="1231000" />
+      <workItem from="1688091805139" duration="6407000" />
+      <workItem from="1688221229684" duration="2334000" />
+      <workItem from="1688355750754" duration="1174000" />
+      <workItem from="1688361583299" duration="13619000" />
+      <workItem from="1688443455402" duration="634000" />
+      <workItem from="1688445779513" duration="257000" />
+      <workItem from="1688553600763" duration="459000" />
+      <workItem from="1688649605484" duration="107000" />
+      <workItem from="1688895021974" duration="14000" />
+      <workItem from="1689168365644" duration="26000" />
+      <workItem from="1690881327914" duration="2046000" />
+      <workItem from="1690883648579" duration="2001000" />
+      <workItem from="1691082392603" duration="5992000" />
+      <workItem from="1691134848322" duration="4017000" />
+      <workItem from="1691146507878" duration="4354000" />
+      <workItem from="1691159754113" duration="8241000" />
+      <workItem from="1691208259835" duration="7993000" />
+      <workItem from="1692021939908" duration="5612000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -157,13 +199,96 @@
       <option name="project" value="LOCAL" />
       <updated>1686240410263</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix Cart and Order">
+      <created>1688360592074</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1688360592074</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fix Cart">
+      <created>1688443567750</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1688443567750</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix Order Schema">
+      <created>1688554047061</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1688554047061</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add removeProduct method for Cart">
+      <created>1690883380337</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1690883380337</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add user method to react-admin panel">
+      <created>1691088331228</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1691088331228</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)">
+      <created>1691146754737</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1691146754737</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fix user Role bugs">
+      <created>1691149787410</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1691149787410</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add order method for admin-panel">
+      <created>1691151518278</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1691151518278</updated>
+    </task>
+    <task id="LOCAL-00014" summary="All CRUD products for admin">
+      <created>1691215405684</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1691215405684</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/menu-page-thanh" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -191,22 +316,18 @@
     <MESSAGE value="Complete Connect API to Admin Combo" />
     <MESSAGE value="Read Information of all attributes in admin page" />
     <MESSAGE value="CRUD for all collections except Order" />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD for all collections except Order" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/voucherController.js</url>
-          <line>64</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/controllers/userController.js</url>
-          <line>50</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Update Cart" />
+    <MESSAGE value="Fix Cart and Order" />
+    <MESSAGE value="Fix Cart" />
+    <MESSAGE value="Fix Order Schema" />
+    <MESSAGE value="Add removeProduct method for Cart" />
+    <MESSAGE value="Add user method to react-admin panel" />
+    <MESSAGE value="Add voucher, pizzaTopping method to react-admin panel; modify createOrder(clear cart product after create order)" />
+    <MESSAGE value="Fix user Role bugs" />
+    <MESSAGE value="Add order method for admin-panel" />
+    <MESSAGE value="All CRUD products for admin" />
+    <MESSAGE value="Fix Trung and Quang bugs" />
+    <MESSAGE value="Fix navigate on Combo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix navigate on Combo" />
   </component>
 </project>

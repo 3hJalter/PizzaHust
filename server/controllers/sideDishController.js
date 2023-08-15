@@ -10,7 +10,7 @@ exports.addSideDish = async (req, res) => {
         message: 'You are not authorized to add a side dish',
       });
     }
-    const sideDishData = req.body.sideDish;
+    const sideDishData = req.body;
     const sideDish = await SideDish.create({
       name: sideDishData.name,
       sideDishTypeId: sideDishData.sideDishTypeId,
@@ -20,7 +20,6 @@ exports.addSideDish = async (req, res) => {
     });
     res.status(200).json({
       sideDish,
-      message: 'Side dish added successfully',
     });
   } catch (err) {
     res.status(500).json({
@@ -33,9 +32,10 @@ exports.addSideDish = async (req, res) => {
 exports.getSideDishes = async (req, res) => {
   try {
     const sideDishes = await SideDish.find();
-    res.status(200).json({
-      sideDishes,
-    });
+    const formattedSideDishes = sideDishes.map(sideDish => ({ ...sideDish._doc, id: sideDish._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${sideDishes.length}`);
+    res.status(200).json(formattedSideDishes);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -51,22 +51,21 @@ exports.updateSideDish = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const sideDishData = req.body.sideDish;
+    const sideDishData = req.body;
     const sideDish = await SideDish.findById(sideDishData.id);
     if (!sideDish) {
       return res.status(400).json({
         message: 'Side dish not found',
       });
     }
-    sideDish.name = sideDishData.name;
-    sideDish.sideDishTypeId = sideDishData.sideDishTypeId;
-    sideDish.price = sideDishData.price;
-    sideDish.description = sideDishData.description;
-    sideDish.image = sideDishData.image;
-    await sideDish.save();
-    res.status(200).json({
-      message: 'Side dish updated!',
+    Object.keys(sideDishData).forEach(key => {
+      if (sideDishData[key] !== undefined) {
+        sideDish[key] = sideDishData[key];
+      }
     });
+    await sideDish.save();
+    const formattedType = { ...sideDish._doc, id: sideDish._id };
+    res.status(200).json(formattedType);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -84,9 +83,10 @@ exports.getSideDishById = async (req, res) => {
         message: 'Side dish not found',
       });
     }
-    res.status(200).json({
-      sideDish,
-    });
+    const formattedType = { ...sideDish._doc, id: sideDish._id };
+    res.status(200).json(
+      formattedType
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

@@ -6,19 +6,27 @@ const comboSchema = new mongoose.Schema({
     required: true,
   },
   pizzaListId: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'pizzas',
-    required: true,
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'pizzas',
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
   }],
   sideDishListId: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'sideDishes',
-    required: true,
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'sideDishes',
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
   }],
-  discount: {
-    type: Number,
-    required: true,
-  },
   price: {
     type: Number,
     required: true,
@@ -29,7 +37,7 @@ const comboSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-  }
+  },
 });
 
 const Combo = mongoose.model('Combo', comboSchema);

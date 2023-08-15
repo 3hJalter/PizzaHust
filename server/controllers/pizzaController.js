@@ -10,7 +10,7 @@ exports.addPizza = async (req, res) => {
         message: 'You are not authorized to add a pizza',
       });
     }
-    const pizzaData = req.body.pizzaData;
+    const pizzaData = req.body;
     const pizza = await Pizza.create({
       name: pizzaData.name,
       pizzaSize: pizzaData.pizzaSize,
@@ -20,8 +20,7 @@ exports.addPizza = async (req, res) => {
       image: pizzaData.image,
     });
     res.status(200).json({
-      pizza,
-      message: 'Pizza added successfully',
+      pizza
     });
   } catch (err) {
     res.status(500).json({
@@ -34,9 +33,10 @@ exports.addPizza = async (req, res) => {
 exports.getPizzas = async (req, res) => {
   try {
     const pizzas = await Pizza.find();
-    res.status(200).json({
-      pizzas,
-    });
+    const formattedPizzas = pizzas.map(pizza => ({ ...pizza._doc, id: pizza._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${pizzas.length}`);
+    res.status(200).json(formattedPizzas);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -52,23 +52,21 @@ exports.updatePizza = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const pizzaData = req.body.pizzaData;
+    const pizzaData = req.body;
     const pizza = await Pizza.findById(pizzaData.id);
     if (!pizza) {
       return res.status(400).json({
         message: 'Pizza not found',
       });
     }
-    pizza.name = pizzaData.name;
-    pizza.pizzaSize = pizzaData.pizzaSize;
-    pizza.pizzaTypeId = pizzaData.pizzaTypeId;
-    pizza.price = pizzaData.price;
-    pizza.description = pizzaData.description;
-    pizza.image = pizzaData.image;
-    await pizza.save();
-    res.status(200).json({
-      message: 'Pizza updated!',
+    Object.keys(pizzaData).forEach(key => {
+      if (pizzaData[key] !== undefined) {
+        pizza[key] = pizzaData[key];
+      }
     });
+    await pizza.save();
+    const formattedType = { ...pizza._doc, id: pizza._id };
+    res.status(200).json(formattedType);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -86,9 +84,10 @@ exports.getPizzaById = async (req, res) => {
         message: 'Pizza not found',
       });
     }
-    res.status(200).json({
-      pizza,
-    });
+    const formattedType = { ...pizza._doc, id: pizza._id };
+    res.status(200).json(
+      formattedType
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

@@ -9,15 +9,16 @@ const {
   logout,
   getUsers,
   deleteProfile,
-  getUserById,
+  getUserById, getUser,
 } = require('../controllers/userController');
 
 router.route('/').get(getUsers)
+router.route('/getUserFromToken').get(getUser)
 router.route('/register').post(register);
 router.route('/login').post(login);
-router.route('/profile').get(profile);
-router.route('/profile:id').delete(deleteProfile).get(getUserById);
-router.route('/profile:id').put(updateProfile)
+router.route('/:id').get(getUserById);
+router.route('/:id').delete(deleteProfile);
+router.route('/:id').put(updateProfile)
 router.route('/logout').post(logout);
 
 module.exports = router;

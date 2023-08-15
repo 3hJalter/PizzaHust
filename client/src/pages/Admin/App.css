@@ -36,3 +36,84 @@
     transform: rotate(360deg);
   }
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: #ddd;
+}
+
+.product-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.product-card {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.product-card img {
+  width: 350px;
+  height: 250px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.product-title {
+  font-size: 25px;
+  margin: 0;
+}
+
+.product-description {
+  margin: 10px 0;
+}
+
+.product-price {
+  font-weight: bold;
+  margin: 0;
+}
+
+.addbtn {
+display: inline-block;
+padding: 10px 20px;
+background-color: rgb(251, 101, 101);
+color: #fff;
+text-decoration: none;
+border-radius: 4px;
+transition: background-color 0.3s ease;
+
+}
+.addbtn:hover {
+  background-color: red;
+}
+
+.productList{
+  text-align: center;
+}
+
+.titleh1 { color: #ff0000; font-family: 'Helvetica Neue', sans-serif; font-size: 275px; font-weight: bold; letter-spacing: -1px; line-height: 1;border-bottom: 10px; border-color:#ff0000; }
+.bgimg{
+  background-image: url('https://vcdn-dulich.vnecdn.net/2022/05/25/1-3152-1653443008.jpg');
+}
+.whitebg{ background-color: #FFFFFF; }

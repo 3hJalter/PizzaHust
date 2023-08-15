@@ -1,46 +1,72 @@
 const Order = require('../models/Order');
+const Cart = require('../models/Cart');
 const userFromToken = require('../utils/userFromToken');
 const Voucher = require('../models/Voucher');
-const Combo = require('../models/Combo');
-const Pizza = require('../models/Pizza');
-const PizzaTopping = require('../models/PizzaTopping');
-const SideDish = require('../models/SideDish');
 
 exports.addOrder = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    if (userData.role !== 'Customer') return res.status(403).json({
-      message: 'You are not authorized to create this order',
-    });
-    const orderData = req.body.orderData;
+    // const id = userData.id;
+    // const id = '64670433aac03b50b8029d73';
+    // if (userData.role !== 'Customer') return res.status(403).json({
+    //   message: 'You are not authorized to create this order',
+    // });
+    const cart = await Cart.findOne({ userId: userData.id });
+    let tPrice = cart.totalPrice
 
-    const comboListIds = orderData.comboListId;
-    const pizzaListIds = orderData.pizzaListId;
-    const pizzaToppingListIds = orderData.pizzaToppingListId;
-    const sideDishListIds = orderData.sideDishListId;
+    const orderData = req.body;
 
-    const comboList = await Combo.find({ _id: { $in: comboListIds } })
-      .select('name').select('price');
-    const pizzaList = await Pizza.find({ _id: { $in: pizzaListIds } })
-      .select('name').select('price');
-    const pizzaToppingList = await PizzaTopping.find({ _id: { $in: pizzaToppingListIds } })
-      .select('name').select('price');
-    const sideDishList = await SideDish.find({ _id: { $in: sideDishListIds } })
-      .select('name').select('price');
+    const voucher = await Voucher.findById(orderData.voucherId);
 
-    const voucher = await Voucher.findById(orderData.voucherId).select('name');
+    if (orderData.voucherId) {
+      // Check orderData.voucherId exist
+
+      // If no voucher found
+      if (!voucher)
+          return {
+              message: "No voucher code found!",
+          };
+
+
+      // Check min price required
+      if (cart.totalPrice > voucher.priceRequired) {
+          // Check price unit
+          if (voucher.type === "percent") {
+              // Check value to reduce amount
+              const reducedAmount =
+                  (cart.totalPrice * voucher.discount) / 100;
+
+              if (reducedAmount > cart.totalPrice) {
+                  tPrice -= cart.totalPrice;
+              } else {
+                  tPrice -= reducedAmount;
+              }
+          } else {
+              tPrice -= voucher.discount;
+          }
+      }
+      // discount.available -= 1;
+      // await voucher.save();
+  }
+
+    let fPrice = tPrice + orderData.shippingFee;
 
     const order = await Order.create({
-      comboList: comboList,
-      pizzaList: pizzaList,
-      pizzaToppingList: pizzaToppingList,
-      sideDishList: sideDishList,
-      voucher: voucher,
-      price: orderData.price,
-      orderStatus: orderData.orderStatus,
-      description: orderData.description,
+      productList: cart.productList,
+      orderPrice: orderData.orderPrice,
+      voucher: voucher.description,
+      totalPrice: tPrice,
+      shippingFee: orderData.shippingFee,
+      finalPrice: fPrice,
+      address: orderData.address,
+      orderStatus: "Pending",
       userId: userData.id,
+      phone: orderData.phone,
     });
+
+    cart.productList = [];
+    cart.totalPrice = 0;
+    await cart.save();
 
     res.status(200).json({
       order,
@@ -57,12 +83,20 @@ exports.addOrder = async (req, res) => {
 exports.getOrders = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    const orders = userData.role !== 'Customer' ?
+    // const id = '64670433aac03b50b8029d73';
+    // const role = 'Customer'
+    // const orders = role !== 'Customer' ?
+    //   await Order.find() :
+    //   await Order.find({ userId: id })
+    let orders;
+    orders = userData.role !== 'Customer' ?
       await Order.find() :
       await Order.find({ user: userData.id })
-    res.status(200).json({
-      orders,
-    });
+
+    const formattedOrders = orders.map(order => ({ ...order._doc, id: order._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${orders.length}`);
+    res.status(200).json(formattedOrders);
   } catch (err) {
     res.status(500).json({
         message: `Internal server error: ${err}`,
@@ -77,7 +111,7 @@ exports.updateOrder = async (req, res) => {
       message: 'You are not authorized to update this order',
     });
     const { id } = req.params;
-    const orderData = req.body.orderData;
+    const orderData = req.body;
     const order = await Order.findById(id);
     if (!order) {
       return res.status(400).json({
@@ -86,9 +120,8 @@ exports.updateOrder = async (req, res) => {
     }
     order.orderStatus = orderData.orderStatus;
     await order.save();
-    res.status(200).json({
-      message: 'Order updated!',
-    });
+    const formattedOrder = { ...order._doc, id: order._id };
+    res.status(200).json(formattedOrder);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -106,9 +139,8 @@ exports.getOrderById = async (req, res) => {
         message: 'Order not found',
       });
     }
-    res.status(200).json({
-      order,
-    });
+    const formattedOrder = { ...order._doc, id: order._id };
+    res.status(200).json(formattedOrder);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -120,7 +152,8 @@ exports.userOrders = async (req, res) => {
   try {
     const userData = userFromToken(req);
     const id = userData.id;
-    res.status(200).json(await Order.find({ userId: id }));
+    const orders = await Order.find({ userId: id })
+    res.status(200).json({orders});
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

@@ -9,16 +9,18 @@ exports.addVoucher = async (req, res) => {
         message: 'You are not authorized to add a voucher',
       });
     }
-    const voucherData = req.body.voucher;
+    const voucherData = req.body;
+
     const voucher = await Voucher.create({
+      name: voucherData.name,
       priceRequired: voucherData.priceRequired,
       discount: voucherData.discount,
       description: voucherData.description,
+      type: voucherData.type,
       image: voucherData.image,
     });
     res.status(200).json({
       voucher,
-      message: 'Voucher added successfully',
     });
   } catch (err) {
     res.status(500).json({
@@ -31,9 +33,10 @@ exports.addVoucher = async (req, res) => {
 exports.getVouchers = async (req, res) => {
   try {
     const vouchers = await Voucher.find();
-    res.status(200).json({
-      vouchers,
-    });
+    const formattedVoucher = vouchers.map(voucher => ({ ...voucher._doc, id: voucher._id }));
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    res.setHeader("Content-Range", `courses 0-20/${vouchers.length}`);
+    res.status(200).json(formattedVoucher);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -49,23 +52,21 @@ exports.updateVoucher = async (req, res) => {
         message: 'Not an admin account',
       });
     }
-    const voucherData = req.body.voucher;
+    const voucherData = req.body;
     const voucher = await Voucher.findById(voucherData.id);
     if (!voucher) {
       return res.status(400).json({
         message: 'Voucher not found',
       });
     }
-    voucher.name = voucherData.name;
-    voucher.type = voucherData.type;
-    voucher.priceRequired = voucherData.priceRequired;
-    voucher.discount = voucherData.discount;
-    voucher.description = voucherData.description;
-    voucher.image = voucherData.image;
-    await voucher.save();
-    res.status(200).json({
-      message: 'Voucher updated!',
+    Object.keys(voucherData).forEach(key => {
+      if (voucherData[key] !== undefined) {
+        voucher[key] = voucherData[key];
+      }
     });
+    await voucher.save();
+    const formattedVoucher = { ...voucher._doc, id: voucher._id };
+    res.status(200).json(formattedVoucher);
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
@@ -83,9 +84,10 @@ exports.getVoucherById = async (req, res) => {
         message: 'Voucher not found',
       });
     }
-    res.status(200).json({
-      voucher,
-    });
+    const formattedVoucher = { ...voucher._doc, id: voucher._id };
+    res.status(200).json(
+      formattedVoucher
+    );
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',

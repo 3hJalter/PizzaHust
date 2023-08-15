@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
-const opencage = require('opencage-api-client');
-
+const Pizza = require('../models/Pizza');
+const PizzaTopping = require('../models/PizzaTopping');
+const SideDish = require('../models/SideDish');
 // multer
-const upload = multer({ dest: '/temp' });
+const upload = multer({ dest: './temp' });
 
 router.get('/', (req, res) => {
   res.status(200).json({
@@ -13,35 +14,49 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/reverse-geocode', (req, res) => {
-    try {
-      const lat = req.query.lat;
-      const lng = req.query.lng;
-      opencage
-        .geocode({ q: `${lat}, ${lng}`, language: 'en' })
-        .then((data) => {
-          // console.log(JSON.stringify(data));
-          if (data.status.code === 200 && data.results.length > 0) {
-            const place = data.results[0];
-            const address = place.formatted;
-            res.status(200).json({ address });
-          } else {
-            res.status(400).json({ error: 'Unable to get address' });
-          }
-        })
-        .catch((error) => {
-          console.log('error', error.message);
-          if (error.status.code === 402) {
-            console.log('hit free trial daily limit');
-            console.log('become a customer: https://opencagedata.com/pricing');
-          }
-          res.status(500).json({ error: 'Internal server error' });
-        });
-    } catch (err) {
-      res.status(500).json({ error: 'Internal server error' });
+router.post('/search', async (req, res) => {
+  try {
+    const searchWord = req.body.key;
+    const type = req.body.type;
+    const searchRegex = new RegExp(searchWord, 'i');
+
+    if (searchWord === undefined || searchWord === '') {
+      return res.status(200).json([]);
     }
+
+    let searchMatches;
+    switch (type) {
+      case 'pizza':
+        searchMatches = await Pizza.find({
+          $or: [
+            { name: { $regex: searchRegex } },
+          ],
+        });
+        break;
+      case 'sideDish':
+        searchMatches = await SideDish.find({
+          $or: [
+            { name: { $regex: searchRegex } },
+          ],
+        });
+        break;
+      case 'pizzaTopping':
+        searchMatches = await PizzaTopping.find({
+          $or: [
+            { name: { $regex: searchRegex } },
+          ],
+        });
+        break;
+    }
+    res.status(200).json(searchMatches);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Internal server error',
+      error: err.toString()
+    });
   }
-);
+});
 
 // upload photo using image url
 router.post('/upload-by-link', async (req, res) => {
@@ -82,8 +97,8 @@ router.post('/upload', upload.array('photos', 100), async (req, res) => {
   }
 });
 
+router.use('/cart', require('./cart'));
 router.use('/user', require('./user'));
-router.use('/chatbot', require('./chatbot'));
 router.use('/combo', require('./combo'));
 router.use('/order', require('./order'));
 router.use('/pizza', require('./pizza'));

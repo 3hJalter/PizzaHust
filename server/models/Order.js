@@ -3,76 +3,61 @@ const mongoose = require('mongoose');
 // Must Re-write orderController.js.
 
 const orderSchema = new mongoose.Schema({
-  comboList: [{
-    id: {
+  productList: [{
+    _id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'combos',
-      required: true,
+    },
+    type: {
+      type: String,
+    },
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
     },
     name: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
-      required: true,
     },
-  }],
-  pizzaList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzas',
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
+    quantity: {
       type: Number,
-      required: true,
     },
+    toppingList: [{
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pizzaToppings',
+      },
+      name: {
+        type: String,
+      },
+      price: {
+        type: Number,
+      }
+    }]
   }],
-  pizzaToppingList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pizzaToppings',
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-  }],
-  sideDishList: [{
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'sideDishes',
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-  }],
-  voucher: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'vouchers',
-    },
-    name: {
-      type: String,
-    },
+  orderPrice: {
+    type: Number,
   },
-  price: {
+  voucher: {
+    type: String,
+  },
+  totalPrice: {
+    type: Number,
+    default: 0,
+  },
+  shippingFee: {
+    type: Number,
+    default: 22000,
+  },
+  finalPrice: {
+    type: Number,
+    default: 0,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  phone: {
     type: Number,
     required: true,
   },
@@ -81,10 +66,6 @@ const orderSchema = new mongoose.Schema({
     default: Date.now,
   },
   orderStatus: {
-    type: String,
-    required: true,
-  },
-  description: {
     type: String,
     required: true,
   },
