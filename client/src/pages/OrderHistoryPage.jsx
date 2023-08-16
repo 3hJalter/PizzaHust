@@ -6,7 +6,6 @@ import axios from "axios";
 const OrderHistoryPage = () => {
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
-    // const { toastError } = toastContext();
     const [loading, setLoading] = useState(false);
 
     const formatDate = (dateTimeString) => {
