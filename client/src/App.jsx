@@ -24,7 +24,6 @@ import NotFound from './pages/ErrorPage/NotFound';
 import React, { createContext } from 'react';
 import './styles/App.css';
 import { MapProvider } from './providers/MapProvider.jsx';
-import OrdersPage from './pages/OrdersPage.jsx';
 
 const token = getItemFromLocalStorage('token');
 
