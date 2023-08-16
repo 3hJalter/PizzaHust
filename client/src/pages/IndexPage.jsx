@@ -115,7 +115,7 @@ const IndexPage = () => {
 
       <ul className='list-none flex flex-wrap justify-center'>
         <li className='m-5 p-5'>
-          <a className='addbtn' href='/voucher/'>Vouchers</a>
+          <a className='addbtn' href='/voucher-list/'>Vouchers</a>
         </li>
         <li className='m-5 p-5'>
           <a className='addbtn' href='/combo-list/'>Combos</a>
@@ -124,10 +124,10 @@ const IndexPage = () => {
           <a className='addbtn' href='/pizza-list/'>Pizzas</a>
         </li>
         <li className='m-5 p-5'>
-          <a className='addbtn' href='/pizzaTopping/'>PizzaTopping</a>
+          <a className='addbtn' href='/pizzaTopping-list/'>PizzaTopping</a>
         </li>
         <li className='m-5 p-5'>
-          <a className='addbtn' href='/sideDish/'>Side Dishes</a>
+          <a className='addbtn' href='/sideDish-list/'>Side Dishes</a>
         </li>
 
       </ul>
