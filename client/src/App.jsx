@@ -19,6 +19,8 @@ import PizzaListPage from './pages/PizzaListPage';
 import ComboListPage from './pages/ComboListPage';
 import SideDishesListPage from './pages/SideDishesListPage';
 import PizzaToppingListPage from './pages/PizzaToppingListPage';
+import VoucherListPage from './pages/VoucherListPage';
+
 
 import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
@@ -68,6 +70,8 @@ function App() {
                 <Route path='/combo-list' element={<ComboListPage />} />
                 <Route path='/pizza-list' element={<PizzaListPage />} />
                 <Route path='/sideDish-list' element={<SideDishesListPage />} />
+                <Route path='/voucher-list' element={<VoucherListPage />} />
+
                 <Route path='/pizzaTopping-list' element={<PizzaToppingListPage />} />
                 <Route path='*' element={<NotFound />} />
               </Route>
