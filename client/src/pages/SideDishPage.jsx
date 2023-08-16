@@ -48,6 +48,31 @@ const SideDishPage = () => {
     }
   }, [id, sideDish]);
 
+  const addToCart = async () => {
+    try {
+      const response = await axios.patch('/cart/add-product', 
+      {
+        type: "side dish",
+        productId: sideDish._id,
+        name: sideDish.name,
+        price: sideDish.price,
+        quantity: 1,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log('Side dish added to cart:', response.data);
+      // Update UI, show success message, etc.
+
+    } catch (error) {
+      console.error('Error adding side dish to cart:', error.response.data);
+      // Handle error, show error message, etc.
+    }
+  };  
+
   return (
     <div className="mt-8 grid">
       <div className="grid grid-cols-5 mx-12 space-x-4 my-10">
@@ -76,7 +101,7 @@ const SideDishPage = () => {
             Description: {sideDish.description}
           </div>
 
-          <Button variant="contained">Add to card</Button>
+          <Button variant="contained" onClick={addToCart}>Add to card</Button>
         </div>
 
       </div>
