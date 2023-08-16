@@ -5,9 +5,7 @@ import axios from "axios";
 export default function CartPage() {
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [totalPrice, setTotalPrice] = useState(
-        // cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
-    );
+    const [totalPrice, setTotalPrice] = useState();
     const navigate = useNavigate();
     const toast = useRef(null);
 
@@ -62,9 +60,7 @@ export default function CartPage() {
                     <table className="min-w-full ">
                         <thead>
                             <tr>
-                                <th className="px-4 py-2 w-2/12">Name</th>
-                                <th className="px-4 py-2 w-2/12">Topping List</th>
-                                <th className="px-4 py-2">Type</th>
+                                <th className="px-4 py-2">Name</th>
                                 <th className="px-4 py-2">Quantity</th>
                                 <th className="px-4 py-2">Price</th>
                                 <th className="px-4 py-2">Action</th>
@@ -74,11 +70,6 @@ export default function CartPage() {
                             {cartItems?.map((item) => (
                                 <tr key={item._id} className="border-t last:border-b">
                                     <td className="px-4 py-2 text-center">{item.name}</td>
-                                    <td className="px-4 py-2 text-center">
-                                        {item.toppingList.map((topping) => (
-                                            <p key={topping._id}>{topping.name}</p>))}
-                                    </td>
-                                    <td className="px-4 py-2 text-center">{item.type}</td>
                                     <td className="px-4 py-2 text-center">
                                     {item.quantity}
                                     </td>

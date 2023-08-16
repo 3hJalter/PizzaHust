@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { UserContext } from '../providers/UserProvider';
-import OrdersPage from './OrdersPage.jsx';
 import AccountNav from '../components/AccountNav';
 import Spinner from '../components/Spinner';
 import { removeItemFromLocalStorage } from '../utils';
