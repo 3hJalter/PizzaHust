@@ -168,10 +168,6 @@ const ComboPage = () => {
           </div>
 
           <div>
-            Discount: {combo.discount}
-          </div>
-
-          <div>
             Description: {combo.description}
           </div>
 

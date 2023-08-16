@@ -34,7 +34,6 @@ export default function SideDishList(props) {
         <ReferenceField source="sideDishTypeId" reference="sideDishType">
           <TextField source="name" />
         </ReferenceField>
-        <TextField source="description" />
         <EditButton />
         <DeleteButton />
       </Datagrid>
