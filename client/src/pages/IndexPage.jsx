@@ -148,7 +148,6 @@ const IndexPage = () => {
                 <div className='product-card'><a href={`/combo/${comboItem._id}`}>
                   <img src={comboItem.image} alt={comboItem.name} /></a>
                   <strong className='product-title'>{comboItem.name}</strong>
-                  <p className='product-description'>{comboItem.description}</p>
                   <p className='product-price'>Price: {comboItem.price}</p>
                   <br></br>
                   <Link className='addbtn' to={`/combo/${comboItem._id}`}>More details</Link>
