@@ -19,11 +19,11 @@ const DropdownButton = () => {
             </button>
             {isOpen && (
                 <div className="dropdown-content">
-                    <Link className='' to = '/pizza'>Pizza</Link>
-                    <Link className='' to = '/sideDish'>Side Dishes</Link>
-                    <Link className='' to = '/combo'>Combo</Link>
-                    <Link className='' to = '/pizzaTopping'>Topping</Link>
-                    <Link className='' to = '/voucher'>Voucher</Link>
+                    <Link className='' to = '/pizza-list'>Pizza</Link>
+                    <Link className='' to = '/sideDish-list'>Side Dishes</Link>
+                    <Link className='' to = '/combo-list'>Combo</Link>
+                    <Link className='' to = '/pizzaTopping-list'>Topping</Link>
+                    <Link className='' to = '/voucher-list'>Voucher</Link>
                 </div>
             )}
         </div>
