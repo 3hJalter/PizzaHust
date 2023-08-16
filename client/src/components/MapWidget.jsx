@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
