@@ -4,24 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Add gitignore and Data Analysis to Admin">
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaSize/PizzaSizeCreate.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaSize/PizzaSizeEdit.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-panel/src/components/pizzaSize/pizzaSizeList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/pizzaSizeController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/PizzaSize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/pizzaSize.js" afterDir="false" />
+    <list default="true" id="167d90f1-a046-4691-b2b3-ac477e85324e" name="Changes" comment="Move OrderHistory to My Orders">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/pizza/PizzaCreate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/pizza/PizzaCreate.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-panel/src/components/pizza/PizzaEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/admin-panel/src/components/pizza/PizzaEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/AdminPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/AdminPage.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/App2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminComboPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminCombos.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminOrderPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminOrders.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminPizzaPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminPizzaToppingPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminPizzaToppings.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminPizzaTypePage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminPizzaTypes.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminPizzas.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminSideDishPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminSideDishTypePage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminSideDishTypes.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminSideDishes.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUserPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminUsers.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminVoucherPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/Pages/AdminVouchers.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/components/AdminHeader.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/components/AdminLayout.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin/components/AdminPanel.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/PizzaPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PizzaPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/PizzaToppingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PizzaToppingPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/CartController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/CartController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/pizzaController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/pizzaController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Pizza.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Pizza.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tailwind.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/client/tailwind.config.cjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,22 +58,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Code/Workspace/Web/PizzaHust/admin-panel/src/components",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "Ignore Files Support",
-    "ts.external.directory.path": "D:\\Code\\WebStorm 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Workspace/Web/PizzaHust/admin-panel/src/components&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Ignore Files Support&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Code\\WebStorm 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -80,11 +91,12 @@
       <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\components\sideDish" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code\Workspace\Web\PizzaHust\client\src\styles" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\admin-panel\src\dashboard" />
       <recent name="D:\Code\Workspace\Web\PizzaHust\adminClient" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server dev">
+  <component name="RunManager" selected="npm.dev client">
     <configuration name="admin dev" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/admin-panel/package.json" />
       <command value="run" />
@@ -181,7 +193,9 @@
       <workItem from="1692070716528" duration="2135000" />
       <workItem from="1692089207142" duration="5456000" />
       <workItem from="1692113723202" duration="78000" />
-      <workItem from="1692113840843" duration="5489000" />
+      <workItem from="1692113840843" duration="7474000" />
+      <workItem from="1692121765587" duration="419000" />
+      <workItem from="1692164151660" duration="3727000" />
     </task>
     <task id="LOCAL-00001" summary="Modify API and admin page">
       <created>1686020956846</created>
@@ -295,7 +309,21 @@
       <option name="project" value="LOCAL" />
       <updated>1692094628959</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fix Pizza Page">
+      <created>1692119479038</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1692119479038</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Move OrderHistory to My Orders">
+      <created>1692120468294</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1692120468294</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,15 +390,16 @@
     <MESSAGE value="Fix Trung and Quang bugs" />
     <MESSAGE value="Fix navigate on Combo" />
     <MESSAGE value="Add gitignore and Data Analysis to Admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add gitignore and Data Analysis to Admin" />
+    <MESSAGE value="Fix Pizza Page" />
+    <MESSAGE value="Move OrderHistory to My Orders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move OrderHistory to My Orders" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server/controllers/CartController.js</url>
-          <line>59</line>
-          <properties lambdaOrdinal="-1" />
+          <line>71</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>

@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../providers/UserProvider.jsx';
-import { Link, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getItemFromLocalStorage } from '../utils/index.js';
 import axios from 'axios';
-import './Admin/App.css';
+import '../styles/App2.css';
 
 const IndexPage = () => {
-  const { user } = useContext(UserContext);
   const token = getItemFromLocalStorage('token');
   const [pizza, setPizza] = useState([]);
   const [pizzaType, setPizzaType] = useState([]);
@@ -89,6 +87,9 @@ const IndexPage = () => {
           <a className='addbtn' href='/pizza/'>Pizzas</a>
         </li>
         <li className='m-5 p-5'>
+          <a className='addbtn' href='/pizzaTopping/'>PizzaTopping</a>
+        </li>
+        <li className='m-5 p-5'>
           <a className='addbtn' href='/sideDish/'>Side Dishes</a>
         </li>
 
@@ -97,23 +98,22 @@ const IndexPage = () => {
       <br></br>
       <br></br>
 
-      <h1 className='text-left text-6xl titleh1'>
-        Combo List
+      <h1 className='text-left text-3xl titleh1'>
+        Combo
       </h1>
       <div className='productList'>
-        <ul className='list-none flex flex-wrap justify-center'>
+        <ul className='list-none flex flex-wrap'>
           {combo.length > 0 && combo.map((comboItem) => (
 
-            <li key={comboItem._id} className='m-10 p-10 '>
+            <li key={comboItem._id} className='m-2 p-2 '>
 
               <div className='product-list-container' key={comboItem._id}>
                 <div className='product-card'><a href={`/combo/${comboItem._id}`}>
                   <img src={comboItem.image} alt={comboItem.name} /></a>
-                  <strong className='product-title'>Name: {comboItem.name}</strong>
-                  <p className='product-price'>Description: {comboItem.description}</p>
+                  <strong className='product-title'>{comboItem.name}</strong>
+                  <p className='product-description'>{comboItem.description}</p>
                   <p className='product-price'>Price: {comboItem.price}</p>
                   <br></br>
-                  <a className='addbtn' href=''>Add to cart</a>
                   <Link className='addbtn' to={`/combo/${comboItem._id}`}>More details</Link>
                 </div>
               </div>
@@ -126,16 +126,16 @@ const IndexPage = () => {
       <br></br>
       <br></br>
       <div className=''>
-        <h1 className='text-left text-6xl titleh1'>
-          Pizza List
+        <h1 className='text-left text-3xl titleh1'>
+          Pizza
         </h1>
       </div>
 
       <div className='productList'>
-        <ul className='list-none flex flex-wrap justify-center'>
+        <ul className='list-none flex flex-wrap'>
           {pizza.length > 0 && pizza.map((pizzaItem) => (
 
-            <li key={pizzaItem._id} className='m-10 p-10 '>
+            <li key={pizzaItem._id} className='m-2 p-2 '>
 
               <div className='product-list-container' key={pizzaItem._id}>
                 <div className='product-card'><a href={`/pizza/${pizzaItem._id}`}>
@@ -144,8 +144,7 @@ const IndexPage = () => {
                   <p className='product-description'>Type: {getPizzaTypeName(pizzaItem.pizzaTypeId)}</p>
                   <p className='product-price'>Price: {pizzaItem.price}</p>
                   <br></br>
-                  <a className='addbtn' href=''>Add to cart</a> <Link className='addbtn' to={`/pizza/${pizzaItem._id}`}>More
-                    details</Link>
+                  <Link className='addbtn' to={`/pizza/${pizzaItem._id}`}>More details</Link>
                 </div>
               </div>
 
@@ -157,27 +156,23 @@ const IndexPage = () => {
       <br></br>
       <br></br>
       <div className=''>
-        <h1 className='text-left text-6xl titleh1'>
-          Voucher List
+        <h1 className='text-left text-3xl titleh1'>
+          Voucher
         </h1>
       </div>
 
       <div className='productList'>
-        <ul className='list-none flex flex-wrap justify-center'>
+        <ul className='list-none flex flex-wrap'>
           {voucher.length > 0 && voucher.map((voucherItem) => (
 
-            <li key={voucherItem._id} className='m-10 p-10 '>
+            <li key={voucherItem._id} className='m-2 p-2 '>
 
               <div className='product-list-container' key={voucherItem._id}>
-                <div className='product-card'><a href='/pizza/${pizzaItem._id}'>
+                <div className='product-card'><a href={`/voucher/${voucherItem._id}`}>
                   <img src={voucherItem.image} alt={voucherItem.name} /></a>
-                  <strong className='product-title'>Name: {voucherItem.name}</strong>
-                  <p className='product-description'>Description: {voucherItem.description}</p>
-                  <p className='product-price'>Type: {voucherItem.type}</p>
-                  <p className='product-price'>Discount amount: {voucherItem.discount}</p>
-                  <p className='product-price'>Minimum price required: {voucherItem.priceRequired}</p>
-                  <br></br>
-                  <Link className='addbtn' to='`/pizza/${pizzaItem._id}`'>More details</Link>
+                  <strong className='product-title'>{voucherItem.name}</strong>
+                  <p className='product-description'>{voucherItem.description}</p>
+                  <Link className='addbtn' to={`/voucher/${voucherItem._id}`}>More details</Link>
                 </div>
               </div>
 
