@@ -43,7 +43,7 @@ const OrderDetailPage = () => {
     }, []);
 
     const handleCancelOrderDetail = () => {
-        navigate('/order-history');
+        navigate('/account/orders');
     };
 
     return (
