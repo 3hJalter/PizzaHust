@@ -58,6 +58,7 @@ function App() {
                 <Route path='/pizza/:id' element={<PizzaPage />} />
                 <Route path='/sideDish/:id' element={<SideDishPage />} />
                 <Route path='/voucher/:id' element={<VoucherPage />} />
+                <Route path='/pizzaTopping' element={<PizzaToppingPage />} />
                 <Route path='/voucher' element={<SideDishPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/account' element={<ProfilePage />} />
