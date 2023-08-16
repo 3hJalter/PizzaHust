@@ -51,7 +51,6 @@ export default function ComboList(props) {
             <NumberField source="quantity" />
           </Datagrid>
         </ArrayField>
-        <TextField source="description" />
         <EditButton />
         <DeleteButton />
       </Datagrid>

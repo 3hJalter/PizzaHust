@@ -34,7 +34,6 @@ export default function PizzaList(props) {
         <ReferenceField source="pizzaTypeId" reference="pizzaType">
           <TextField source="name" />
         </ReferenceField>
-        <TextField source="description" />
         <EditButton />
         <DeleteButton />
       </Datagrid>

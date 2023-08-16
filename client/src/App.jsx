@@ -13,6 +13,7 @@ import PizzaPage from './pages/PizzaPage';
 import ComboPage from './pages/ComboPage';
 import SideDishPage from './pages/SideDishPage';
 import PizzaToppingPage from './pages/PizzaToppingPage';
+import VoucherPage from './pages/VoucherPage';
 
 import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
@@ -48,6 +49,7 @@ function App() {
                 <Route path='/combo/:id' element={<ComboPage />} />
                 <Route path='/pizza/:id' element={<PizzaPage />} />
                 <Route path='/sideDish/:id' element={<SideDishPage />} />
+                <Route path='/voucher/:id' element={<VoucherPage />} />
                 <Route path='/pizzaTopping' element={<PizzaToppingPage />} />
                 <Route path='/voucher' element={<SideDishPage />} />
                 <Route path='/register' element={<RegisterPage />} />

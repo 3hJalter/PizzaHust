@@ -72,7 +72,7 @@ const OrderPage = () => {
         }
         
         createOrder();
-        navigate('/order-history');
+        navigate('/account/orders');
     };
 
     const handleCancelOrder = () => {
