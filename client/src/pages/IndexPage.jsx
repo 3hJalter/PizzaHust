@@ -148,7 +148,6 @@ const IndexPage = () => {
                 <div className='product-card'><a href={`/combo/${comboItem._id}`}>
                   <img src={comboItem.image} alt={comboItem.name} /></a>
                   <strong className='product-title'>{comboItem.name}</strong>
-                  <p className='product-description'>{comboItem.description}</p>
                   <p className='product-price'>Price: {comboItem.price}</p>
                   <br></br>
                   <Link className='addbtn' to={`/combo/${comboItem._id}`}>More details</Link>
@@ -233,7 +232,6 @@ const IndexPage = () => {
                   <img src={sideDishItem.image} alt={sideDishItem.name} /></a>
                   <strong className='product-title'>{sideDishItem.name}</strong>
                   <strong className='product-title'>{getSideDishType(sideDishItem.sideDishTypeId).name}</strong>
-                  <p className='product-description'>{sideDishItem.description}</p>
                   <p className='product-price'>Price: {sideDishItem.price}</p>
                   <br></br>
                   <Link className='addbtn' to={`/sideDish/${sideDishItem._id}`}>More details</Link>
