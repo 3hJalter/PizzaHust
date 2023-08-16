@@ -13,7 +13,6 @@ exports.addPizza = async (req, res) => {
     const pizzaData = req.body;
     const pizza = await Pizza.create({
       name: pizzaData.name,
-      pizzaSize: pizzaData.pizzaSize,
       pizzaTypeId: pizzaData.pizzaTypeId,
       price: pizzaData.price,
       description: pizzaData.description,

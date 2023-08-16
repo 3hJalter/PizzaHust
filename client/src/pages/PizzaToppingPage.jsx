@@ -13,7 +13,7 @@ const PizzaToppingPage = () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(data);
+    // console.log(data);
     setTopping(data);
   };
 
@@ -29,14 +29,14 @@ const PizzaToppingPage = () => {
         <ul className='list-none flex flex-wrap justify-center'>
           {topping.length > 0 && topping.map((toppingItem) => (
 
-            <li className='m-2 p-2'>
+            <li key={toppingItem._id} className='m-2 p-2'>
 
               <div className='product-list-container' key={toppingItem._id}>
                 <div className='product-card'>
                   <img src={toppingItem.image} alt={toppingItem.name} />
                   <strong className='product-title'>Name: {toppingItem.name}</strong>
                   <p className='product-price'>Price: ${toppingItem.price}</p>
-                  <Button variant="contained">Add to card</Button>
+                  <Button variant="contained">Add to cart</Button>
                 </div>
               </div>
 
