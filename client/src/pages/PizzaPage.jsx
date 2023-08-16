@@ -3,7 +3,6 @@ import axios from 'axios';
 import { getItemFromLocalStorage } from '../utils/index.js';
 import { Button } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import PizzaToppingPage from './PizzaToppingPage.jsx';
 
 const PizzaPage = () => {
   const {id} = useParams();
@@ -15,6 +14,8 @@ const PizzaPage = () => {
     name: "S",
     priceMultiple: 1
   });
+  const [topping, setTopping] = useState([]);
+  const [selectedToppings, setSelectedToppings] = useState([]);
 
   const handlePizzaSizeChange = (event) => {
     const selectedSize = pizzaSize.find(size => size.name === event.target.value);
@@ -22,6 +23,17 @@ const PizzaPage = () => {
       name: selectedSize.name,
       priceMultiple: selectedSize.priceMultiple
     });
+  };
+
+  const handleToppingToggle = (toppingId, toppingName, toppingPrice) => {
+    const isToppingSelected = selectedToppings.some(topping => topping._id === toppingId);
+  
+    if (isToppingSelected) {
+      setSelectedToppings(selectedToppings.filter(topping => topping._id !== toppingId));
+    } else {
+      setSelectedToppings([...selectedToppings, { _id: toppingId, name: toppingName, price: toppingPrice }]);
+    }
+    console.log(selectedToppings);
   };
 
   const getPizzaSizeData = async () => {
@@ -54,6 +66,17 @@ const PizzaPage = () => {
     }
   };
 
+  const getToppingData = async () => {
+    const { data } = await axios.get(`/pizzaTopping`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // console.log(data);
+    setTopping(data);
+  };
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,6 +86,9 @@ const PizzaPage = () => {
 
         console.log("0Pizza");
         await getPizzaSizeData();
+
+        getToppingData();
+        console.log("select topping: ", selectedToppings);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -87,16 +113,20 @@ const PizzaPage = () => {
   }, [pizza]); // Listen for changes in the pizza state
 
   const addToCart = async () => {
+    const selectedToppingsTotalPrice = selectedToppings.reduce((total, topping) => total + topping.price, 0);
+    const toppingNames = selectedToppings.map(item => item.name);
+    const namesString = toppingNames.join(', ');
+
     try {
       const response = await axios.patch('/cart/add-product', 
       {
         type: "pizza",
         productId: pizza._id,
-        name: pizza.name + "With size " + selectedPizzaSize.name,
-        price: pizza.price * selectedPizzaSize.priceMultiple,
+        name: pizza.name + "With size " + selectedPizzaSize.name + "(" + namesString + ")",
+        price: pizza.price * selectedPizzaSize.priceMultiple + selectedToppingsTotalPrice,
         quantity: 1,
         size: selectedPizzaSize,
-        toppingList: [],
+        toppingList: selectedToppings,
       },
       {
         headers: {
@@ -110,6 +140,7 @@ const PizzaPage = () => {
     } catch (error) {
       console.error('Error adding pizza to cart:', error.response.data);
       // Handle error, show error message, etc.
+      window.location.replace('/login');
     }
   };  
 
@@ -124,7 +155,7 @@ const PizzaPage = () => {
           />
         </div>
 
-        <div className="col-span-3 bg-white p-2 rounded-xl space-y-3">
+        <div className="col-span-3 bg-white px-10 rounded-xl space-y-3">
           <div className="text-2xl font-bold mb-2">
             {pizza.name}
           </div>
@@ -161,7 +192,36 @@ const PizzaPage = () => {
         {pizza.description}
       </div>
 
-      <PizzaToppingPage />
+      <div className='m-10 p-2'>
+        <strong>PIZZA TOPPING</strong>
+
+        <div className='productList'>
+          <ul className='list-none flex flex-wrap justify-center'>
+            {topping.length > 0 && topping.map((toppingItem) => (
+              <li key={toppingItem._id} className='m-2 p-2'>
+                <div className='product-list-container' key={toppingItem._id}>
+                  <div className='product-card'>
+                    <img src={toppingItem.image} alt={toppingItem.name} />
+                    <strong className='product-title'>Name: {toppingItem.name}</strong>
+                    <p className='product-price'>Price: ${toppingItem.price}</p>
+                    <label>
+                    <input
+                      type="checkbox"
+                      value={toppingItem._id}
+                      checked={selectedToppings.some(topping => topping._id === toppingItem._id)}
+                      onChange={() => handleToppingToggle(toppingItem._id, toppingItem.name, toppingItem.price)}
+                    />
+                      Add topping
+                    </label>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
     </div>
   );
 };

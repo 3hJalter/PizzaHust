@@ -17,6 +17,20 @@ const ComboPage = () => {
   const [sideDishesData, setSideDishesData] = useState({});
   const [sideDishesQty, setSideDishesQty] = useState({});
 
+  const [topping, setTopping] = useState([]);
+  const [selectedToppings, setSelectedToppings] = useState([]);
+
+  const handleToppingToggle = (toppingId, toppingName, toppingPrice) => {
+    const isToppingSelected = selectedToppings.some(topping => topping._id === toppingId);
+  
+    if (isToppingSelected) {
+      setSelectedToppings(selectedToppings.filter(topping => topping._id !== toppingId));
+    } else {
+      setSelectedToppings([...selectedToppings, { _id: toppingId, name: toppingName, price: toppingPrice }]);
+    }
+    console.log(selectedToppings);
+  };
+
   const getCombo = async (id) => {
     try {
       const response = await axios.get(`/combo/${id}`, {
@@ -86,8 +100,19 @@ const ComboPage = () => {
     }
   };
 
+  const getToppingData = async () => {
+    const { data } = await axios.get(`/pizzaTopping`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // console.log(data);
+    setTopping(data);
+  };
+
   useEffect(() => {
     getCombo(id);
+    getToppingData();
   }, [id]);
 
   useEffect(() => {
@@ -99,14 +124,41 @@ const ComboPage = () => {
     });
   }, [pizzaListId, sideDishListId]);
 
+  const addToCart = async () => {
+    try {
+      const response = await axios.patch('/cart/add-product', 
+      {
+        type: "combo",
+        productId: combo._id,
+        name: combo.name,
+        price: combo.price,
+        quantity: 1,
+        toppingList: [],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log('Combo added to cart:', response.data);
+      // Update UI, show success message, etc.
+
+    } catch (error) {
+      console.error('Error adding combo to cart:', error.response.data);
+      // Handle error, show error message, etc.
+      window.location.replace('/login');
+    }
+  };  
+
   return (
     <div className="mt-8 grid">
-      <div className="grid grid-cols-5 mx-12 space-x-4 my-10">
+      <div className="grid grid-cols-7 mx-12 space-x-4 my-10">
         <div className="col-span-2 flex justify-center bg-white p-2 rounded-xl">
           <img src={combo.image}></img>
         </div>
 
-        <div className="col-span-3 bg-white p-2 rounded-xl space-y-3">
+        <div className="col-span-5 bg-white p-2 rounded-xl space-y-3">
           <div className="text-2xl font-bold mb-2">
             {combo.name}
           </div>
@@ -143,9 +195,9 @@ const ComboPage = () => {
             </ul>
           </div>
            
-          <Button variant="contained">Add to card</Button>
+          <Button variant="contained" onClick={addToCart}>Add to card</Button>
         </div>
-
+                
       </div>
 
 

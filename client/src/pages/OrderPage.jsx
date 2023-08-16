@@ -66,6 +66,11 @@ const OrderPage = () => {
     };
 
     const handlePlaceOrder = () => {
+        if (!user || !address || !phone) {
+            alert("Please fill in all required fields: Name, Address, Phone");
+            return;
+        }
+        
         createOrder();
         navigate('/order-history');
     };
@@ -98,9 +103,7 @@ const OrderPage = () => {
                 <table className="min-w-full border-collapse: collapse;">
                     <thead>
                         <tr>
-                            <th className="px-4 py-2 w-2/12">Name</th>
-                            <th className="px-4 py-2 w-2/12">Topping List</th>
-                            <th className="px-4 py-2">Type</th>
+                            <th className="px-4 py-2">Name</th>
                             <th className="px-4 py-2">Quantity</th>
                             <th className="px-4 py-2">Price</th>
                         </tr>
@@ -109,11 +112,6 @@ const OrderPage = () => {
                         {cartItems.map((item) => (
                             <tr key={item._id} className="border-t last:border-b">
                                 <td className="px-4 py-2 text-center">{item.name}</td>
-                                <td className="px-4 py-2 text-center">
-                                    {item.toppingList.map((topping) => (
-                                        <p key={topping._id}>{topping.name}</p>))}
-                                </td>
-                                <td className="px-4 py-2 text-center">{item.type}</td>
                                 <td className="px-4 py-2 text-center">{item.quantity}</td>
                                 <td className="px-4 py-2 text-center">{item.price}</td>
                             </tr>
@@ -141,11 +139,16 @@ const OrderPage = () => {
                             <option disabled value="">
                                 Choose a voucher
                             </option>
-                            {vouchers.map((voucher) => (
-                                <option key={voucher._id} value={voucher._id}>
-                                    {(voucher.description)}
-                                </option>
-                            ))}
+                            {vouchers.map((voucher) => {
+                                if (orderPrice > voucher.priceRequired) {
+                                    return (
+                                        <option key={voucher._id} value={voucher._id}>
+                                            {voucher.description}
+                                        </option>
+                                    );
+                                }
+                                return null;
+                            })}
                         </select>
                     </div>
                 </div>

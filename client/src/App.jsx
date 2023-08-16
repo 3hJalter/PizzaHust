@@ -52,9 +52,9 @@ function App() {
                 <Route path='/voucher' element={<SideDishPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/account' element={<ProfilePage />} />
+                <Route path='/account/orders' element={<OrderHistoryPage />} />
                 <Route path='/cart' element={<CartPage />} />
                 <Route path='/order' element={<OrderPage />} />
-                <Route path='/order-history' element={<OrderHistoryPage />} />
                 <Route path='/order/:id' element={<OrderDetailPage />} />
                 <Route path='*' element={<NotFound />} />
               </Route>

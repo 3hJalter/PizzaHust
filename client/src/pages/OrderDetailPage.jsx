@@ -30,7 +30,6 @@ const OrderDetailPage = () => {
         setLoading(true);
         try {
             const response = await axios.get(`/order/${id}`);
-            console.log(response.data);
             setOrder(response.data);
             setCartItems(response.data.productList);
         } catch (error) {
@@ -56,9 +55,7 @@ const OrderDetailPage = () => {
                 <table className="min-w-full border-collapse: collapse;">
                     <thead>
                         <tr>
-                            <th className="px-4 py-2 w-2/12">Name</th>
-                            <th className="px-4 py-2 w-2/12">Topping List</th>
-                            <th className="px-4 py-2">Type</th>
+                            <th className="px-4 py-2">Name</th>
                             <th className="px-4 py-2">Quantity</th>
                             <th className="px-4 py-2">Price</th>
                         </tr>
@@ -67,11 +64,6 @@ const OrderDetailPage = () => {
                         {cartItems.map((item) => (
                             <tr key={item._id} className="border-t last:border-b">
                                 <td className="px-4 py-2 text-center">{item.name}</td>
-                                <td className="px-4 py-2 text-center">
-                                    {item.toppingList.map((topping) => (
-                                        <p key={topping._id}>{topping.name}</p>))}
-                                </td>
-                                <td className="px-4 py-2 text-center">{item.type}</td>
                                 <td className="px-4 py-2 text-center">{item.quantity}</td>
                                 <td className="px-4 py-2 text-center">{item.price}</td>
                             </tr>
@@ -100,7 +92,7 @@ const OrderDetailPage = () => {
                 </h2>
 
                 <h2 className="content m-2 text-2xl">
-                    Final Price: {order.finalPrice}
+                    Final Price: {new Intl.NumberFormat().format(order.finalPrice)}
                     đ
                 </h2>
 
@@ -125,13 +117,6 @@ const OrderDetailPage = () => {
                 </h2>
 
                 <div className='content my-4 text-center'>
-                    {/* <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4"
-                        onClick={handlePlaceOrder}
-                    >
-                        Confirm Order
-                    </button>
-                    {' '} */}
                     <button
                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-4"
                         onClick={handleCancelOrderDetail}
