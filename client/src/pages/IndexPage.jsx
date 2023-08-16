@@ -87,7 +87,7 @@ const IndexPage = () => {
   };
   const getSideDishType = async (type_id) => {
     try {
-      const response = await axios.get(`/sideDishType/${type_id}`, {
+      const response = await axios.get(`/sideDishType/${type_id._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -232,7 +232,7 @@ const IndexPage = () => {
                 <div className='product-card'><a href={`/sideDish/${sideDishItem._id}`}>
                   <img src={sideDishItem.image} alt={sideDishItem.name} /></a>
                   <strong className='product-title'>{sideDishItem.name}</strong>
-                  <strong className='product-title'>{getSideDishType(sideDishItem.sideDishTypeId).name}</strong>
+                  <strong className='product-title'>{getSideDishType(sideDishItem.sideDishType).name}</strong>
                   <p className='product-description'>{sideDishItem.description}</p>
                   <p className='product-price'>Price: {sideDishItem.price}</p>
                   <br></br>
