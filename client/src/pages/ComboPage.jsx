@@ -147,6 +147,7 @@ const ComboPage = () => {
     } catch (error) {
       console.error('Error adding combo to cart:', error.response.data);
       // Handle error, show error message, etc.
+      window.location.replace('/login');
     }
   };  
 

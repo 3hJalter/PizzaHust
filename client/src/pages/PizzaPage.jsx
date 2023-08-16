@@ -114,13 +114,15 @@ const PizzaPage = () => {
 
   const addToCart = async () => {
     const selectedToppingsTotalPrice = selectedToppings.reduce((total, topping) => total + topping.price, 0);
+    const toppingNames = selectedToppings.map(item => item.name);
+    const namesString = toppingNames.join(', ');
 
     try {
       const response = await axios.patch('/cart/add-product', 
       {
         type: "pizza",
         productId: pizza._id,
-        name: pizza.name + "With size " + selectedPizzaSize.name,
+        name: pizza.name + "With size " + selectedPizzaSize.name + "(" + namesString + ")",
         price: pizza.price * selectedPizzaSize.priceMultiple + selectedToppingsTotalPrice,
         quantity: 1,
         size: selectedPizzaSize,
@@ -138,6 +140,7 @@ const PizzaPage = () => {
     } catch (error) {
       console.error('Error adding pizza to cart:', error.response.data);
       // Handle error, show error message, etc.
+      window.location.replace('/login');
     }
   };  
 
@@ -152,7 +155,7 @@ const PizzaPage = () => {
           />
         </div>
 
-        <div className="col-span-3 bg-white p-2 rounded-xl space-y-3">
+        <div className="col-span-3 bg-white px-10 rounded-xl space-y-3">
           <div className="text-2xl font-bold mb-2">
             {pizza.name}
           </div>

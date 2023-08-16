@@ -70,6 +70,7 @@ const SideDishPage = () => {
     } catch (error) {
       console.error('Error adding side dish to cart:', error.response.data);
       // Handle error, show error message, etc.
+      window.location.replace('/login');
     }
   };  
 
