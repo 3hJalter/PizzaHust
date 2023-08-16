@@ -118,7 +118,7 @@ const IndexPage = () => {
           <a className='addbtn' href='/voucher/'>Vouchers</a>
         </li>
         <li className='m-5 p-5'>
-          <a className='addbtn' href='/combo/'>Combos</a>
+          <a className='addbtn' href='/combo-list/'>Combos</a>
         </li>
         <li className='m-5 p-5'>
           <a className='addbtn' href='/pizza-list/'>Pizzas</a>
