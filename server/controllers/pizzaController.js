@@ -1,6 +1,7 @@
 const Pizza = require('../models/Pizza');
 const Combo = require('../models/Combo');
 const userFromToken = require('../utils/userFromToken');
+const mongoose = require('mongoose');
 
 exports.addPizza = async (req, res) => {
   try {
@@ -90,6 +91,30 @@ exports.getPizzaById = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
+    });
+  }
+};
+
+
+exports.getPizzaByTypeAndSize = async (req, res) => {
+  
+  try {
+    const data = req.body;
+    const pizza = await Pizza.find({
+      pizzaSize: data.pizzaSize,
+      pizzaTypeId: mongoose.Types.ObjectId(data.pizzaTypeId)
+    });
+
+    if (!pizza) {
+      return res.status(400).json({
+        message: 'Pizza not found',
+      });
+    }
+    res.status(200).json(pizza);
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal server loi',
+      err: err
     });
   }
 };
