@@ -95,52 +95,6 @@ exports.getPizzaById = async (req, res) => {
   }
 };
 
-
-exports.getPizzaByTypeAndSize = async (req, res) => {
-  
-  try {
-    const data = req.body;
-    const pizza = await Pizza.find({
-      pizzaSize: data.pizzaSize,
-      pizzaTypeId: mongoose.Types.ObjectId(data.pizzaTypeId)
-    });
-
-    if (!pizza) {
-      return res.status(400).json({
-        message: 'Pizza not found',
-      });
-    }
-    res.status(200).json(pizza);
-  } catch (err) {
-    res.status(500).json({
-      message: 'Internal server loi',
-      err: err
-    });
-  }
-};
-
-exports.searchPizzas = async (req, res) => {
-  try {
-    const searchWord = req.params.key;
-
-    if (searchWord === 'undefined') {
-      const result = await Pizza.find();
-      return res.status(200).json(result);
-    }
-
-    const searchMatches = await Pizza.find({
-      address: { $regex: searchWord, $options: 'i' },
-    });
-
-    res.status(200).json(searchMatches);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Internal server error 1',
-    });
-  }
-};
-
 exports.deletePizza = async (req, res) => {
   try {
     const userData = userFromToken(req);

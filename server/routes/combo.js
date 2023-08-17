@@ -14,6 +14,5 @@ router.route('/').get(getCombos);
 router.route('/add-combo').post(addCombo);
 router.route('/:id').put(updateCombo);
 router.route('/:id').get(getComboById).delete(deleteCombo);
-router.route('/search/:key').get(searchCombos);
 
 module.exports = router;

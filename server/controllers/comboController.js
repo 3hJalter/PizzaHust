@@ -90,28 +90,6 @@ exports.getComboById = async (req, res) => {
   }
 };
 
-exports.searchCombos = async (req, res) => {
-  try {
-    const searchWord = req.params.key;
-
-    if (searchWord === 'undefined') {
-      const result = await Combo.find();
-      return res.status(200).json(result);
-    }
-
-    const searchMatches = await Combo.find({
-      address: { $regex: searchWord, $options: 'i' },
-    });
-
-    res.status(200).json(searchMatches);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: 'Internal server error 1',
-    });
-  }
-};
-
 exports.deleteCombo = async (req, res) => {
   try {
     const userData = userFromToken(req);

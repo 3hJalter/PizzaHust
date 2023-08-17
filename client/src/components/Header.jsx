@@ -21,14 +21,10 @@ export const Header = () => {
         <div className='flex'>
           <Link to={'/'} className="flex items-center gap-1">
             <img
-              className="h-8 w-8 md:h-10 md:w-10 min-w-[36px]"
-              src="https://png.pngtree.com/png-vector/20220910/ourmid/pngtree-pizza-logo-png-image_6147023.png"
+              className="h-2- w-20 min-w-[36px]"
+              src="https://i.imgur.com/7nW34R7.png"
               alt=""
             />
-
-            <span className="hidden md:block font-bold text-2xl text-red-500">
-              PizzaHust
-            </span>
           </Link>
 
           <DropdownButton />
