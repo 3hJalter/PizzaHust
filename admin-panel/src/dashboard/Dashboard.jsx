@@ -140,8 +140,6 @@ const Dashboard = () => {
           <span className='featuredTitle'>Revenue</span>
           <div className='featuredMoneyContainer'>
             <span className='featuredMoney'>{revenue.toFixed(0)} VND</span>
-            <span className='featuredMoneyRate'>{revenueChange.toFixed(1)}% {revenueChange < 0 ? <ArrowDownwardIcon /> :
-              <ArrowUpwardIcon />}</span>
           </div>
           <span className='featuredSub'>Current month</span>
         </div>
