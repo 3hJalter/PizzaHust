@@ -24,7 +24,7 @@ export default function PizzaSizeList(props) {
   return (
     <List filters={userFilters} {...props}>
       <Datagrid>
-        <TextField source="id" />
+        {/*<TextField source="id" />*/}
         <TextField source="name" />
         <NumberField source="priceMultiple" />
         <EditButton />

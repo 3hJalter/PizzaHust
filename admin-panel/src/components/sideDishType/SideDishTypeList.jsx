@@ -22,7 +22,7 @@ export default function SideDishTypeList(props) {
   return (
     <List filters={userFilters} {...props}>
       <Datagrid>
-        <TextField source="id" />
+        {/*<TextField source="id" />*/}
         <ImageField
           source="image"
           sx={{
