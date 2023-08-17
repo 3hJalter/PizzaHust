@@ -1,5 +1,6 @@
 const PizzaTopping = require('../models/PizzaTopping');
 const userFromToken = require('../utils/userFromToken');
+const Combo = require('../models/Combo');
 
 exports.addPizzaTopping = async (req, res) => {
   try {
@@ -10,6 +11,14 @@ exports.addPizzaTopping = async (req, res) => {
       });
     }
     const toppingData = req.body;
+
+    const existingTopping = await PizzaTopping.findOne({ name: toppingData.name });
+    if (existingTopping) {
+      return res.status(400).json({
+        message: 'A topping with this name already exists',
+      });
+    }
+    
     const topping = await PizzaTopping.create({
       name: toppingData.name,
       price: toppingData.price,

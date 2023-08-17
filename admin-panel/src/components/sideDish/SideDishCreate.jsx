@@ -28,7 +28,7 @@ const SideDishCreate = (props) => {
       console.log("SideDish created successfully!", response);
       navigate(-1);
     } catch (error) {
-      alert(`Error creating sideDish: ${error.message}`);
+      alert(`Error creating sideDish: ${error.response.data.message}`);
     }
   };
 

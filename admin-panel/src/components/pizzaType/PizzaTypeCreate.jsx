@@ -28,7 +28,7 @@ const PizzaTypeCreate = (props) => {
       console.log("PizzaType created successfully!", response);
       navigate(-1);
     } catch (error) {
-      alert(`Error creating pizzaType: ${error.message}`);
+      alert(`Error creating pizzaType: ${error.response.data.message}`);
     }
   };
 

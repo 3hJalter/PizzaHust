@@ -8,6 +8,13 @@ exports.addCombo = async (req, res) => {
       message: 'You are not authorized to create this combo',
     });
     const comboData = req.body;
+    // Check if a combo with the same name already exists
+    const existingCombo = await Combo.findOne({ name: comboData.name });
+    if (existingCombo) {
+      return res.status(400).json({
+        message: 'A combo with this name already exists',
+      });
+    }
     const combo = await Combo.create({
       name: comboData.name,
       pizzaListId: comboData.pizzaListId,

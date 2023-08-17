@@ -1,5 +1,6 @@
 const Voucher = require('../models/Voucher');
 const userFromToken = require('../utils/userFromToken');
+const Combo = require('../models/Combo');
 
 exports.addVoucher = async (req, res) => {
   try {
@@ -11,6 +12,13 @@ exports.addVoucher = async (req, res) => {
     }
     const voucherData = req.body;
 
+    const existingVoucher = await Voucher.findOne({ name: voucherData.name });
+    if (existingVoucher) {
+      return res.status(400).json({
+        message: 'A voucher with this name already exists',
+      });
+    }
+    
     const voucher = await Voucher.create({
       name: voucherData.name,
       priceRequired: voucherData.priceRequired,

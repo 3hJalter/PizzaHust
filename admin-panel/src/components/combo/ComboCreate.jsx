@@ -28,7 +28,7 @@ const ComboCreate = (props) => {
       console.log("Combo created successfully!", response);
       navigate(-1);
     } catch (error) {
-      alert(`Error creating combo: ${error.message}`);
+      alert(`Error creating combo: ${error.response.data.message}`);
     }
   };
 

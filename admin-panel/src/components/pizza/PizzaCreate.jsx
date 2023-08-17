@@ -28,7 +28,7 @@ const PizzaCreate = (props) => {
       console.log("Pizza created successfully!", response);
       navigate(-1);
     } catch (error) {
-      alert(`Error creating pizza: ${error.message}`);
+      alert(`Error creating pizza: ${error.response.data.message}`);
     }
   };
 

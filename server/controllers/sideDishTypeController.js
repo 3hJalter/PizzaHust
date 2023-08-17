@@ -1,6 +1,7 @@
 const SideDishType = require('../models/SideDishType');
 const SideDish = require('../models/SideDish');
 const userFromToken = require('../utils/userFromToken');
+const Combo = require('../models/Combo');
 
 exports.addSideDishType = async (req, res) => {
   try {
@@ -11,6 +12,14 @@ exports.addSideDishType = async (req, res) => {
       });
     }
     const typeData = req.body;
+
+    const existingSideDishType = await SideDishType.findOne({ name: sideDishTypeData.name });
+    if (existingSideDishType) {
+      return res.status(400).json({
+        message: 'A sideDishType with this name already exists',
+      });
+    }
+    
     const sideDishType = await SideDishType.create({
       name: typeData.name,
       description: typeData.description,

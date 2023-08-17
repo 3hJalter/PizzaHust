@@ -1,6 +1,7 @@
 const PizzaType = require('../models/PizzaType');
 const userFromToken = require('../utils/userFromToken');
 const Pizza = require('../models/Pizza');
+const Combo = require('../models/Combo');
 
 exports.addPizzaType = async (req, res) => {
   try {
@@ -11,6 +12,14 @@ exports.addPizzaType = async (req, res) => {
       });
     }
     const typeData = req.body;
+
+    const existingType = await PizzaType.findOne({ name: typeData.name });
+    if (existingType) {
+      return res.status(400).json({
+        message: 'A type with this name already exists',
+      });
+    }
+    
     const pizzaType = await PizzaType.create({
       name: typeData.name,
       description: typeData.description,

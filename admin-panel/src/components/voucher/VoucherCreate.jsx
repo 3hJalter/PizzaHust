@@ -28,7 +28,7 @@ const VoucherCreate = (props) => {
       console.log("Voucher created successfully!", response);
       navigate(-1);
     } catch (error) {
-      alert(`Error creating voucher: ${error.message}`);
+      alert(`Error creating voucher: ${error.response.data.message}`);
     }
   };
 

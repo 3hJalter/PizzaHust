@@ -11,6 +11,14 @@ exports.addSideDish = async (req, res) => {
       });
     }
     const sideDishData = req.body;
+
+    const existingSideDish = await SideDish.findOne({ name: sideDishData.name });
+    if (existingSideDish) {
+      return res.status(400).json({
+        message: 'A sideDish with this name already exists',
+      });
+    }
+    
     const sideDish = await SideDish.create({
       name: sideDishData.name,
       sideDishTypeId: sideDishData.sideDishTypeId,

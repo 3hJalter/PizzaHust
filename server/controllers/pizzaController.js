@@ -12,6 +12,14 @@ exports.addPizza = async (req, res) => {
       });
     }
     const pizzaData = req.body;
+
+    const existingPizza = await Pizza.findOne({ name: pizzaData.name });
+    if (existingPizza) {
+      return res.status(400).json({
+        message: 'A pizza with this name already exists',
+      });
+    }
+    
     const pizza = await Pizza.create({
       name: pizzaData.name,
       pizzaTypeId: pizzaData.pizzaTypeId,

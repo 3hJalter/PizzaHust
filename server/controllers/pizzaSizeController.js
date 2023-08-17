@@ -1,5 +1,6 @@
 const PizzaSize = require('../models/PizzaSize');
 const userFromToken = require('../utils/userFromToken');
+const Combo = require('../models/Combo');
 exports.addPizzaSize = async (req, res) => {
   try {
     const userData = userFromToken(req);
@@ -9,6 +10,14 @@ exports.addPizzaSize = async (req, res) => {
       });
     }
     const sizeData = req.body;
+
+    const existingSize = await PizzaSize.findOne({ name: sizeData.name });
+    if (existingSize) {
+      return res.status(400).json({
+        message: 'A size with this name already exists',
+      });
+    }
+    
     const size = await PizzaSize.create({
       name: sizeData.name,
       priceMultiple: sizeData.priceMultiple,
